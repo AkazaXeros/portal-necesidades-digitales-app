@@ -1,0 +1,23 @@
+.registerForm {
+  width: 500px;
+}
+
+div.registerForm > form {
+  display: flex;
+  flex-direction: column;
+}
+
+div.registerForm > form > p {
+  color: red;
+}
+
+div.registerForm > form > button {
+  border-radius: 12px;
+  width: 33%;
+  margin: 0 auto;
+  background-color: teal;
+  color: white;
+  outline: none;
+  border: none;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.8);
+}
