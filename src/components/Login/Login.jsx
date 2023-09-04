@@ -28,7 +28,7 @@ const Login = () => {
       setError('');
       setEmail('');
       setPassword('');
-      setUser(data.token);
+      setUser(data);
     }
 
     console.log(data);
