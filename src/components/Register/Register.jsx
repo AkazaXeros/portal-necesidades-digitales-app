@@ -36,22 +36,30 @@ const Register = () => {
     <>
       <div className={registerForm}>
         <form onSubmit={handleSubmit}>
+        
+        <label htmlFor="username">Username</label>
           <input
+            autoFocus
+            id="username"
             type="text"
-            placeholder="Select your username..."
+            placeholder="SelectedName"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
+          <label htmlFor="email">Email</label>
           <input
+            id="email"
             type="email"
-            placeholder="Type your email..."
+            placeholder="name@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
 
+          <label htmlFor="password">Password</label>
           <input
+            id="password"
             type="password"
-            placeholder="Password..."
+            placeholder=""
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
