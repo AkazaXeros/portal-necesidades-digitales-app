@@ -1,0 +1,13 @@
+.newEntry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newEntry > textarea {
+  resize: none;
+}
+
+.newEntry > p {
+  color: red;
+}

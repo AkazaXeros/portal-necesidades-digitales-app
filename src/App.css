@@ -1,0 +1,9 @@
+.fileInput > input {
+  display: none;
+}
+
+.fileInput > span {
+  cursor: pointer;
+  padding: 5px;
+  margin: 1px;
+}
