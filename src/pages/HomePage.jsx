@@ -1,4 +1,10 @@
+import AllEntries from "../components/Entries/AllEntries";
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <AllEntries />
+    </>
+  );
 };
 export default HomePage;
