@@ -37,8 +37,7 @@ const Login = () => {
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit} className={loginForm}> 
-       
+        <form onSubmit={handleSubmit} className={loginForm}>
           <label htmlFor="email">Email</label>
           <input
             autoFocus
@@ -48,7 +47,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          
+
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -66,5 +65,3 @@ const Login = () => {
   );
 };
 export default Login;
-
-// !1qYqqqq  lachocharica@gmail.com

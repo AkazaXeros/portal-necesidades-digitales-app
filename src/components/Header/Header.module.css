@@ -1,0 +1,34 @@
+.mainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #666;
+  border-bottom: 1px solid #222;
+  margin-bottom: 1rem;
+}
+
+.mainHeader nav {
+  display: flex;
+  align-items: center;
+}
+
+.mainHeader p {
+  font-size: 80%;
+}
+
+.mainHeader h1 {
+  font-size: 120%;
+}
+
+.mainHeader span {
+  color: white;
+}
+
+.mainHeader a {
+  text-decoration: none;
+  color: white;
+  &:hover {
+    text-decoration: underline;
+  }
+}
