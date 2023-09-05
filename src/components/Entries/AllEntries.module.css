@@ -1,0 +1,16 @@
+.allEntries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.allEntries > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  margin: 20px;
+  border: black 2px solid;
+  height: 300px;
+  width: 300px;
+}
