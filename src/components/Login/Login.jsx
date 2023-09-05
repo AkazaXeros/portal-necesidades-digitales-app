@@ -2,12 +2,14 @@ import { loginForm } from './Login.module.css';
 
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const [user, setUser] = useUser();
 
@@ -30,6 +32,7 @@ const Login = () => {
       setEmail('');
       setPassword('');
       setUser(data);
+      navigate('/');
     }
 
     console.log(data);
