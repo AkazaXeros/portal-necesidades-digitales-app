@@ -1,5 +1,6 @@
 import { registerForm } from './Register.module.css';
 
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const Register = () => {
@@ -66,6 +67,9 @@ const Register = () => {
           <button>Signup</button>
           {error && <p>{error}</p>}
         </form>
+        <p>
+          If you already have an account <Link to="/users/login">Login</Link>
+        </p>
       </div>
     </>
   );

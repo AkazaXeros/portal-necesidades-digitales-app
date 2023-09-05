@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 import { Router, Route, Routes } from 'react-router-dom';
 import NewEntry from './components/Entries/NewEntry';
@@ -21,7 +22,7 @@ function App() {
           <Route path="/users/register" element={<Register />} />
           <Route path="/users/login" element={<Login />} />
           <Route path="/entries" element={<NewEntry />} />
-          {/* <Route path="/entries" element={<NewEntry />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

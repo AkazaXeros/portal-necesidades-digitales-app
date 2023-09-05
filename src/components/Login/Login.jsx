@@ -2,6 +2,7 @@ import { loginForm } from './Login.module.css';
 
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -60,6 +61,10 @@ const Login = () => {
           <button>Login</button>
           {error && <p>{error}</p>}
         </form>
+        <p>
+          If you don't have an account yet{' '}
+          <Link to="/users/register">Signup</Link>
+        </p>
       </div>
     </>
   );
