@@ -36,8 +36,7 @@ const Register = () => {
     <>
       <div className={registerForm}>
         <form onSubmit={handleSubmit}>
-        
-        <label htmlFor="username">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             autoFocus
             id="username"
@@ -72,5 +71,3 @@ const Register = () => {
   );
 };
 export default Register;
-
-// !1qYqqqq
