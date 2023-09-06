@@ -1,23 +1,17 @@
 .entryCard {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 30px;
 }
 
-.entryCard > header > h2 {
+.entryCard > h2 {
   color: teal;
   font-size: 2.5rem;
   border-bottom: solid 0.5px teal;
-  margin-bottom: 10px;
 }
 
-.entryCard > footer > div {
+.entryCard > div {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
   cursor: pointer;
-}
-
-.entryCard > footer > div > img {
-  border-radius: 50%;
 }
