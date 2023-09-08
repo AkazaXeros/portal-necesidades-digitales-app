@@ -1,44 +1,41 @@
-import { newEntry } from './NewEntry.module.css';
+import { newEntry } from "./NewEntry.module.css";
 
-import { useUser } from '../../context/UserContext';
-
-import { useState } from 'react';
+import { useState } from "react";
 
 const NewEntry = () => {
-  const [user] = useUser();
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  // const [user] = useUser();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [file, setFile] = useState();
-  const [category, setCategory] = useState('');
-  const [error, setError] = useState('');
+  const [category, setCategory] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(user);
     const fd = new FormData();
-    fd.append('title', title);
-    fd.append('description', description);
-    fd.append('file', file);
-    fd.append('category', category);
+    fd.append("title", title);
+    fd.append("description", description);
+    fd.append("file", file);
+    fd.append("category", category);
 
-    const res = await fetch('http://localhost:8000/entries', {
-      method: 'POST',
-      headers: { Authorization: `${user.data.token}` },
+    const res = await fetch("http://localhost:8000/entries", {
+      method: "POST",
+      headers: { Authorization: `${data.token}` },
       body: fd,
     });
 
     const data = await res.json();
 
-    if (data.status === 'error') {
+    if (data.status === "error") {
       console.log(data.status);
       setError(data.message);
     } else {
-      setError('');
-      setTitle('');
-      setDescription('');
+      setError("");
+      setTitle("");
+      setDescription("");
       setFile(null);
-      setCategory('');
+      setCategory("");
     }
     console.log(data);
   };
@@ -86,8 +83,7 @@ const NewEntry = () => {
           id="category"
           onChange={(e) => {
             setCategory(e.target.value);
-          }}
-        >
+          }}>
           <option value="video-editing">Video-editing</option>
           <option value="image-editing">Image-editing</option>
           <option value="document-translation">Document-translation</option>

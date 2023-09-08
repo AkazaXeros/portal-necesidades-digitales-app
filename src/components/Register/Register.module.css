@@ -16,11 +16,11 @@ div.registerForm > form > button {
   border-radius: 12px;
   width: 33%;
   margin: 0 auto;
-  background-color: teal;
+  background-color: lightsalmon;
   color: white;
   outline: none;
   border: none;
-  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.8);
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.5);
   margin-top: 3px;
 }
 

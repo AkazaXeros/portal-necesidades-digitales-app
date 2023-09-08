@@ -1,23 +1,35 @@
-import { mainHeader } from './Header.module.css';
+import { useContext } from "react";
+import { mainHeader } from "./Header.module.css";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 const Header = () => {
+  const { user, logout } = useContext(UserContext);
+  console.log(user);
   return (
     <header className={mainHeader}>
-      <h1>
-        <Link to="/">PDN</Link>
-      </h1>
-      <nav>
+      {user ? (
         <p>
-          <Link to="/users/register">Signup</Link>
+          {user.userName} <button onClick={() => logout()}>🛎️</button>
         </p>
-        <span>/</span>
-        <p>
-          <Link to="/users/login">Login</Link>
-        </p>
-      </nav>
+      ) : (
+        <>
+          <h1>
+            <Link to="/">PDN</Link>
+          </h1>
+          <nav>
+            <p>
+              <Link to="/users/register">Signup</Link>
+            </p>
+            <p>
+              <Link to="/users/login">Login</Link>
+            </p>
+          </nav>
+        </>
+      )}
     </header>
   );
 };
+
 export default Header;
