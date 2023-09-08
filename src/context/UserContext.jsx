@@ -1,26 +1,42 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
+import { getUserDataService } from "../services";
 
-const UserContext = createContext();
-
+export const UserContext = createContext();
 export const useUser = () => useContext(UserContext);
 
-export function UserProvider({ children }) {
-  const [user, setUser] = useState(() =>
-    JSON.parse(localStorage.getItem('session'))
-  );
+export const UserProvider = ({ children }) => {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState();
 
-  const setUserAndStorage = (newUser) => {
-    setUser(newUser);
-    if (newUser) {
-      localStorage.setItem('session', JSON.stringify(newUser));
-    } else {
-      localStorage.removeItem('session');
-    }
+  useEffect(() => {
+    localStorage.setItem("token", token);
+  }, [token]);
+
+  useEffect(() => {
+    const userData = async () => {
+      try {
+        const data = await getUserDataService(token);
+        setUser(data);
+      } catch (err) {
+        logout();
+      }
+    };
+
+    if (token) userData();
+  }, [token]);
+
+  const login = (token) => {
+    setToken(token);
+  };
+
+  const logout = () => {
+    setToken("");
+    setUser(null);
   };
 
   return (
-    <UserContext.Provider value={[user, setUserAndStorage]}>
+    <UserContext.Provider value={{ token, user, login, logout }}>
       {children}
     </UserContext.Provider>
   );
-}
+};

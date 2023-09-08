@@ -1,47 +1,35 @@
-import { loginForm } from './Login.module.css';
+import { loginForm } from "./Login.module.css";
+import { loginUserService } from "../../services";
+import { useUser } from "../../context/UserContext";
 
-import { useState } from 'react';
-import { useUser } from '../../context/UserContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { login } = useUser();
   const navigate = useNavigate();
-
-  const [user, setUser] = useUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    const res = await fetch(`http://localhost:8000/users/login`, {
-      method: 'Post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await res.json();
-
-    if (data.status === 'error') {
-      console.log(data.status);
-      setError(data.message);
-    } else {
-      setError('');
-      setEmail('');
-      setPassword('');
-      setUser(data);
-      navigate('/');
+    try {
+      const data = await loginUserService({ email, password });
+      console.log(data);
+      login(data);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
     }
-
-    console.log(data);
   };
 
   return (
-    <>
-      <div>
-        <form onSubmit={handleSubmit} className={loginForm}>
+    <div>
+      <form onSubmit={handleSubmit} className={loginForm}>
+        <fieldset>
           <label htmlFor="email">Email</label>
           <input
             autoFocus
@@ -49,27 +37,33 @@ const Login = () => {
             type="email"
             placeholder="name@email.com"
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
+        </fieldset>
 
+        <fieldset>
           <label htmlFor="password">Password</label>
           <input
             id="password"
             type="password"
             placeholder=""
             value={password}
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
+        </fieldset>
 
-          <button>Login</button>
-          {error && <p>{error}</p>}
-        </form>
-        <p>
-          If you don't have an account yet{' '}
-          <Link to="/users/register">Signup</Link>
-        </p>
-      </div>
-    </>
+        <button>Login</button>
+
+        {error && <p>{error}</p>}
+      </form>
+
+      <p>
+        If you don`t have an account yet{" "}
+        <Link to="/users/register">Signup</Link>
+      </p>
+    </div>
   );
 };
 export default Login;

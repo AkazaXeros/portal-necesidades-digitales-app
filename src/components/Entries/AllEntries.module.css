@@ -9,8 +9,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  margin: 20px;
-  border: black 2px solid;
+  margin: auto;
+  border: lightsalmon 2px solid;
   height: 300px;
   width: 300px;
 }
