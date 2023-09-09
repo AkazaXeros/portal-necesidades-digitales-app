@@ -1,33 +1,25 @@
-import { useContext } from "react";
+import Auth from "../Auth/Auth";
 import { mainHeader } from "./Header.module.css";
-
-import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+
 const Header = () => {
-  const { user, logout } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   console.log(user);
   return (
     <header className={mainHeader}>
+      <h1>
+        <Link to="/">PDN</Link>
+      </h1>
+
       {user ? (
-        <p>
-          {user.userName} <button onClick={() => logout()}>🛎️</button>
-        </p>
-      ) : (
-        <>
-          <h1>
-            <Link to="/">PDN</Link>
-          </h1>
-          <nav>
-            <p>
-              <Link to="/users/register">Signup</Link>
-            </p>
-            <p>
-              <Link to="/users/login">Login</Link>
-            </p>
-          </nav>
-        </>
-      )}
+        <Link to="/entries">
+          <p>Services</p>
+        </Link>
+      ) : null}
+      <Auth />
     </header>
   );
 };
