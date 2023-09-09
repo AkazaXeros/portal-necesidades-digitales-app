@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: "Open Sans", sans-serif;
 }
 
 #root {
@@ -13,4 +15,23 @@
 
 main {
   flex: 1;
+}
+
+.avatarPlaceHolder {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+  background-color: #016a70;
+  border-radius: 100%;
+}
+
+.avatarImg {
+  border-radius: 100%;
+  background-position: center;
+  width: 30px;
+  height: 30px;
 }

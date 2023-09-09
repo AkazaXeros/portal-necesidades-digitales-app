@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { getAllEntries } from "../services";
+
 const useEntries = () => {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -8,9 +10,8 @@ const useEntries = () => {
   useEffect(() => {
     const loadEntries = async () => {
       try {
-        const res = await fetch("http://localhost:8000/entries");
-        const data = await res.json();
-        setEntries(data.data.entries);
+        const data = await getAllEntries();
+        setEntries(data);
       } catch (err) {
         setError(err.message);
       } finally {
