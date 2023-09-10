@@ -1,19 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
-
 .entryCard {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  font-family: "Open Sans", sans-serif;
-}
-
-.entryCard > h2 {
-  color: rebeccapurple;
-  font-size: 2rem;
-  border-bottom: solid 0.5px cadetblue;
-}
-
-.entryCard > div {
-  display: flex;
-  cursor: pointer;
 }

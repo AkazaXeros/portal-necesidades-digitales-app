@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -31,6 +32,7 @@ const Register = () => {
           type="text"
           placeholder="SelectedName"
           value={userName}
+          required
           onChange={(e) => setUserName(e.target.value)}
         />
 
@@ -41,6 +43,7 @@ const Register = () => {
           placeholder="name@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
 
         <label htmlFor="password">Password</label>
@@ -50,14 +53,24 @@ const Register = () => {
           placeholder=""
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
-        <button>Signup</button>
+        <Button colorScheme="teal" variant="solid">
+          Signup
+        </Button>
+
         {error && <p>{error}</p>}
       </form>
 
       <p>
-        If you already have an account ➡️<Link to="/users/login">Login</Link>
+        If you already have an account{" "}
+        <button>
+          {" "}
+          <Link to="/users/login" className="login">
+            Login
+          </Link>
+        </button>
       </p>
     </div>
   );

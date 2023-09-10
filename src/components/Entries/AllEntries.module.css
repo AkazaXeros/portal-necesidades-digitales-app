@@ -1,19 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
-
 .allEntries {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  font-family: "Open Sans", sans-serif;
+  margin: 50px;
+  gap: 50px;
 }
 
 .allEntries > li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-  margin: 50px;
-  border: rebeccapurple 2px solid;
-  height: 400px;
-  width: 300px;
+  list-style: none;
+  width: 50%;
 }

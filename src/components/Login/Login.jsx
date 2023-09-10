@@ -2,6 +2,7 @@ import { loginForm } from "./Login.module.css";
 import { loginUserService } from "../../services";
 import { useUser } from "../../context/UserContext";
 
+import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -27,41 +28,41 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className={loginForm}>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input
-            autoFocus
-            id="email"
-            type="email"
-            placeholder="name@email.com"
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </fieldset>
+    <div className={loginForm}>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input
+          autoFocus
+          id="email"
+          type="email"
+          placeholder="name@email.com"
+          value={email}
+          required
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <fieldset>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            placeholder=""
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </fieldset>
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder=""
+          value={password}
+          required
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-        <button>Login</button>
+        <Button colorScheme="teal" variant="solid">
+          Login
+        </Button>
 
         {error && <p>{error}</p>}
       </form>
-
       <p>
         If you don`t have an account yet{" "}
-        <Link to="/users/register">Signup</Link>
+        <button>
+          {" "}
+          <Link to="/users/register">Signup</Link>
+        </button>
       </p>
     </div>
   );

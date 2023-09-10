@@ -1,31 +1,51 @@
 .loginForm {
-  width: 500px;
-  margin-top: 1rem;
+  width: 30vw;
+  margin: auto;
+  margin-top: 30px;
+  padding: 20px;
+  border: 2px solid cadetblue;
+  border-radius: 10px;
+}
+
+.loginForm > form {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  width: 50vw;
-  margin-left: 25%;
+  gap: 8px;
 }
 
-form.loginForm > p {
+.loginForm > form > label {
+  margin-top: 10px;
+}
+
+.loginForm > form > input {
+  border: ridge rgba(95, 158, 160, 0.404);
+  border-radius: 10px;
+  height: 5vh;
+  padding: 20px;
+}
+
+.loginForm > form > input:focus {
+  background-color: rgba(95, 158, 160, 0.404);
+}
+
+.loginForm > form > p {
   color: red;
+  margin-top: 10%;
+  font-style: italic;
 }
 
-.loginForm > button {
-  border-radius: 12px;
-  width: 33%;
-  margin: 0 auto;
-  background-color: lightsalmon;
-  color: white;
-  outline: none;
-  border: none;
-  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.5);
-  margin-top: 1px;
+.loginForm > p > button {
+  margin-top: 10%;
+  &:hover {
+    background-color: cadetblue;
+    color: white;
+    border-radius: 10px;
+    width: 15%;
+  }
 }
 
-form.loginForm > label {
-  justify-self: flex-start;
-  align-self: flex-start;
-  margin-top: 1rem;
+.loginForm > form > button {
+  margin: auto;
+  width: 10vw;
+  cursor: pointer;
 }
