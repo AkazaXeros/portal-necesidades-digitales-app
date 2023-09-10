@@ -56,7 +56,7 @@ const Register = () => {
           required
         />
 
-        <Button colorScheme="teal" variant="solid">
+        <Button colorScheme="yellow" variant="solid" type="submit">
           Signup
         </Button>
 

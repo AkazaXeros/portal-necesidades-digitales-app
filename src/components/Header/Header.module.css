@@ -2,34 +2,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5% 5%;
-  margin-bottom: 1rem;
-  width: 100%;
-
+  padding: 10%;
+  width: 100vw;
+  color: white;
   background-color: cadetblue;
 }
 
-.mainHeader nav {
+.mainHeader > h1 {
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.mainHeader > div {
   display: flex;
-  gap: 2rem;
-}
-
-.mainHeader p {
-  font-size: 1.5rem;
-}
-
-.mainHeader h1 {
-  font-size: 4rem;
-}
-
-.mainHeader span {
-  color: white;
-}
-
-.mainHeader a {
-  text-decoration: none;
-  color: white;
-  &:hover {
-    text-decoration: underline;
-  }
+  gap: 20px;
+  position: fixed;
+  top: 1%;
+  right: 2%;
 }
