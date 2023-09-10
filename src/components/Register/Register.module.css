@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
-
 .registerForm {
-  width: 50vw;
-  margin: 0 auto;
-  font-family: "Open Sans", sans-serif;
+  width: 30vw;
+  margin: auto;
+  margin-top: 30px;
+  padding: 20px;
+  border: 2px solid cadetblue;
+  border-radius: 10px;
 }
 
 div.registerForm > form {
@@ -12,34 +13,39 @@ div.registerForm > form {
   gap: 8px;
 }
 
+div.registerForm > form > label {
+  margin-top: 10px;
+}
+
+div.registerForm > form > input {
+  border: ridge rgba(95, 158, 160, 0.404);
+  border-radius: 10px;
+  height: 5vh;
+  padding: 20px;
+}
+
+div.registerForm > form > input:focus {
+  background-color: rgba(95, 158, 160, 0.404);
+}
+
 div.registerForm > form > p {
   color: red;
-  margin-top: 40px;
+  margin-top: 10%;
   font-style: italic;
 }
 
-.registerForm > p {
-  margin-top: 40px;
+.registerForm > p > button {
+  margin-top: 10%;
   &:hover {
-    text-decoration: underline;
+    background-color: cadetblue;
+    color: white;
+    border-radius: 10px;
+    width: 15%;
   }
 }
 
 div.registerForm > form > button {
-  border-radius: 12px;
-  width: 20%;
-  height: 25px;
-  margin: 0 auto;
-  background-color: rebeccapurple;
-  color: white;
-  outline: none;
-  border: none;
+  margin: auto;
+  width: 10vw;
   cursor: pointer;
-  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
-  margin-top: 10px;
-}
-
-div.registerForm > form > label {
-  justify-self: flex-start;
-  align-self: flex-start;
 }

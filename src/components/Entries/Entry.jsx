@@ -1,38 +1,60 @@
-import { Link } from "react-router-dom";
-import { FormattedRelativeTime } from "react-intl";
-
 import Avatar from "../Avatar/Avatar";
-import relativeTimeCalc from "../../utils/relativeTimeCalc";
-
 import { entryCard } from "./Entry.module.css";
+
+import { Button, CardHeader, Flex } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Heading,
+  Stack,
+  Divider,
+} from "@chakra-ui/react";
+import { FormattedRelativeTime } from "react-intl";
+import { Link } from "react-router-dom";
+import relativeTimeCalc from "../../utils/relativeTimeCalc";
 
 const Entry = ({ entry }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
 
   return (
-    <article className={entryCard}>
-      <h2>{entry.title}</h2>
-      <p>Category: {entry.category}</p>
+    <Card className={entryCard}>
+      <CardHeader>
+        <Stack spacing="5">
+          <Heading size="md" className="header">
+            {entry.title}
+          </Heading>
+          <CardBody>
+            <p>Category: {entry.category}</p>
+            <p>{entry.description}</p>
+          </CardBody>
 
-      <p>{entry.description}</p>
-
-      <Link to={`/users/${entry.userId}`}>
-        <div>
-          <Avatar userName={entry.userName} avatar={entry.avatar} />
-          <p>{entry.userName}</p>
-        </div>
-      </Link>
-
-      <p>
-        {
-          <FormattedRelativeTime
-            value={-relativeTimeValue}
-            numeric="auto"
-            updateIntervalInSeconds={1000}
-          />
-        }
-      </p>
-    </article>
+          <Flex>
+            <p>
+              {
+                <FormattedRelativeTime
+                  value={-relativeTimeValue}
+                  numeric="auto"
+                  updateIntervalInSeconds={1000}
+                />
+              }
+            </p>
+          </Flex>
+        </Stack>
+      </CardHeader>
+      <Divider color="cadetblue" />
+      <CardFooter>
+        <Flex gap="20" alignItems="center">
+          <Link to={`/users/${entry.userId}`}>
+            <Avatar userName={entry.userName} avatar={entry.avatar}>
+              {" "}
+            </Avatar>
+            <p>{entry.userName}</p>
+          </Link>
+          <Button colorScheme="yellow">View here</Button>
+        </Flex>
+      </CardFooter>
+    </Card>
   );
 };
 

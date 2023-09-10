@@ -1,13 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
-
 .mainHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5rem;
-  background-color: cadetblue;
+  padding: 5% 5%;
   margin-bottom: 1rem;
-  font-family: "Open Sans", sans-serif;
+  width: 100%;
+
+  background-color: cadetblue;
 }
 
 .mainHeader nav {
