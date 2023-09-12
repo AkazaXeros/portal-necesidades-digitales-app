@@ -1,4 +1,7 @@
 import { allEntries } from "./AllEntries.module.css";
+
+import { Link } from "react-router-dom";
+
 import Entry from "./Entry";
 
 const AllEntries = ({ entries }) => {
@@ -6,7 +9,9 @@ const AllEntries = ({ entries }) => {
     <ul className={allEntries}>
       {entries.map((entry) => (
         <li key={entry.id}>
-          <Entry entry={entry} />
+          <Link to={`/entries/${entry.id}`}>
+            <Entry entry={entry} />
+          </Link>
         </li>
       ))}
     </ul>

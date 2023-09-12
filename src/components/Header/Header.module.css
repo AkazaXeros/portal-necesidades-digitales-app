@@ -2,34 +2,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5% 5%;
-  margin-bottom: 1rem;
-  width: 100%;
-
   background-color: cadetblue;
-}
-
-.mainHeader nav {
-  display: flex;
-  gap: 2rem;
-}
-
-.mainHeader p {
-  font-size: 1.5rem;
-}
-
-.mainHeader h1 {
-  font-size: 4rem;
-}
-
-.mainHeader span {
-  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10%;
+  width: 100vw;
+  height: 20vh;
+  z-index: 10;
 }
 
 .mainHeader a {
-  text-decoration: none;
   color: white;
-  &:hover {
-    text-decoration: underline;
-  }
 }

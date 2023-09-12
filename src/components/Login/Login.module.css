@@ -1,51 +1,11 @@
 .loginForm {
-  width: 30vw;
-  margin: auto;
-  margin-top: 30px;
-  padding: 20px;
-  border: 2px solid cadetblue;
-  border-radius: 10px;
-}
-
-.loginForm > form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  padding: 10%;
+  gap: 10px;
 }
 
-.loginForm > form > label {
-  margin-top: 10px;
-}
-
-.loginForm > form > input {
-  border: ridge rgba(95, 158, 160, 0.404);
-  border-radius: 10px;
-  height: 5vh;
-  padding: 20px;
-}
-
-.loginForm > form > input:focus {
-  background-color: rgba(95, 158, 160, 0.404);
-}
-
-.loginForm > form > p {
-  color: red;
-  margin-top: 10%;
-  font-style: italic;
-}
-
-.loginForm > p > button {
-  margin-top: 10%;
-  &:hover {
-    background-color: cadetblue;
-    color: white;
-    border-radius: 10px;
-    width: 15%;
-  }
-}
-
-.loginForm > form > button {
+.loginForm .btn {
+  width: 20vw;
   margin: auto;
-  width: 10vw;
-  cursor: pointer;
 }

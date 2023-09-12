@@ -1,12 +1,8 @@
 .allEntries {
   display: flex;
   flex-wrap: wrap;
+  margin: 2rem auto;
   justify-content: center;
-  margin: 50px;
-  gap: 50px;
-}
-
-.allEntries > li {
+  gap: 2rem;
   list-style: none;
-  width: 50%;
 }

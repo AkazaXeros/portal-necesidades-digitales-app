@@ -1,10 +1,9 @@
 .auth {
   display: flex;
-  gap: 40px;
-  top: 20px;
-  right: 40px;
+  gap: 20px;
+  top: 1%;
+  right: 2%;
   position: fixed;
-  font-size: 1.3rem;
 }
 
 .auth > li {

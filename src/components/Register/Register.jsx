@@ -1,15 +1,18 @@
-import { Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import { registerForm } from "./Register.module.css";
+import { Box, Button, TextField } from "@mui/material";
+
+import { registerForm, btn } from "./Register.module.css";
 import { registerUserService } from "../../services";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,62 +20,62 @@ const Register = () => {
     try {
       const data = await registerUserService({ userName, email, password });
       console.log(data);
+      navigate("/users/login");
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div className={registerForm}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
-          autoFocus
-          id="username"
-          type="text"
-          placeholder="SelectedName"
-          value={userName}
-          required
-          onChange={(e) => setUserName(e.target.value)}
-        />
+    <Box component="form" onSubmit={handleSubmit} className={registerForm}>
+      <TextField
+        autoFocus
+        id="username"
+        label="Username"
+        type="text"
+        placeholder="Pol"
+        value={userName}
+        variant="outlined"
+        required
+        onChange={(e) => setUserName(e.target.value)}
+      />
 
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="name@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+      <TextField
+        id="email"
+        label="Email"
+        type="email"
+        placeholder="name@email.com"
+        value={email}
+        variant="outlined"
+        helperText={error.message}
+        error={error.error}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
 
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          placeholder=""
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+      <TextField
+        id="password"
+        label="Password"
+        type="password"
+        placeholder=""
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
 
-        <Button colorScheme="teal" variant="solid">
-          Signup
-        </Button>
+      <Button variant="contained" type="submit" sx={{ mt: 2 }} className={btn}>
+        Signup
+      </Button>
 
-        {error && <p>{error}</p>}
-      </form>
+      {error && <p>{error}</p>}
 
       <p>
-        If you already have an account{" "}
-        <button>
-          {" "}
-          <Link to="/users/login" className="login">
-            Login
-          </Link>
-        </button>
+        If you already have an account
+        <Button variant="text">
+          <Link to="/users/login">Login</Link>
+        </Button>
       </p>
-    </div>
+    </Box>
   );
 };
 export default Register;
