@@ -29,6 +29,6 @@ const Auth = () => {
         </li>
       </ul>
     </div>
-  );
+);
 };
 export default Auth;

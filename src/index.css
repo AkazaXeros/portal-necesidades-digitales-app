@@ -8,6 +8,7 @@
   font-family: "Roboto", sans-serif;
 }
 
+
 body #root {
   min-height: 100vh;
   display: flex;
@@ -17,7 +18,8 @@ body #root {
 
 main {
   flex: 1;
-}
+} */
+
 
 .avatarPlaceHolder {
   width: 40px;
@@ -29,7 +31,7 @@ main {
   color: white;
   background-color: #016a70;
   border-radius: 100%;
-}
+} 
 
 .avatarImg {
   border-radius: 100%;

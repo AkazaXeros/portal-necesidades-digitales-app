@@ -2,6 +2,7 @@ import Entry from "../Entries/Entry";
 // import { userCard } from "./UserProfile.module.css";
 import useEntries from "../../hooks/useEntries";
 
+import { Box, Divider } from "@chakra-ui/react";
 import { FormattedDate } from "react-intl";
 import { useEffect, useState } from "react";
 import { Avatar, Card, CardHeader } from "@mui/material";

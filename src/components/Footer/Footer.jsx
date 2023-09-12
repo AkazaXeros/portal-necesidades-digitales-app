@@ -3,7 +3,8 @@ import { mainFooter } from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer className={mainFooter}>
-      <p>©Team Luffy. All rights reserved.</p>
+      <p>PDN®</p>
+      <p>©Team Luffy</p>
     </footer>
   );
 };

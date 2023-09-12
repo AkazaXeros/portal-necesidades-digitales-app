@@ -100,6 +100,7 @@ const NewEntry = () => {
       <Button variant="contained" className={btn}>
         Add
       </Button>
+
       {error && <p>{error}</p>}
     </form>
   );
