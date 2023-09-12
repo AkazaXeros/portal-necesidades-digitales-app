@@ -13,13 +13,14 @@ const Header = () => {
       <h1>
         <Link to="/">PDN</Link>
       </h1>
-
-      {user ? (
-        <Link to="/entries">
-          <p>Services</p>
-        </Link>
-      ) : null}
-      <Auth />
+      <div>
+        {user ? (
+          <Link to="/entries">
+            <p>Services</p>
+          </Link>
+        ) : null}
+        <Auth />
+      </div>
     </header>
   );
 };

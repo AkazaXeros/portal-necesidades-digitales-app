@@ -7,7 +7,7 @@
   font-family: "Open Sans", sans-serif;
 }
 
-#root {
+/* #root {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,9 +15,9 @@
 
 main {
   flex: 1;
-}
+} */
 
-.avatarPlaceHolder {
+/* .avatarPlaceHolder {
   width: 30px;
   height: 30px;
   display: flex;
@@ -27,11 +27,11 @@ main {
   color: white;
   background-color: #016a70;
   border-radius: 100%;
-}
+} */
 
 .avatarImg {
   border-radius: 100%;
   background-position: center;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }

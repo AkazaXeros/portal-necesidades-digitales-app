@@ -1,15 +1,8 @@
 import Avatar from "../Avatar/Avatar";
 import { entryCard } from "./Entry.module.css";
 
-import { Button, CardHeader, Flex } from "@chakra-ui/react";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Heading,
-  Stack,
-  Divider,
-} from "@chakra-ui/react";
+import { Box, CardHeader, Flex } from "@chakra-ui/react";
+import { Card, CardBody, CardFooter, Heading, Divider } from "@chakra-ui/react";
 import { FormattedRelativeTime } from "react-intl";
 import { Link } from "react-router-dom";
 import relativeTimeCalc from "../../utils/relativeTimeCalc";
@@ -18,43 +11,43 @@ const Entry = ({ entry }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
 
   return (
-    <Card className={entryCard}>
-      <CardHeader>
-        <Stack spacing="5">
-          <Heading size="md" className="header">
-            {entry.title}
-          </Heading>
-          <CardBody>
-            <p>Category: {entry.category}</p>
-            <p>{entry.description}</p>
-          </CardBody>
+    <div className={entryCard}>
+      <Card maxW="md">
+        <CardHeader>
+          <Flex justifyContent="space-between" alignItems="center">
+            <Heading size="md">{entry.title}</Heading>
 
-          <Flex>
-            <p>
-              {
-                <FormattedRelativeTime
-                  value={-relativeTimeValue}
-                  numeric="auto"
-                  updateIntervalInSeconds={1000}
-                />
-              }
-            </p>
+            <Box>
+              <Link to={`/users/${entry.userId}`}>
+                <Avatar avatar={entry.avatar} />
+              </Link>
+              <Heading size="sm">{entry.userName}</Heading>
+            </Box>
           </Flex>
-        </Stack>
-      </CardHeader>
-      <Divider color="cadetblue" />
-      <CardFooter>
-        <Flex gap="20" alignItems="center">
-          <Link to={`/users/${entry.userId}`}>
-            <Avatar userName={entry.userName} avatar={entry.avatar}>
-              {" "}
-            </Avatar>
-            <p>{entry.userName}</p>
-          </Link>
-          <Button colorScheme="yellow">View here</Button>
-        </Flex>
-      </CardFooter>
-    </Card>
+        </CardHeader>
+        <Divider color="cadetblue" />
+        <CardBody>
+          <Flex flexDirection="column" gap="10">
+            <p>{entry.description}</p>
+
+            <p>{entry.category}</p>
+          </Flex>
+        </CardBody>
+
+        <Divider color="cadetblue" />
+        <CardFooter>
+          <p>
+            {
+              <FormattedRelativeTime
+                value={-relativeTimeValue}
+                numeric="auto"
+                updateIntervalInSeconds={1000}
+              />
+            }
+          </p>
+        </CardFooter>
+      </Card>
+    </div>
   );
 };
 
