@@ -1,8 +1,9 @@
-import { loginForm } from "./Login.module.css";
+import { loginForm, btn } from "./Login.module.css";
 import { loginUserService } from "../../services";
 import { useUser } from "../../context/UserContext";
 
-import { Button } from "@chakra-ui/react";
+import { Box, Button, TextField } from "@mui/material";
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -28,43 +29,40 @@ const Login = () => {
   };
 
   return (
-    <div className={loginForm}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          autoFocus
-          id="email"
-          type="email"
-          placeholder="name@email.com"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <Box onSubmit={handleSubmit} component="form" className={loginForm}>
+      <TextField
+        autoFocus
+        id="email"
+        label="Email"
+        type="email"
+        placeholder="name@email.com"
+        value={email}
+        required
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          placeholder=""
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <TextField
+        id="password"
+        label="Password"
+        type="password"
+        placeholder=""
+        value={password}
+        required
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-        <Button colorScheme="yellow" variant="solid" type="submit">
-          Login
-        </Button>
+      <Button variant="contained" className={btn} type="submit">
+        Login
+      </Button>
 
-        {error && <p>{error}</p>}
-      </form>
+      {error && <p>{error}</p>}
       <p>
-        If you don`t have an account yet{" "}
-        <button>
-          {" "}
+        If you don`t have an account yet
+        <Button variant="text">
           <Link to="/users/register">Signup</Link>
-        </button>
+        </Button>
       </p>
-    </div>
+    </Box>
   );
 };
 export default Login;

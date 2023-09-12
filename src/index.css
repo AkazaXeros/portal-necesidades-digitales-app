@@ -1,25 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-/* #root {
-  height: 100vh;
+
+body #root {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: none;
 }
 
 main {
   flex: 1;
 } */
 
-/* .avatarPlaceHolder {
-  width: 30px;
-  height: 30px;
+
+.avatarPlaceHolder {
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +31,7 @@ main {
   color: white;
   background-color: #016a70;
   border-radius: 100%;
-} */
+} 
 
 .avatarImg {
   border-radius: 100%;

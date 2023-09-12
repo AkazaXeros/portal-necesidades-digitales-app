@@ -2,21 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: cadetblue;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   padding: 10%;
   width: 100vw;
+  height: 20vh;
+  z-index: 10;
+}
+
+.mainHeader a {
   color: white;
-  background-color: cadetblue;
 }
 
-.mainHeader > h1 {
-  font-size: 200%;
-  font-weight: bold;
-}
-
-.mainHeader > div {
-  display: flex;
-  gap: 20px;
-  position: fixed;
-  top: 1%;
-  right: 2%;
-}

@@ -1,47 +1,34 @@
 import Avatar from "../Avatar/Avatar";
 import { auth } from "./Auth.module.css";
 
-import { Button } from "@chakra-ui/react";
 import { useUser } from "../../context/UserContext";
 import { Link } from "react-router-dom";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-} from "@chakra-ui/react";
+import { Button } from "@mui/material";
 
 const Auth = () => {
   const { user, logout } = useUser();
 
   return user ? (
     <div className={auth}>
-      <Menu>
-        <MenuButton>
-          <Avatar avatar={user.avatar} userName={user.userName} />
-        </MenuButton>
-        <MenuList>
-          <Link to={`/users/${user.id}`}>
-            <MenuItem>My Profile</MenuItem>
-          </Link>
-          <MenuItem>Entries</MenuItem>
-          <MenuDivider />
-          <MenuItem onClick={() => logout()}>Logout</MenuItem>
-        </MenuList>
-      </Menu>
+      <Avatar avatar={user.avatar} userName={user.userName} />
+
+      <span onClick={() => logout()}>❌</span>
     </div>
   ) : (
-    <ul className={auth}>
-      <li>
-        <Link to="/users/login">Login</Link>
-      </li>
-      <li className="btn">
-        <Button size="sm" colorScheme="yellow">
-          <Link to="/users/register">Signup</Link>
-        </Button>
-      </li>
-    </ul>
-  );
+    <div className={auth}>
+      <ul>
+        <li>
+          <Button size="small">
+            <Link to="/users/login">Login</Link>
+          </Button>
+        </li>
+        <li>
+          <Button variant="contained" size="small">
+            <Link to="/users/register">Signup</Link>
+          </Button>
+        </li>
+      </ul>
+    </div>
+);
 };
 export default Auth;

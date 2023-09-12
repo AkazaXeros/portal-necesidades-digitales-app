@@ -1,8 +1,15 @@
-import Avatar from "../Avatar/Avatar";
-import { entryCard } from "./Entry.module.css";
+// import { entryCard } from "./Entry.module.css";
+import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
+import {
+  Avatar,
+  Badge,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Typography,
+} from "@mui/material";
 
-import { Box, CardHeader, Flex } from "@chakra-ui/react";
-import { Card, CardBody, CardFooter, Heading, Divider } from "@chakra-ui/react";
 import { FormattedRelativeTime } from "react-intl";
 import { Link } from "react-router-dom";
 import relativeTimeCalc from "../../utils/relativeTimeCalc";
@@ -11,43 +18,41 @@ const Entry = ({ entry }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
 
   return (
-    <div className={entryCard}>
-      <Card maxW="md">
-        <CardHeader>
-          <Flex justifyContent="space-between" alignItems="center">
-            <Heading size="md">{entry.title}</Heading>
+    <Card sx={{ minWidth: 250, maxWidth: 400 }}>
+      <CardHeader
+        avatar={
+          <Link to={`/users/${entry.userId}`}>
+            <Avatar
+              sx={{ width: 40, height: 40 }}
+              src={`${import.meta.env.VITE_BACKEND_URL}/${
+                entry.avatar
+              }`}></Avatar>
+          </Link>
+        }
+        title={entry.title}
+        subheader={
+          <FormattedRelativeTime
+            value={-relativeTimeValue}
+            numeric="auto"
+            updateIntervalInSeconds={1000}
+          />
+        }
+      />
+      <CardContent>
+        <Typography component="p" variant="body2">
+          {entry.category}
+        </Typography>
+        <Typography component="p" color="text.secondary">
+          {entry.description}
+        </Typography>
+      </CardContent>
 
-            <Box>
-              <Link to={`/users/${entry.userId}`}>
-                <Avatar avatar={entry.avatar} />
-              </Link>
-              <Heading size="sm">{entry.userName}</Heading>
-            </Box>
-          </Flex>
-        </CardHeader>
-        <Divider color="cadetblue" />
-        <CardBody>
-          <Flex flexDirection="column" gap="10">
-            <p>{entry.description}</p>
-
-            <p>{entry.category}</p>
-          </Flex>
-        </CardBody>
-
-        <Divider color="cadetblue" />
-        <CardFooter>
-          <p>
-            {
-              <FormattedRelativeTime
-                value={-relativeTimeValue}
-                numeric="auto"
-                updateIntervalInSeconds={1000}
-              />
-            }
-          </p>
-        </CardFooter>
-      </Card>
-    </div>
+      <CardActions>
+        <Badge badgeContent={entry.numberOfComments} color="secondary" showZero>
+          <ModeCommentOutlinedIcon />
+        </Badge>
+      </CardActions>
+    </Card>
   );
 };
 

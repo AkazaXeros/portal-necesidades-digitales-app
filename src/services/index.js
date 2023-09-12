@@ -25,6 +25,33 @@ export const createEntryService = async ({
   return data.data.entry;
 };
 
+export const getEntry = async (entryId) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/entries/${entryId}`
+  );
+
+  const data = await res.json();
+
+  if (!res.ok) throw new Error(data.message);
+
+  return data.data.entry;
+};
+
+export const getAllComments = async (entryId, token) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/comments/${entryId}`,
+    {
+      headers: { Authorization: token },
+    }
+  );
+
+  const data = await res.json();
+
+  if (!res.ok) throw new Error(data.message);
+
+  return data.data.comments;
+};
+
 export const getAllEntries = async () => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/entries`);
 

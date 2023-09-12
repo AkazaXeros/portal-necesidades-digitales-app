@@ -9,6 +9,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { Router, Route, Routes } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 
+import EntryPage from "./pages/EntryPage";
 import NewEntry from "./pages/NewEntryPage";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/users/register" element={<Register />} />
           <Route path="/users/login" element={<Login />} />
           <Route path="/entries" element={<NewEntry />} />
+          <Route path="/entries/:id" element={<EntryPage />} />
           <Route path="/users/:id" element={<UserProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

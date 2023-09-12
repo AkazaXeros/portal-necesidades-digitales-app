@@ -1,2 +1,11 @@
 .newEntry {
+  display: flex;
+  flex-direction: column;
+  padding: 10%;
+  gap: 10px;
+}
+
+.newEntry > .btn {
+  width: 10vw;
+  margin: auto;
 }

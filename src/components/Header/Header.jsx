@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className={mainHeader}>
       <h1>
-        <Link to="/">PDN</Link>
+        <Link to="/">Wrench</Link>
       </h1>
       <div>
         {user ? (
