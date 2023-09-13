@@ -1,5 +1,5 @@
 // import { entryCard } from "./Entry.module.css";
-import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
+import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import {
   Avatar,
   Badge,
@@ -8,44 +8,57 @@ import {
   CardContent,
   CardHeader,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
-import { FormattedRelativeTime } from "react-intl";
-import { Link } from "react-router-dom";
-import relativeTimeCalc from "../../utils/relativeTimeCalc";
+import { FormattedRelativeTime } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
+
+import relativeTimeCalc from '../../utils/relativeTimeCalc';
 
 const Entry = ({ entry }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
 
+  const navigate = useNavigate();
+
+  const avatarClickHandler = (e) => {
+    e.preventDefault();
+    navigate(`/users/${entry.userId}`);
+  };
+
+  const contentClickHandler = () => {
+    navigate(`/entries/${entry.id}`);
+  };
+
   return (
     <Card sx={{ minWidth: 250, maxWidth: 400 }}>
-      <CardHeader
-        avatar={
-          <Link to={`/users/${entry.userId}`}>
+      <div onClick={avatarClickHandler} className="cardEntryAvatar">
+        <CardHeader
+          avatar={
             <Avatar
               sx={{ width: 40, height: 40 }}
-              src={`${import.meta.env.VITE_BACKEND_URL}/${
-                entry.avatar
-              }`}></Avatar>
-          </Link>
-        }
-        title={entry.title}
-        subheader={
-          <FormattedRelativeTime
-            value={-relativeTimeValue}
-            numeric="auto"
-            updateIntervalInSeconds={1000}
-          />
-        }
-      />
-      <CardContent>
-        <Typography component="p" variant="body2">
-          {entry.category}
-        </Typography>
-        <Typography component="p" color="text.secondary">
-          {entry.description}
-        </Typography>
-      </CardContent>
+              src={`${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`}
+            ></Avatar>
+          }
+          title={entry.title}
+          subheader={
+            <FormattedRelativeTime
+              value={-relativeTimeValue}
+              numeric="auto"
+              updateIntervalInSeconds={1000}
+            />
+          }
+        />
+      </div>
+      <div className="entryCardContent" onClick={contentClickHandler}>
+        <CardContent>
+          <Typography component="p" variant="body2">
+            {entry.category}
+          </Typography>
+          <Typography component="p" color="text.secondary">
+            {entry.description}
+          </Typography>
+        </CardContent>
+      </div>
 
       <CardActions>
         <Badge badgeContent={entry.numberOfComments} color="secondary" showZero>

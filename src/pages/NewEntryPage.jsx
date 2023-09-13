@@ -1,8 +1,8 @@
-import { createEntryService } from "../services";
-import { newEntry, btn } from "./NewEntryPage.module.css";
-import { useUser } from "../context/UserContext";
+import { createEntryService } from '../services';
+import { newEntry, btn } from './NewEntryPage.module.css';
+import { useUser } from '../context/UserContext';
 
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Button,
   FormControl,
@@ -10,15 +10,15 @@ import {
   MenuItem,
   Select,
   TextField,
-} from "@mui/material";
+} from '@mui/material';
 
 const NewEntry = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [file, setFile] = useState();
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const { token } = useUser();
 
   const handleSubmit = async (e) => {
@@ -63,7 +63,6 @@ const NewEntry = () => {
         id="description"
         label="Description"
         multiline
-        maxRows={8}
         value={description}
         onChange={(e) => {
           setDescription(e.target.value);
@@ -74,7 +73,6 @@ const NewEntry = () => {
       />
       <TextField
         id="file"
-        label="File"
         type="file"
         onChange={(e) => {
           setFile(e.target.files[0]);
@@ -83,12 +81,15 @@ const NewEntry = () => {
       />
 
       <FormControl>
-        <InputLabel
+        <InputLabel id="category">Category</InputLabel>
+        <Select
           id="category"
           onChange={(e) => {
             setCategory(e.target.value);
-          }}></InputLabel>
-        <Select>
+          }}
+          value={category}
+          label="Category"
+        >
           <MenuItem value="other">Other</MenuItem>
           <MenuItem value="video-editing">Video-editing</MenuItem>
           <MenuItem value="image-editing">Image-editing</MenuItem>
