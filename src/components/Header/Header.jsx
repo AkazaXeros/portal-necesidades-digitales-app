@@ -1,13 +1,13 @@
-import Auth from "../Auth/Auth";
-import { mainHeader } from "./Header.module.css";
-import { UserContext } from "../../context/UserContext";
+import Auth from '../Auth/Auth';
+import { mainHeader } from './Header.module.css';
+import { UserContext } from '../../context/UserContext';
 
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
 const Header = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
+  // console.log(user);
   return (
     <header className={mainHeader}>
       <h1>

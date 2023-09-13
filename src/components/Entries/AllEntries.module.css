@@ -1,7 +1,10 @@
 .allEntries {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 2rem auto;
+  /* display: flex; */
+  display: grid;
+  /* margin-top: 1rem; */
+  /* flex-wrap: wrap; */
+  /* margin: 2rem auto; */
+  grid-template-columns: minmax(100px, max-content);
   justify-content: center;
   gap: 2rem;
   list-style: none;

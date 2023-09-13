@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-import useEntry from "../hooks/useEntry";
-import { useUser } from "../context/UserContext";
+import useEntry from '../hooks/useEntry';
+import { useUser } from '../context/UserContext';
 
-import Entry from "../components/Entries/Entry";
-import AllEntryComments from "../components/Comments/AllEntryComments";
+import Entry from '../components/Entries/Entry';
+import AllEntryComments from '../components/Comments/AllEntryComments';
 
 const EntryPage = () => {
   const { id } = useParams();
@@ -14,7 +14,7 @@ const EntryPage = () => {
 
   if (loading) return <p>Loading data...</p>;
   if (error) return <p>{error}</p>;
-  console.log(entry);
+  // console.log(entry);
 
   return entry ? (
     <div>
