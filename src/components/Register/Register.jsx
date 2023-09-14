@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import { Box, Button, TextField } from "@mui/material";
+import { Alert, Box, Button, TextField } from "@mui/material";
 
 import { registerForm, btn } from "./Register.module.css";
 import { registerUserService } from "../../services";
@@ -67,7 +67,7 @@ const Register = () => {
         Signup
       </Button>
 
-      {error && <p>{error}</p>}
+      {error && <Alert severity="error">{error}</Alert>}
 
       <p>
         If you already have an account

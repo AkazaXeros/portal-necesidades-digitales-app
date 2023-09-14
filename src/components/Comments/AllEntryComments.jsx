@@ -1,11 +1,13 @@
-import useComments from '../../hooks/useComments';
-import Comment from './Comment';
+import { Alert, CircularProgress } from "@mui/material";
+
+import useComments from "../../hooks/useComments";
+
 
 const AllEntryComments = ({ entryId, token, entry }) => {
   const { comments, loading, error } = useComments(entryId, token);
 
-  if (error) return <p>{error}</p>;
-  if (loading) return <p>Loading comments...</p>;
+  if (error) return <Alert severity="error">{error}</Alert>;
+  if (loading) return <CircularProgress />;
   return comments.length > 0 ? (
     <div>
       <h3>Comments: </h3>

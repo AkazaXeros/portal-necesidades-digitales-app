@@ -1,11 +1,11 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import { Alert, Box, Button, TextField } from "@mui/material";
+
 import { loginForm, btn } from "./Login.module.css";
 import { loginUserService } from "../../services";
 import { useUser } from "../../context/UserContext";
-
-import { Box, Button, TextField } from "@mui/material";
-
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -55,7 +55,7 @@ const Login = () => {
         Login
       </Button>
 
-      {error && <p>{error}</p>}
+      {error && <Alert severity="error">{error}</Alert>}
       <p>
         If you don`t have an account yet
         <Button variant="text">
