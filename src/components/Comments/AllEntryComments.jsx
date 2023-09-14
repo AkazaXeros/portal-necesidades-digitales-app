@@ -2,7 +2,8 @@ import { Alert, CircularProgress } from "@mui/material";
 
 import useComments from "../../hooks/useComments";
 
-const AllEntryComments = ({ entryId, token }) => {
+
+const AllEntryComments = ({ entryId, token, entry }) => {
   const { comments, loading, error } = useComments(entryId, token);
 
   if (error) return <Alert severity="error">{error}</Alert>;
@@ -15,7 +16,7 @@ const AllEntryComments = ({ entryId, token }) => {
           return (
             <li key={comment.commentId}>
               {/* {Aqui dentro deberiamos poner un componente personalizado(comment) para cada comentario con su CSS. Creo que seria buena idea que por ahora usaramos un diseño como el de las tarjetas de los servicios} */}
-              <p>{comment.content}</p>
+              <Comment comment={comment} entry={entry} />
             </li>
           );
         })}

@@ -39,7 +39,9 @@ const EntryPage = () => {
           Download File
         </Button>
       </div>
-      {token ? <AllEntryComments token={token} entryId={id} /> : null}
+      {token ? (
+        <AllEntryComments token={token} entryId={id} entry={entry} />
+      ) : null}
     </div>
   ) : null;
 };

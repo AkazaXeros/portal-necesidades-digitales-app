@@ -4,6 +4,8 @@ import { createEntryService } from "../services";
 import { newEntry, btn } from "./NewEntryPage.module.css";
 import { useUser } from "../context/UserContext";
 
+import { useNavigate } from 'react-router-dom';
+
 import {
   Alert,
   Button,
@@ -22,6 +24,7 @@ const NewEntry = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { token } = useUser();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +39,8 @@ const NewEntry = () => {
         category,
         token,
       });
-      console.log(entry);
+      // console.log(entry);
+      navigate('/');
     } catch (err) {
       setError(err.message);
     } finally {
