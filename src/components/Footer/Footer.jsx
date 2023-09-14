@@ -3,7 +3,7 @@ import { mainFooter } from './Footer.module.css';
 const Footer = () => {
   return (
     <footer className={mainFooter}>
-      <p>©Team Luffy, {new Date().getFullYear()} </p>
+      <p>© {new Date().getFullYear()}, Team Luffy</p>
     </footer>
   );
 };

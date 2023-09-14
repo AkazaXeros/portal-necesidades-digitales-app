@@ -1,9 +1,10 @@
-import Avatar from "../Avatar/Avatar";
-import { auth } from "./Auth.module.css";
+import { auth } from './Auth.module.css';
 
-import { useUser } from "../../context/UserContext";
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
+
+import { useUser } from '../../context/UserContext';
+import Avatar from '../Avatar/Avatar';
 
 const Auth = () => {
   const { user, logout } = useUser();
@@ -29,6 +30,6 @@ const Auth = () => {
         </li>
       </ul>
     </div>
-);
+  );
 };
 export default Auth;
