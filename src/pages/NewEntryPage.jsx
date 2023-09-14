@@ -3,6 +3,8 @@ import { newEntry, btn } from './NewEntryPage.module.css';
 import { useUser } from '../context/UserContext';
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
   Button,
   FormControl,
@@ -20,6 +22,7 @@ const NewEntry = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const { token } = useUser();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,15 +37,14 @@ const NewEntry = () => {
         category,
         token,
       });
-      console.log(entry);
+      // console.log(entry);
+      navigate('/');
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-
-  if (error) return <p>{error}</p>;
 
   if (loading) return <p>Creating Service...</p>;
 
@@ -98,7 +100,7 @@ const NewEntry = () => {
           <MenuItem value="code-correction">Code-correction</MenuItem>
         </Select>
       </FormControl>
-      <Button variant="contained" className={btn}>
+      <Button variant="contained" className={btn} type="submit">
         Add
       </Button>
 
