@@ -36,7 +36,10 @@ const Entry = ({ entry }) => {
           avatar={
             <Avatar
               sx={{ width: 40, height: 40 }}
-              src={`${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`}
+              src={
+                entry.avatar &&
+                `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
+              }
             ></Avatar>
           }
           title={entry.title}
