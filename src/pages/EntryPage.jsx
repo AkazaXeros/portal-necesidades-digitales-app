@@ -1,12 +1,11 @@
-import { Button } from '@mui/material';
+import { useParams } from "react-router-dom";
 
-import { useParams } from 'react-router-dom';
+import { Alert, Button, CircularProgress } from "@mui/material";
 
-import useEntry from '../hooks/useEntry';
-import { useUser } from '../context/UserContext';
-
-import Entry from '../components/Entries/Entry';
-import AllEntryComments from '../components/Comments/AllEntryComments';
+import AllEntryComments from "../components/Comments/AllEntryComments";
+import Entry from "../components/Entries/Entry";
+import useEntry from "../hooks/useEntry";
+import { useUser } from "../context/UserContext";
 
 const EntryPage = () => {
   const { id } = useParams();
@@ -14,9 +13,8 @@ const EntryPage = () => {
 
   const { entry, loading, error } = useEntry(id);
 
-  if (loading) return <p>Loading data...</p>;
-  if (error) return <p>{error}</p>;
-  // console.log(entry);
+  if (loading) return <CircularProgress />;
+  if (error) return <Alert severity="error">{error}</Alert>;
 
   const downloadHandler = () => {
     const url = `${import.meta.env.VITE_BACKEND_URL}/${entry.fileName}`;
@@ -24,9 +22,9 @@ const EntryPage = () => {
       .then((response) => response.blob())
       .then((blob) => {
         const blobURL = window.URL.createObjectURL(new Blob([blob]));
-        const aTag = document.createElement('a');
+        const aTag = document.createElement("a");
         aTag.href = blobURL;
-        aTag.setAttribute('download', entry.fileName);
+        aTag.setAttribute("download", entry.fileName);
         document.body.appendChild(aTag);
         aTag.click();
         aTag.remove();

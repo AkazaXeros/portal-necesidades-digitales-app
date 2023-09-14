@@ -1,11 +1,13 @@
+import { Alert, CircularProgress } from "@mui/material";
+
 import AllEntries from "../components/Entries/AllEntries";
 import useEntries from "../hooks/useEntries";
 
 const HomePage = () => {
   const { entries, loading, error } = useEntries();
 
-  if (loading) return <p>Loading entries...</p>;
-  if (error) return <p>An error has occurred...</p>;
+  if (loading) return <CircularProgress />;
+  if (error) return <Alert severity="error">An error has occurred...</Alert>;
 
   return (
     <>

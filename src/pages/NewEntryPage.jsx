@@ -1,24 +1,26 @@
-import { createEntryService } from '../services';
-import { newEntry, btn } from './NewEntryPage.module.css';
-import { useUser } from '../context/UserContext';
+import { useState } from "react";
 
-import { useState } from 'react';
+import { createEntryService } from "../services";
+import { newEntry, btn } from "./NewEntryPage.module.css";
+import { useUser } from "../context/UserContext";
+
 import {
+  Alert,
   Button,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   TextField,
-} from '@mui/material';
+} from "@mui/material";
 
 const NewEntry = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [file, setFile] = useState();
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { token } = useUser();
 
   const handleSubmit = async (e) => {
@@ -41,8 +43,6 @@ const NewEntry = () => {
       setLoading(false);
     }
   };
-
-  if (error) return <p>{error}</p>;
 
   if (loading) return <p>Creating Service...</p>;
 
@@ -88,8 +88,7 @@ const NewEntry = () => {
             setCategory(e.target.value);
           }}
           value={category}
-          label="Category"
-        >
+          label="Category">
           <MenuItem value="other">Other</MenuItem>
           <MenuItem value="video-editing">Video-editing</MenuItem>
           <MenuItem value="image-editing">Image-editing</MenuItem>
@@ -98,11 +97,11 @@ const NewEntry = () => {
           <MenuItem value="code-correction">Code-correction</MenuItem>
         </Select>
       </FormControl>
-      <Button variant="contained" className={btn}>
+      <Button variant="contained" className={btn} type="submit">
         Add
       </Button>
 
-      {error && <p>{error}</p>}
+      {error && <Alert severity="error">{error}</Alert>}
     </form>
   );
 };

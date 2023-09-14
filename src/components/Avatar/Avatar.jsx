@@ -1,17 +1,14 @@
-const Avatar = ({ avatar, userName }) => {
-  const avatarPlaceHolder = userName?.substring(0, 1).toUpperCase();
+import { Avatar } from "@mui/material";
+
+const Icon = ({ avatar }) => {
   return (
     <section className="avatarImg">
-      {avatar ? (
-        <img
-          src={`${import.meta.env.VITE_BACKEND_URL}/${avatar}`}
-          alt="avatar"
-          className="avatarImg"
-        />
-      ) : (
-        <div className="avatarPlaceHolder">{avatarPlaceHolder}</div>
-      )}
+      <Avatar
+        src={avatar && `${import.meta.env.VITE_BACKEND_URL}/${avatar}`}
+        alt="avatar"
+        className="avatarImg"
+      />
     </section>
   );
 };
-export default Avatar;
+export default Icon;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { Alert, CircularProgress } from "@mui/material";
+
 import { getUserService } from "../services";
 import UserProfile from "../components/UserProfile/UserProfile";
 
@@ -25,8 +27,8 @@ const UserProfilePage = () => {
     loadUser();
   }, [id]);
 
-  if (error) return <p>{error}</p>;
-  if (loading) return <p>Loading user...</p>;
+  if (error) return <Alert severity="error">{error}</Alert>;
+  if (loading) return <CircularProgress />;
 
   return publicUser ? <UserProfile appUser={publicUser} /> : null;
 };

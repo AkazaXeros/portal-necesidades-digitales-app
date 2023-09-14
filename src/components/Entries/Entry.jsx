@@ -1,5 +1,7 @@
+import { FormattedRelativeTime } from "react-intl";
+import { useNavigate } from "react-router-dom";
 // import { entryCard } from "./Entry.module.css";
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import {
   Avatar,
   Badge,
@@ -8,12 +10,9 @@ import {
   CardContent,
   CardHeader,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
-import { FormattedRelativeTime } from 'react-intl';
-import { useNavigate } from 'react-router-dom';
-
-import relativeTimeCalc from '../../utils/relativeTimeCalc';
+import relativeTimeCalc from "../../utils/relativeTimeCalc";
 
 const Entry = ({ entry }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
@@ -36,19 +35,15 @@ const Entry = ({ entry }) => {
           avatar={
             <Avatar
               sx={{ width: 40, height: 40 }}
-              src={`${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`}
-            ></Avatar>
+              src={
+                entry.avatar &&
+                `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
+              }></Avatar>
           }
           title={entry.title}
-          subheader={
-            <FormattedRelativeTime
-              value={-relativeTimeValue}
-              numeric="auto"
-              updateIntervalInSeconds={1000}
-            />
-          }
         />
       </div>
+
       <div className="entryCardContent" onClick={contentClickHandler}>
         <CardContent>
           <Typography component="p" variant="body2">
@@ -56,6 +51,17 @@ const Entry = ({ entry }) => {
           </Typography>
           <Typography component="p" color="text.secondary">
             {entry.description}
+          </Typography>
+        </CardContent>
+        <CardContent>
+          <Typography variant="caption">
+            {
+              <FormattedRelativeTime
+                value={-relativeTimeValue}
+                numeric="auto"
+                updateIntervalInSeconds={1000}
+              />
+            }
           </Typography>
         </CardContent>
       </div>

@@ -1,6 +1,8 @@
-import { allEntries } from './AllEntries.module.css';
+import { Alert } from "@mui/material";
 
-import Entry from './Entry';
+import { allEntries } from "./AllEntries.module.css";
+
+import Entry from "./Entry";
 
 const AllEntries = ({ entries }) => {
   return entries.length ? (
@@ -12,7 +14,7 @@ const AllEntries = ({ entries }) => {
       ))}
     </ul>
   ) : (
-    <p>There are no entries yet...</p>
+    <Alert severity="info">There are no entries yet...</Alert>
   );
 };
 
