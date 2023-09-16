@@ -1,28 +1,28 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-import { Alert, Box, Button, TextField } from "@mui/material";
+import { Alert, Box, Button, TextField } from '@mui/material';
 
-import { loginForm, btn } from "./Login.module.css";
-import { loginUserService } from "../../services";
-import { useUser } from "../../context/UserContext";
+import { loginForm, btn } from './Login.module.css';
+import { loginUserService } from '../../services';
+import { useUser } from '../../context/UserContext';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { login } = useUser();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError('');
 
     try {
       const data = await loginUserService({ email, password });
-      console.log(data);
+      // console.log(data);
       login(data);
-      navigate("/");
+      navigate('/');
     } catch (err) {
       setError(err.message);
     }

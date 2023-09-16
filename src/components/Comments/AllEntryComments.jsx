@@ -1,7 +1,7 @@
-import { Alert, CircularProgress } from "@mui/material";
+import { Alert, CircularProgress } from '@mui/material';
 
-import useComments from "../../hooks/useComments";
-
+import Comment from './Comment';
+import useComments from '../../hooks/useComments';
 
 const AllEntryComments = ({ entryId, token, entry }) => {
   const { comments, loading, error } = useComments(entryId, token);

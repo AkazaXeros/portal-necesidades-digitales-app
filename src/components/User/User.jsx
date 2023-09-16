@@ -4,9 +4,12 @@ import {
   CardContent,
   CardHeader,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
+
+import { useUser } from '../../context/UserContext';
 
 const User = ({ appUser }) => {
+  const { user } = useUser();
   return (
     <Card>
       <div>
@@ -17,7 +20,8 @@ const User = ({ appUser }) => {
               src={
                 appUser.avatar &&
                 `${import.meta.env.VITE_BACKEND_URL}/${appUser.avatar}`
-              }></Avatar>
+              }
+            ></Avatar>
           }
           subheader={appUser.userName}
           // subheader={appUser.role === "normal" ? "user" : "admin"}
@@ -26,11 +30,11 @@ const User = ({ appUser }) => {
         <div>
           <CardContent>
             <Typography variant="body1">
-              {appUser.biograph || "No biography yet..."}
+              {appUser.biograph || 'No biography yet...'}
             </Typography>
           </CardContent>
 
-          {appUser.email && (
+          {user && appUser.id === user.id && (
             <CardContent>
               <Typography>Email: {appUser.email}</Typography>
             </CardContent>

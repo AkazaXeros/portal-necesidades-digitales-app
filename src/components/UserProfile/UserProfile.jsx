@@ -1,9 +1,9 @@
 // import { userCard } from "./UserProfile.module.css";
-import AllEntries from "../Entries/AllEntries";
-import useEntries from "../../hooks/useEntries";
-import User from "../User/User";
+import AllEntries from '../Entries/AllEntries';
+import useEntries from '../../hooks/useEntries';
+import User from '../User/User';
 
-import { CircularProgress } from "@mui/material";
+import { CircularProgress } from '@mui/material';
 
 const UserProfile = ({ appUser }) => {
   const { entries } = useEntries();

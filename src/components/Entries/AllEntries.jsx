@@ -1,8 +1,8 @@
-import { Alert } from "@mui/material";
+import { Alert } from '@mui/material';
 
-import { allEntries } from "./AllEntries.module.css";
+import { allEntries } from './AllEntries.module.css';
 
-import Entry from "./Entry";
+import Entry from './Entry';
 
 const AllEntries = ({ entries }) => {
   return entries.length ? (
