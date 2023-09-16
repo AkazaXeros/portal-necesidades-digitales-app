@@ -1,15 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-import { Alert, Box, Button, TextField } from "@mui/material";
+import { Alert, Box, Button, TextField } from '@mui/material';
 
-import { registerForm, btn, link } from "./Register.module.css";
-import { registerUserService } from "../../services";
+import { registerForm, btn, link } from './Register.module.css';
+import { registerUserService } from '../../services';
 
 const Register = () => {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
@@ -19,8 +19,8 @@ const Register = () => {
 
     try {
       const data = await registerUserService({ userName, email, password });
-      console.log(data);
-      navigate("/users/login");
+      // console.log(data);
+      navigate('/users/login');
     } catch (err) {
       setError(err.message);
     }
@@ -68,7 +68,8 @@ const Register = () => {
         type="submit"
         sx={{ mt: 2 }}
         className={btn}
-        color="secondary">
+        color="secondary"
+      >
         Signup
       </Button>
 

@@ -1,20 +1,20 @@
-import "./App.css";
+import './App.css';
 
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 
-import { Router, Route, Routes } from "react-router-dom";
-import { IntlProvider } from "react-intl";
+import { Router, Route, Routes } from 'react-router-dom';
+import { IntlProvider } from 'react-intl';
 
-import EntryPage from "./pages/EntryPage";
-import Login from "./components/Login/Login";
-import NewEntry from "./pages/NewEntryPage";
-import NewComment from "./components/Comments/NewComment";
-import Register from "./components/Register/Register";
-import UserProfilePage from "./pages/UserProfilePage";
+import EntryPage from './pages/EntryPage';
+import Login from './components/Login/Login';
+import NewEntry from './pages/NewEntryPage';
+import NewComment from './components/Comments/NewComment';
+import Register from './components/Register/Register';
+import UserProfilePage from './pages/UserProfilePage';
 
 function App() {
   Router;
@@ -28,7 +28,7 @@ function App() {
           <Route path="/users/login" element={<Login />} />
           <Route path="/entries" element={<NewEntry />} />
           <Route path="/entries/:id" element={<EntryPage />} />
-          <Route path="/comments/:id" element={<NewComment />} />
+          <Route path="/comments/:entryId" element={<NewComment />} />
           <Route path="/users/:id" element={<UserProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

@@ -6,7 +6,8 @@ import {
   Typography,
 } from '@mui/material';
 
-const Comment = ({ comment, entry }) => {
+const Comment = ({ comment }) => {
+  // console.log(comment);
   return (
     <Card sx={{ minWidth: 250, maxWidth: 400 }}>
       <div className="cardEntryAvatar">
@@ -15,12 +16,12 @@ const Comment = ({ comment, entry }) => {
             <Avatar
               sx={{ width: 40, height: 40 }}
               src={
-                entry.avatar &&
-                `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
+                comment.avatar &&
+                `${import.meta.env.VITE_BACKEND_URL}/${comment.avatar}`
               }
             ></Avatar>
           }
-          title={entry.title}
+          title={comment.userName}
         />
       </div>
       <div className="entryCardContent">
