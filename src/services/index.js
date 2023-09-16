@@ -18,11 +18,29 @@ export const createEntryService = async ({
 
   const data = await res.json();
 
-  if (!res.ok) {
-    throw new Error(data.message);
-  }
+  if (!res.ok) throw new Error(data.message);
 
   return data.data.entry;
+};
+
+export const createNewComment = async (entryId, content, file, token) => {
+  const fd = new FormData();
+  fd.append('content', content);
+  fd.append('file', file);
+  const res = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/comments/${entryId}`,
+    {
+      method: 'POST',
+      headers: { Authorization: `${token}` },
+      body: fd,
+    }
+  );
+
+  const data = await res.json();
+
+  if (!res.ok) throw new Error(data.message);
+
+  return data.data.comment;
 };
 
 export const deleteEntryService = async (entryId, token) => {
