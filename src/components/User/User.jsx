@@ -19,7 +19,7 @@ const User = ({ appUser }) => {
         <CardHeader
           avatar={
             <Avatar
-              sx={{ width: 60, height: 60 }}
+              sx={{ width: 80, height: 80 }}
               src={
                 appUser.avatar &&
                 `${import.meta.env.VITE_BACKEND_URL}/${appUser.avatar}`

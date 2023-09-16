@@ -66,7 +66,6 @@ const Register = () => {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mt: 2 }}
         className={btn}
         color="secondary">
         Signup

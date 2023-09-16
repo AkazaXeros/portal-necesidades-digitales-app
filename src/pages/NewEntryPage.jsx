@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { createEntryService } from "../services";
-import { newEntry, btn } from "./NewEntryPage.module.css";
+import { newEntry, btn, upload } from "./NewEntryPage.module.css";
 import { useUser } from "../context/UserContext";
 import UploadBtn from "../components/Upload/UploadBtn";
 
@@ -80,6 +80,7 @@ const NewEntry = () => {
         changeHandler={(e) => {
           setFile(e.target.files[0]);
         }}
+        className={upload}
         required
       />
 

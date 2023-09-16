@@ -6,7 +6,8 @@
 }
 
 .registerForm .btn {
-  width: 20vw;
+  width: 10vw;
+  color: white;
   margin: auto;
   margin-bottom: 50px;
 }

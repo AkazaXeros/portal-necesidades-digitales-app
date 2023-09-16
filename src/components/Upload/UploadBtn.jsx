@@ -14,9 +14,10 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const UploadBtn = ({ changeHandler }) => {
+const UploadBtn = ({ changeHandler, className }) => {
   return (
     <Button
+      className={className ? className : ""}
       color="secondary"
       component="label"
       variant="contained"
