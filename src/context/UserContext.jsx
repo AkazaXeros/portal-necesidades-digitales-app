@@ -1,18 +1,18 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { getUserDataService } from "../services";
-import { useNavigate } from "react-router-dom";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { getUserDataService } from '../services';
+import { useNavigate } from 'react-router-dom';
 
 export const UserContext = createContext();
 export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem("token", token);
+    localStorage.setItem('token', token);
   }, [token]);
 
   useEffect(() => {
@@ -33,9 +33,9 @@ export const UserProvider = ({ children }) => {
   };
 
   const logout = () => {
-    setToken("");
+    setToken('');
     setUser(null);
-    navigate("/");
+    navigate('/');
   };
 
   return (

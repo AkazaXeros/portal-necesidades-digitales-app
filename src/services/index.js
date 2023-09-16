@@ -6,12 +6,12 @@ export const createEntryService = async ({
   token,
 }) => {
   const fd = new FormData();
-  fd.append("title", title);
-  fd.append("description", description);
-  fd.append("file", file);
-  fd.append("category", category);
+  fd.append('title', title);
+  fd.append('description', description);
+  fd.append('file', file);
+  fd.append('category', category);
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/entries`, {
-    method: "POST",
+    method: 'POST',
     headers: { Authorization: `${token}` },
     body: fd,
   });
@@ -23,6 +23,22 @@ export const createEntryService = async ({
   }
 
   return data.data.entry;
+};
+
+export const deleteEntryService = async (entryId, token) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/entries/${entryId}`,
+    {
+      method: 'DELETE',
+      headers: { Authorization: token },
+    }
+  );
+
+  const data = await res.json();
+
+  if (!res.ok) throw new Error(data.message);
+
+  return data.message;
 };
 
 export const getEntry = async (entryId) => {
@@ -90,8 +106,8 @@ export const getUserService = async (userId) => {
 
 export const loginUserService = async ({ email, password }) => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/users/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
   });
 
@@ -108,8 +124,8 @@ export const registerUserService = async ({ userName, email, password }) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/users/register`,
     {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userName, email, password }),
     }
   );
