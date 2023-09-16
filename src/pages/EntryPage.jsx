@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { useUser } from "../context/UserContext";
 import { deleteEntryService } from "../services";
+import { buttons } from "./EntryPage.module.css";
 
 import { Alert, Button, CircularProgress } from "@mui/material";
 
@@ -60,16 +61,28 @@ const EntryPage = () => {
     <div>
       <div>
         <Entry entry={entry} />
-        <div>
-          <Button variant="contained" size="small" onClick={downloadHandler}>
+        <div className={buttons}>
+          <Button
+            variant="contained"
+            size="small"
+            color="secondary"
+            onClick={downloadHandler}>
             Download File
           </Button>
-          <Button variant="contained" size="small" onClick={addCommentHandler}>
+          <Button
+            variant="contained"
+            size="small"
+            color="secondary"
+            onClick={addCommentHandler}>
             Add Comment
           </Button>
           {user?.id === entry.userId && (
             <>
-              <Button variant="contained" size="small" onClick={deleteHandler}>
+              <Button
+                variant="contained"
+                size="small"
+                color="secondary"
+                onClick={deleteHandler}>
                 Delete
               </Button>
               {deleteError && <p>{deleteError}</p>}

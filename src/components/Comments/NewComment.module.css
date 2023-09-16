@@ -1,0 +1,25 @@
+.newComment {
+  display: flex;
+  flex-direction: column;
+  padding: 10%;
+  gap: 10px;
+  width: 80vw;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 750px) {
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+  }
+}

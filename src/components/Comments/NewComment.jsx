@@ -1,9 +1,12 @@
+
+import { buttons, newComment } from "./NewComment.module.css";
 import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import { useParams, useNavigate } from 'react-router';
 import UploadBtn from '../Upload/UploadBtn';
 import { createNewComment } from '../../services';
+
 
 const NewComment = () => {
   const { entryId } = useParams();
@@ -25,10 +28,12 @@ const NewComment = () => {
     }
   };
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={newComment}>
       <TextField
         id="comment"
         label="Comment"
+        multiline
+        rows={10}
         value={content}
         onChange={(e) => {
           setContent(e.target.value);
@@ -40,6 +45,7 @@ const NewComment = () => {
         required
       />
 
+      <div className={buttons}>
       <UploadBtn
         changeHandler={(e) => {
           setFile(e.target.files[0]);
@@ -50,6 +56,8 @@ const NewComment = () => {
         Add
       </Button>
       {error && <p>{error}</p>}
+      </div>
+
     </form>
   );
 };
