@@ -5,9 +5,12 @@
   gap: 10px;
 }
 
-
-
 .registerForm .btn {
   width: 20vw;
   margin: auto;
+  margin-bottom: 50px;
+}
+
+.registerForm .link {
+  color: #f9a825;
 }

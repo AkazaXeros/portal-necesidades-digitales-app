@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { Alert, Box, Button, TextField } from "@mui/material";
 
-import { registerForm, btn } from "./Register.module.css";
+import { registerForm, btn, link } from "./Register.module.css";
 import { registerUserService } from "../../services";
 
 const Register = () => {
@@ -63,18 +63,25 @@ const Register = () => {
         required
       />
 
-      <Button variant="contained" type="submit" sx={{ mt: 2 }} className={btn}>
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{ mt: 2 }}
+        className={btn}
+        color="secondary">
         Signup
       </Button>
 
       {error && <Alert severity="error">{error}</Alert>}
 
-      <p>
+      <Alert severity="success" color="info">
         If you already have an account
         <Button variant="text">
-          <Link to="/users/login">Login</Link>
+          <Link to="/users/login" className={link}>
+            Login
+          </Link>
         </Button>
-      </p>
+      </Alert>
     </Box>
   );
 };

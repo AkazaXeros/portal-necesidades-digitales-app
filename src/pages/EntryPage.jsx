@@ -1,14 +1,14 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 
-import { useUser } from '../context/UserContext';
-import { deleteEntryService } from '../services';
+import { useUser } from "../context/UserContext";
+import { deleteEntryService } from "../services";
 
-import { Alert, Button, CircularProgress } from '@mui/material';
+import { Alert, Button, CircularProgress } from "@mui/material";
 
-import AllEntryComments from '../components/Comments/AllEntryComments';
-import Entry from '../components/Entries/Entry';
-import useEntry from '../hooks/useEntry';
+import AllEntryComments from "../components/Comments/AllEntryComments";
+import Entry from "../components/Entries/Entry";
+import useEntry from "../hooks/useEntry";
 
 const EntryPage = () => {
   const { id } = useParams();
@@ -28,9 +28,9 @@ const EntryPage = () => {
       .then((response) => response.blob())
       .then((blob) => {
         const blobURL = window.URL.createObjectURL(new Blob([blob]));
-        const aTag = document.createElement('a');
+        const aTag = document.createElement("a");
         aTag.href = blobURL;
-        aTag.setAttribute('download', entry.fileName);
+        aTag.setAttribute("download", entry.fileName);
         document.body.appendChild(aTag);
         aTag.click();
         aTag.remove();
@@ -40,15 +40,19 @@ const EntryPage = () => {
   const deleteHandler = async () => {
     try {
       if (entry.numberOfComments === 0) {
-        if (window.confirm('Are you sure you want to delete?')) {
+        if (window.confirm("Are you sure you want to delete?")) {
           const data = await deleteEntryService(entry.id, token);
           console.log(data);
-          navigate('/');
+          navigate("/");
         }
       }
     } catch (error) {
       setDeleteError(error.message);
     }
+  };
+
+  const addCommentHandler = () => {
+    navigate(`/comments/${entry.id}`);
   };
   /* ------------------------------------------------------------------ */
 
@@ -56,17 +60,22 @@ const EntryPage = () => {
     <div>
       <div>
         <Entry entry={entry} />
-        <Button variant="contained" size="small" onClick={downloadHandler}>
-          Download File
-        </Button>
-        {user?.id === entry.userId && (
-          <>
-            <Button variant="contained" size="small" onClick={deleteHandler}>
-              Delete
-            </Button>
-            {deleteError && <p>{deleteError}</p>}
-          </>
-        )}
+        <div>
+          <Button variant="contained" size="small" onClick={downloadHandler}>
+            Download File
+          </Button>
+          <Button variant="contained" size="small" onClick={addCommentHandler}>
+            Add Comment
+          </Button>
+          {user?.id === entry.userId && (
+            <>
+              <Button variant="contained" size="small" onClick={deleteHandler}>
+                Delete
+              </Button>
+              {deleteError && <p>{deleteError}</p>}
+            </>
+          )}
+        </div>
       </div>
       {token ? (
         <AllEntryComments token={token} entryId={id} entry={entry} />
