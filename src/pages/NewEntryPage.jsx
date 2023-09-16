@@ -1,14 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { createEntryService } from "../services";
 import { newEntry, btn } from "./NewEntryPage.module.css";
 import { useUser } from "../context/UserContext";
-
-import { useNavigate } from 'react-router-dom';
+import UploadBtn from "../components/Upload/UploadBtn";
 
 import {
   Alert,
   Button,
+  CircularProgress,
   FormControl,
   InputLabel,
   MenuItem,
@@ -40,7 +41,7 @@ const NewEntry = () => {
         token,
       });
       // console.log(entry);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -48,7 +49,7 @@ const NewEntry = () => {
     }
   };
 
-  if (loading) return <p>Creating Service...</p>;
+  if (loading) return <CircularProgress />;
 
   return (
     <form onSubmit={handleSubmit} className={newEntry}>
@@ -75,10 +76,8 @@ const NewEntry = () => {
         rows={10}
         required
       />
-      <TextField
-        id="file"
-        type="file"
-        onChange={(e) => {
+      <UploadBtn
+        changeHandler={(e) => {
           setFile(e.target.files[0]);
         }}
         required
@@ -101,7 +100,11 @@ const NewEntry = () => {
           <MenuItem value="code-correction">Code-correction</MenuItem>
         </Select>
       </FormControl>
-      <Button variant="contained" className={btn} type="submit">
+      <Button
+        variant="contained"
+        className={btn}
+        type="submit"
+        color="secondary">
         Add
       </Button>
 

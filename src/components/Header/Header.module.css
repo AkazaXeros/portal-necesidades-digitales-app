@@ -1,19 +1,27 @@
 .mainHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: cadetblue;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  padding: 10%;
   width: 100vw;
   height: 20vh;
   z-index: 10;
+  margin-bottom: 2.5rem;
 }
 
 .mainHeader a {
   color: white;
 }
 
+.mainHeaderToolBar {
+  height: 20%;
+  justify-content: center;
+  padding: 2rem;
+}
+
+@media screen and (min-width: 350px) and (max-width: 750px) {
+  .mainHeader {
+    height: 10vh;
+    margin-bottom: 7rem;
+  }
+}

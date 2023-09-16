@@ -1,28 +1,28 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-import { Alert, Box, Button, TextField } from '@mui/material';
+import { Alert, Box, Button, TextField } from "@mui/material";
 
-import { loginForm, btn } from './Login.module.css';
-import { loginUserService } from '../../services';
-import { useUser } from '../../context/UserContext';
+import { loginForm, btn, link } from "./Login.module.css";
+import { loginUserService } from "../../services";
+import { useUser } from "../../context/UserContext";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { login } = useUser();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
       const data = await loginUserService({ email, password });
       // console.log(data);
       login(data);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       setError(err.message);
     }
@@ -51,17 +51,23 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <Button variant="contained" className={btn} type="submit">
+      <Button
+        variant="contained"
+        className={btn}
+        type="submit"
+        color="secondary">
         Login
       </Button>
 
       {error && <Alert severity="error">{error}</Alert>}
-      <p>
+      <Alert severity="success" color="info">
         If you don`t have an account yet
-        <Button variant="text">
-          <Link to="/users/register">Signup</Link>
+        <Button variant="text" color="secondary">
+          <Link to="/users/register" className={link}>
+            Signup
+          </Link>
         </Button>
-      </p>
+      </Alert>
     </Box>
   );
 };

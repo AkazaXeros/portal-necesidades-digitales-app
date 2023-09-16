@@ -1,27 +1,20 @@
-import Auth from '../Auth/Auth';
-import { mainHeader } from './Header.module.css';
-import { UserContext } from '../../context/UserContext';
+import Auth from "../Auth/Auth";
+import { mainHeader, mainHeaderToolBar } from "./Header.module.css";
 
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { Link } from "react-router-dom";
+
+import { AppBar, Box } from "@mui/material";
 
 const Header = () => {
-  const { user } = useContext(UserContext);
-  // console.log(user);
   return (
-    <header className={mainHeader}>
-      <h1>
-        <Link to="/">Wrench</Link>
-      </h1>
-      <div>
-        {user ? (
-          <Link to="/entries">
-            <p>Services</p>
-          </Link>
-        ) : null}
+    <Box className={mainHeader} sx={{ display: "flex" }}>
+      <AppBar component="nav" className={mainHeaderToolBar}>
+        <h1>
+          <Link to="/">WRENCH</Link>
+        </h1>
         <Auth />
-      </div>
-    </header>
+      </AppBar>
+    </Box>
   );
 };
 

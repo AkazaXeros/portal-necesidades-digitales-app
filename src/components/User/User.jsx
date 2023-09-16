@@ -1,48 +1,49 @@
+import { biograph, card } from "./User.module.css";
+
 import {
   Avatar,
   Card,
   CardContent,
   CardHeader,
+  Divider,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
-import { useUser } from '../../context/UserContext';
+import { useUser } from "../../context/UserContext";
 
 const User = ({ appUser }) => {
   const { user } = useUser();
   return (
-    <Card>
+    <Card className={card}>
       <div>
         <CardHeader
           avatar={
             <Avatar
-              sx={{ width: 40, height: 40 }}
+              sx={{ width: 60, height: 60 }}
               src={
                 appUser.avatar &&
                 `${import.meta.env.VITE_BACKEND_URL}/${appUser.avatar}`
-              }
-            ></Avatar>
+              }></Avatar>
           }
-          subheader={appUser.userName}
+          title={appUser.userName}
           // subheader={appUser.role === "normal" ? "user" : "admin"}
+          subheader="Joined on:"
         />
+        <Divider variant="middle" />
 
         <div>
-          <CardContent>
-            <Typography variant="body1">
-              {appUser.biograph || 'No biography yet...'}
+          <CardContent className={biograph}>
+            <Typography variant="overline">
+              {appUser.biograph || "No biography yet..."}
             </Typography>
           </CardContent>
 
+          <Divider variant="inset" />
           {user && appUser.id === user.id && (
             <CardContent>
-              <Typography>Email: {appUser.email}</Typography>
+              <Typography variant="caption">Email:{appUser.email}</Typography>
             </CardContent>
           )}
-
-          <CardContent>
-            <Typography variant="caption">Joined on:</Typography>
-          </CardContent>
         </div>
       </div>
     </Card>

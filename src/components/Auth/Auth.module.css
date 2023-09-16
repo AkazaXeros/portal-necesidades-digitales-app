@@ -1,13 +1,21 @@
 .auth {
-  display: flex;
-  gap: 20px;
-  top: 1%;
-  right: 2%;
+  top: 10;
+  right: 4%;
   position: fixed;
 }
 
-.auth > li {
+.auth > ul > li {
   text-decoration: none;
   list-style: none;
   cursor: pointer;
+}
+
+.authMenuItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.authMenuItems p {
+  text-align: left;
 }

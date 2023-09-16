@@ -1,13 +1,17 @@
 .loginForm {
-
   display: flex;
   flex-direction: column;
   padding: 10%;
   gap: 10px;
-
 }
 
 .loginForm .btn {
   width: 20vw;
   margin: auto;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.loginForm .link {
+  color: #f9a825;
 }
