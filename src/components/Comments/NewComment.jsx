@@ -1,19 +1,17 @@
-
 import { buttons, newComment } from "./NewComment.module.css";
-import { Button, TextField } from '@mui/material';
-import { useState } from 'react';
-import { useUser } from '../../context/UserContext';
-import { useParams, useNavigate } from 'react-router';
-import UploadBtn from '../Upload/UploadBtn';
-import { createNewComment } from '../../services';
-
+import { Button, TextField } from "@mui/material";
+import { useState } from "react";
+import { useUser } from "../../context/UserContext";
+import { useParams, useNavigate } from "react-router";
+import UploadBtn from "../Upload/UploadBtn";
+import { createNewComment } from "../../services";
 
 const NewComment = () => {
   const { entryId } = useParams();
   const { token } = useUser();
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const [file, setFile] = useState();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
@@ -40,24 +38,21 @@ const NewComment = () => {
         }}
         type="text"
         placeholder="Write your comment here..."
-        multiline
-        rows={10}
         required
       />
 
       <div className={buttons}>
-      <UploadBtn
-        changeHandler={(e) => {
-          setFile(e.target.files[0]);
-        }}
-      />
+        <UploadBtn
+          changeHandler={(e) => {
+            setFile(e.target.files[0]);
+          }}
+        />
 
-      <Button color="secondary" type="submit" variant="contained">
-        Add
-      </Button>
-      {error && <p>{error}</p>}
+        <Button color="secondary" type="submit" variant="contained">
+          Add
+        </Button>
+        {error && <p>{error}</p>}
       </div>
-
     </form>
   );
 };

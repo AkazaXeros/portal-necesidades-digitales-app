@@ -1,15 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
-import { useUser } from "../context/UserContext";
-import { deleteEntryService } from "../services";
-import { buttons } from "./EntryPage.module.css";
-
-import { Alert, Button, CircularProgress } from "@mui/material";
-
 import AllEntryComments from "../components/Comments/AllEntryComments";
+import { buttons } from "./EntryPage.module.css";
+import { deleteEntryService } from "../services";
 import Entry from "../components/Entries/Entry";
 import useEntry from "../hooks/useEntry";
+import { useUser } from "../context/UserContext";
+
+import { Alert, CircularProgress, Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 
 const EntryPage = () => {
   const { id } = useParams();
@@ -59,37 +61,36 @@ const EntryPage = () => {
 
   return entry ? (
     <div>
-      <div>
-        <Entry entry={entry} />
-        <div className={buttons}>
-          <Button
-            variant="contained"
-            size="small"
-            color="secondary"
-            onClick={downloadHandler}>
-            Download File
-          </Button>
-          <Button
-            variant="contained"
-            size="small"
-            color="secondary"
-            onClick={addCommentHandler}>
-            Add Comment
-          </Button>
-          {user?.id === entry.userId && (
-            <>
-              <Button
-                variant="contained"
-                size="small"
-                color="secondary"
-                onClick={deleteHandler}>
-                Delete
-              </Button>
-              {deleteError && <p>{deleteError}</p>}
-            </>
-          )}
-        </div>
+      <Entry entry={entry} />
+      <div className={buttons}>
+        <Fab
+          variant="contained"
+          size="small"
+          color="secondary"
+          onClick={downloadHandler}>
+          <FileDownloadOutlinedIcon />
+        </Fab>
+        <Fab
+          variant="contained"
+          size="small"
+          color="secondary"
+          onClick={addCommentHandler}>
+          <AddIcon />
+        </Fab>
+        {user?.id === entry.userId && (
+          <>
+            <Fab
+              variant="contained"
+              size="small"
+              color="secondary"
+              onClick={deleteHandler}>
+              <DeleteOutlineOutlinedIcon />
+            </Fab>
+            {deleteError && <Alert severity="error">{deleteError}</Alert>}
+          </>
+        )}
       </div>
+
       {token ? (
         <AllEntryComments token={token} entryId={id} entry={entry} />
       ) : null}

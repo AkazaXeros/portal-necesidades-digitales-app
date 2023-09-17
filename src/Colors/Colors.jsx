@@ -1,15 +1,14 @@
 import { createTheme } from "@mui/material/styles";
-import { cyan, yellow } from "@mui/material/colors";
 
 const Theme = createTheme({
   palette: {
     primary: {
-      main: cyan[800],
-      complementary: "#ffffff",
+      main: "#176B87",
+      contrastText: "#fff",
     },
     secondary: {
-      main: yellow[700],
-      complementary: "#ffffff",
+      main: "#F3AA60",
+      contrastText: "#EEEEEE",
     },
   },
 });
