@@ -62,37 +62,39 @@ const EntryPage = () => {
   return entry ? (
     <div>
       <Entry entry={entry} />
-      <div className={buttons}>
-        <Fab
-          variant="contained"
-          size="small"
-          color="secondary"
-          onClick={downloadHandler}
-        >
-          <FileDownloadOutlinedIcon />
-        </Fab>
-        <Fab
-          variant="contained"
-          size="small"
-          color="secondary"
-          onClick={addCommentHandler}
-        >
-          <AddIcon />
-        </Fab>
-        {user?.id === entry.userId && entry.numberOfComments === 0 && (
-          <>
-            <Fab
-              variant="contained"
-              size="small"
-              color="secondary"
-              onClick={deleteHandler}
-            >
-              <DeleteOutlineOutlinedIcon />
-            </Fab>
-            {deleteError && <Alert severity="error">{deleteError}</Alert>}
-          </>
-        )}
-      </div>
+      {token && (
+        <div className={buttons}>
+          <Fab
+            variant="contained"
+            size="small"
+            color="secondary"
+            onClick={downloadHandler}
+          >
+            <FileDownloadOutlinedIcon />
+          </Fab>
+          <Fab
+            variant="contained"
+            size="small"
+            color="secondary"
+            onClick={addCommentHandler}
+          >
+            <AddIcon />
+          </Fab>
+          {user?.id === entry.userId && entry.numberOfComments === 0 && (
+            <>
+              <Fab
+                variant="contained"
+                size="small"
+                color="secondary"
+                onClick={deleteHandler}
+              >
+                <DeleteOutlineOutlinedIcon />
+              </Fab>
+              {deleteError && <Alert severity="error">{deleteError}</Alert>}
+            </>
+          )}
+        </div>
+      )}
 
       {token ? (
         <AllEntryComments token={token} entryId={id} entry={entry} />
