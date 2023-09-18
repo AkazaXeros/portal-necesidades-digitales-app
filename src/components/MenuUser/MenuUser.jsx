@@ -1,7 +1,7 @@
-import { useUser } from "../../context/UserContext";
+import { useUser } from '../../context/UserContext';
 
-import { Link, useNavigate } from "react-router-dom";
-import { Fragment, useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { Fragment, useState } from 'react';
 
 import {
   Avatar,
@@ -12,9 +12,9 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-} from "@mui/material";
-import Logout from "@mui/icons-material/Logout";
-import PostAdd from "@mui/icons-material/PostAdd";
+} from '@mui/material';
+import Logout from '@mui/icons-material/Logout';
+import PostAdd from '@mui/icons-material/PostAdd';
 
 const MenuUser = ({ auth }) => {
   const { user, logout } = useUser();
@@ -40,10 +40,16 @@ const MenuUser = ({ auth }) => {
               onClick={handleClick}
               size="small"
               sx={{ ml: 2 }}
-              aria-controls={open ? "account-menu" : undefined}
+              aria-controls={open ? 'account-menu' : undefined}
               aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}>
-              <Avatar />
+              aria-expanded={open ? 'true' : undefined}
+            >
+              <Avatar
+                src={
+                  user.avatar &&
+                  `${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`
+                }
+              />
             </IconButton>
           </Tooltip>
         </Box>
@@ -56,37 +62,36 @@ const MenuUser = ({ auth }) => {
           PaperProps={{
             elevation: 0,
             sx: {
-              overflow: "visible",
-              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+              overflow: 'visible',
+              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
               mt: 1.5,
-              "& .MuiAvatar-root": {
+              '& .MuiAvatar-root': {
                 width: 32,
                 height: 32,
                 ml: -0.5,
                 mr: 1,
               },
-              "&:before": {
+              '&:before': {
                 content: '""',
-                display: "block",
-                position: "absolute",
+                display: 'block',
+                position: 'absolute',
                 top: 0,
                 right: 14,
                 width: 10,
                 height: 10,
-                bgcolor: "background.paper",
-                transform: "translateY(-50%) rotate(45deg)",
+                bgcolor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
                 zIndex: 0,
               },
             },
           }}
-          transformOrigin={{ horizontal: "right", vertical: "top" }}
-          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
+          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        >
           <MenuItem onClick={handleClose}>
-            <Avatar onClick={navigateHandler} /> Profile
+            <p onClick={navigateHandler}> Profile </p>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Avatar /> My account
-          </MenuItem>
+          <MenuItem onClick={handleClose}>My account</MenuItem>
 
           <Divider />
 
@@ -94,10 +99,10 @@ const MenuUser = ({ auth }) => {
             <ListItemIcon>
               <PostAdd fontSize="small" />
             </ListItemIcon>
-            <Link to={"/entries"}>New Service</Link>
+            <Link to={'/entries'}>New Service</Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon onClick={logoutHandler}>
+          <MenuItem onClick={logoutHandler}>
+            <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>
             Logout
