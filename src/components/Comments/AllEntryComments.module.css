@@ -1,0 +1,10 @@
+.allComments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.allComments > ul > li {
+  list-style: none;
+}

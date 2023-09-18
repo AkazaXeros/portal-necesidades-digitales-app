@@ -1,7 +1,11 @@
 .auth {
   top: 10;
-  right: 4%;
+  right: 7%;
   position: fixed;
+}
+
+.auth > ul {
+  display: flex;
 }
 
 .auth > ul > li {

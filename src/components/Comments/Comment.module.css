@@ -1,0 +1,11 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  margin-top: 20px;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}

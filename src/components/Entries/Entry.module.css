@@ -1,0 +1,12 @@
+.card {
+  width: 80vw;
+}
+
+.cardHeader {
+  cursor: pointer;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: space-between;
+}
