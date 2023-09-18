@@ -1,8 +1,8 @@
-import { useUser } from "../../context/UserContext";
-import { btns, card } from "./Comment.module.css";
+import { useUser } from '../../context/UserContext';
+import { btns, card } from './Comment.module.css';
 
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import {
   Alert,
   Avatar,
@@ -12,13 +12,13 @@ import {
   CardHeader,
   Divider,
   Typography,
-} from "@mui/material";
-import { useState } from "react";
-import { deleteCommentService } from "../../services";
-import { useNavigate } from "react-router-dom";
+} from '@mui/material';
+import { useState } from 'react';
+import { deleteCommentService } from '../../services';
+import { useNavigate } from 'react-router-dom';
 
 const Comment = ({ comment }) => {
-  console.log(comment);
+  // console.log(comment);
 
   const navigate = useNavigate();
   const { user, token } = useUser();
@@ -41,9 +41,9 @@ const Comment = ({ comment }) => {
       .then((response) => response.blob())
       .then((blob) => {
         const blobURL = window.URL.createObjectURL(new Blob([blob]));
-        const aTag = document.createElement("a");
+        const aTag = document.createElement('a');
         aTag.href = blobURL;
-        aTag.setAttribute("download", comment.fileName);
+        aTag.setAttribute('download', comment.fileName);
         document.body.appendChild(aTag);
         aTag.click();
         aTag.remove();
@@ -60,7 +60,8 @@ const Comment = ({ comment }) => {
               src={
                 comment.avatar &&
                 `${import.meta.env.VITE_BACKEND_URL}/${comment.avatar}`
-              }></Avatar>
+              }
+            ></Avatar>
           }
           title={comment.userName}
         />

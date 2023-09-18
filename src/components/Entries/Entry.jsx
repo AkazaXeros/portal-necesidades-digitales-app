@@ -1,10 +1,10 @@
-import { FormattedRelativeTime } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { FormattedRelativeTime } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 
-import { card, cardActions, cardHeader } from "./Entry.module.css";
-import relativeTimeCalc from "../../utils/relativeTimeCalc";
+import { card, cardActions, cardHeader } from './Entry.module.css';
+import relativeTimeCalc from '../../utils/relativeTimeCalc';
 
-import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
+import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import {
   Avatar,
   Badge,
@@ -14,7 +14,7 @@ import {
   CardHeader,
   Divider,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 const Entry = ({ entry }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
@@ -41,9 +41,11 @@ const Entry = ({ entry }) => {
             src={
               entry.avatar &&
               `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
-            }></Avatar>
+            }
+          ></Avatar>
         }
-        title={entry.title}
+        title={`by ${entry.userName}`}
+        subheader={entry.title}
       />
 
       <CardContent onClick={contentClickHandler}>
@@ -54,14 +56,25 @@ const Entry = ({ entry }) => {
       </CardContent>
       <CardContent>
         <Typography variant="caption">
-          {entry.category}
+          {`Category: ${entry.category}`}
           <Divider />
           {
-            <FormattedRelativeTime
-              value={-relativeTimeValue}
-              numeric="auto"
-              updateIntervalInSeconds={1000}
-            />
+            <section
+              style={{
+                marginTop: '10px',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <p>Published:</p>{' '}
+              <Typography component="p" color="text.secondary">
+                <FormattedRelativeTime
+                  value={-relativeTimeValue}
+                  numeric="auto"
+                  updateIntervalInSeconds={1000}
+                />
+              </Typography>
+            </section>
           }
         </Typography>
       </CardContent>
