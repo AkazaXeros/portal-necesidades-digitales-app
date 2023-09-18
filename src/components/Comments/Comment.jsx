@@ -76,15 +76,15 @@ const Comment = ({ comment }) => {
         </CardContent>
 
         <div className={btns}>
-          {comment.fileName && (
-            <Button onClick={downloadHandler}>
-              <FileDownloadOutlinedIcon />
-            </Button>
-          )}
-
           {user && user.id === comment.userId && (
             <Button onClick={deleteHandler}>
               <DeleteOutlineOutlinedIcon />
+            </Button>
+          )}
+
+          {comment.fileName && (
+            <Button onClick={downloadHandler}>
+              <FileDownloadOutlinedIcon />
             </Button>
           )}
         </div>
