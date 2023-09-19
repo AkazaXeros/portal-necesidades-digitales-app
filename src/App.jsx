@@ -15,6 +15,7 @@ import NewEntry from './pages/NewEntryPage';
 import NewComment from './components/Comments/NewComment';
 import Register from './components/Register/Register';
 import UserProfilePage from './pages/UserProfilePage';
+import UpdateEntry from './components/Forms/UpdateEntry';
 
 function App() {
   Router;
@@ -30,6 +31,7 @@ function App() {
           <Route path="/entries/:id" element={<EntryPage />} />
           <Route path="/comments/:entryId" element={<NewComment />} />
           <Route path="/users/:id" element={<UserProfilePage />} />
+          <Route path="/users/updateEntry" element={<UpdateEntry />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
