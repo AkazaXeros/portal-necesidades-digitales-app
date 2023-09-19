@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { getAllComments } from "../services";
+import { getAllComments } from '../services';
 
 const useComments = (entryId, token) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
+
+  const deleteComment = (id) => {
+    setComments(comments.filter((comment) => comment.commentId !== id));
+  };
 
   useEffect(() => {
     const loadComments = async () => {
@@ -21,7 +25,7 @@ const useComments = (entryId, token) => {
     loadComments();
   }, [entryId, token]);
 
-  return { comments, loading, error };
+  return { comments, loading, error, deleteComment };
 };
 
 export default useComments;

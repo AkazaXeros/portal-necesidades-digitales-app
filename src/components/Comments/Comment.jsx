@@ -17,7 +17,7 @@ import { useState } from 'react';
 import { deleteCommentService } from '../../services';
 import { useNavigate } from 'react-router-dom';
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, onDelete }) => {
   // console.log(comment);
 
   const navigate = useNavigate();
@@ -28,8 +28,9 @@ const Comment = ({ comment }) => {
   const deleteHandler = async () => {
     try {
       const data = await deleteCommentService(comment.commentId, token);
-      console.log(data);
-      navigate(`/`);
+      onDelete(comment.commentId);
+      // console.log(data);
+      // navigate(`/`);
     } catch (err) {
       setError(err);
     }

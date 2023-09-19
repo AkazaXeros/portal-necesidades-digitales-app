@@ -16,10 +16,11 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 const EntryPage = () => {
   const { id } = useParams();
   const { token, user } = useUser();
-  const navigate = useNavigate();
   const { entry, loading, error } = useEntry(id);
+  const navigate = useNavigate();
 
   const [deleteError, setDeleteError] = useState();
+  const [onEntryPage, setOnEntryPage] = useState(true);
 
   if (loading) return <CircularProgress />;
   if (error) return <Alert severity="error">{error}</Alert>;
@@ -61,7 +62,7 @@ const EntryPage = () => {
 
   return entry ? (
     <div>
-      <Entry entry={entry} />
+      <Entry entry={entry} onEntryPage={onEntryPage} />
       {token && (
         <div className={buttons}>
           <Fab
