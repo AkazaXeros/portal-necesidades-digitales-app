@@ -1,0 +1,16 @@
+.updateEntry {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    gap: 10px;
+    width: 80vw;
+  }
+  
+  .updateEntry > .btn {
+    width: 33%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  
+  
