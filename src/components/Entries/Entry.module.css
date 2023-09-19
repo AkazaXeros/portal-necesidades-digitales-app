@@ -2,7 +2,8 @@
   width: 80vw;
 }
 
-.cardHeader {
+.cardHeader,
+.cardContent {
   cursor: pointer;
 }
 

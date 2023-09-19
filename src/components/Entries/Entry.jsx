@@ -1,7 +1,7 @@
 import { FormattedRelativeTime } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 
-import { card, cardActions, cardHeader } from './Entry.module.css';
+import { card, cardActions, cardHeader, cardContent } from './Entry.module.css';
 import relativeTimeCalc from '../../utils/relativeTimeCalc';
 
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
@@ -16,7 +16,7 @@ import {
   Typography,
 } from '@mui/material';
 
-const Entry = ({ entry }) => {
+const Entry = ({ entry, onEntryPage }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
 
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ const Entry = ({ entry }) => {
         subheader={entry.title}
       />
 
-      <CardContent onClick={contentClickHandler}>
+      <CardContent onClick={contentClickHandler} className={cardContent}>
         <Typography component="p" variant="body2"></Typography>
         <Typography component="p" color="text.secondary">
           {entry.description}
@@ -80,11 +80,17 @@ const Entry = ({ entry }) => {
       </CardContent>
 
       <div className={cardActions}>
-        <CardActions>
-          <Badge badgeContent={entry.numberOfComments} color="primary" showZero>
-            <ModeCommentOutlinedIcon color="primary" />
-          </Badge>
-        </CardActions>
+        {!onEntryPage && (
+          <CardActions>
+            <Badge
+              badgeContent={entry.numberOfComments}
+              color="primary"
+              showZero
+            >
+              <ModeCommentOutlinedIcon color="primary" />
+            </Badge>
+          </CardActions>
+        )}
       </div>
     </Card>
   );
