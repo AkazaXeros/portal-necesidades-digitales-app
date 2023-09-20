@@ -172,3 +172,25 @@ export const registerUserService = async ({ userName, email, password }) => {
 
   return data.data;
 };
+
+export const updateEntryService = async (category, resolved, token, entryId) => {
+  const fd = new FormData();
+  fd.append("category", category);
+  fd.append("resolved", resolved);
+
+  const res = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/entries/${entryId}`,
+    {
+    method: "PUT",
+    headers: {Authorization: token},
+    body: fd,
+    }
+    
+    );
+
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.message);
+    
+    return data.data.updateEntry;
+
+};
