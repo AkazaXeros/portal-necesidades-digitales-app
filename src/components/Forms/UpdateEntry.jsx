@@ -1,24 +1,56 @@
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
-import { updateEntry, btn } from './UpdateEntry.module.css';
+import { Alert, Button, CircularProgress, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
-const UpdateEntry = () => {
-    const [category, setCategory] = useState('')
-    const [resolved, setResolved] = useState('')
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { updateEntry, btn } from './UpdateEntry.module.css';
+import { updateEntryService } from "../../services";
+import { useUser } from "../../context/UserContext";
+
+
+const UpdateEntry = ({entryId, entryStatus}) => {
+    const [category, setCategory] = useState('');
+    const [resolved, setResolved] = useState(entryStatus);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const {token} = useUser();
+
+    const navigate = useNavigate()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            setLoading(true)
+
+            const data = await updateEntryService(category, resolved, token, entryId);
+            navigate('/');
+            console.log(data);
+
+        } catch (err) {
+            setError(err.message)
+
+        } finally { setLoading(false)}
+    }
+    if (loading) return <CircularProgress/>
+
 
     return(
-        <form className={updateEntry}>
+
+
+
+        <form onSubmit={handleSubmit} className={updateEntry}>
         <FormControl>
         <InputLabel id="resolved">Done</InputLabel>
         <Select
           id="resolved"
           onChange={(e) => {
-            setCategory(e.target.value);
+            setResolved(e.target.value);
           }}
           value={resolved}
           label="resolved">
-          <MenuItem value="yes">Yes</MenuItem>
-          <MenuItem value="no">No</MenuItem>
+          <MenuItem value={1}>Yes</MenuItem>
+          <MenuItem value={0}>No</MenuItem>
           </Select>
           </FormControl>
         
@@ -47,6 +79,7 @@ const UpdateEntry = () => {
         Add
       </Button>
         
+        {error && <Alert severity="error">{error}</Alert>}
         
         </form>
         

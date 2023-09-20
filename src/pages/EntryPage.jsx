@@ -7,11 +7,14 @@ import { deleteEntryService } from '../services';
 import Entry from '../components/Entries/Entry';
 import useEntry from '../hooks/useEntry';
 import { useUser } from '../context/UserContext';
+import FormModal from '../components/UI/FormModal';
+import UpdateEntry from '../components/Forms/UpdateEntry';
 
 import { Alert, CircularProgress, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+
 
 const EntryPage = () => {
   const { id } = useParams();
@@ -62,6 +65,9 @@ const EntryPage = () => {
 
   return entry ? (
     <div>
+      <FormModal>
+        <UpdateEntry entryId={entry.id} entryStatus={entry.resolved} />
+      </FormModal>
       <Entry entry={entry} onEntryPage={onEntryPage} />
       {token && (
         <div className={buttons}>
