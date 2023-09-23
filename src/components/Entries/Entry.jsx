@@ -1,10 +1,18 @@
 import { FormattedRelativeTime } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 
-import { card, cardActions, cardHeader, cardContent } from './Entry.module.css';
+import {
+  card,
+  cardActions,
+  cardHeader,
+  cardContent,
+  header,
+} from './Entry.module.css';
 import relativeTimeCalc from '../../utils/relativeTimeCalc';
 
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+
 import {
   Avatar,
   Badge,
@@ -16,8 +24,12 @@ import {
   Typography,
 } from '@mui/material';
 
-const Entry = ({ entry, onEntryPage }) => {
+import { useUser } from '../../context/UserContext';
+
+const Entry = ({ entry, onEntryPage, onEdit }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
+
+  const { user } = useUser();
 
   const navigate = useNavigate();
 
@@ -32,21 +44,28 @@ const Entry = ({ entry, onEntryPage }) => {
 
   return (
     <Card className={card}>
-      <CardHeader
-        className={cardHeader}
-        onClick={avatarClickHandler}
-        avatar={
-          <Avatar
-            sx={{ width: 55, height: 55 }}
-            src={
-              entry.avatar &&
-              `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
-            }
-          ></Avatar>
-        }
-        title={`by ${entry.userName}`}
-        subheader={entry.title}
-      />
+      <div className={header}>
+        <CardHeader
+          className={cardHeader}
+          onClick={avatarClickHandler}
+          avatar={
+            <Avatar
+              sx={{ width: 55, height: 55 }}
+              src={
+                entry.avatar &&
+                `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
+              }
+            ></Avatar>
+          }
+          title={`by ${entry.userName}`}
+          subheader={entry.title}
+        />
+        {user?.id === entry.userId && onEntryPage && (
+          <div>
+            <EditOutlinedIcon color="secondary" onClick={onEdit} />
+          </div>
+        )}
+      </div>
 
       <CardContent onClick={contentClickHandler} className={cardContent}>
         <Typography component="p" variant="body2"></Typography>

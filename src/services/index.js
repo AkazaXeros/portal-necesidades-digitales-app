@@ -6,12 +6,12 @@ export const createEntryService = async ({
   token,
 }) => {
   const fd = new FormData();
-  fd.append("title", title);
-  fd.append("description", description);
-  fd.append("file", file);
-  fd.append("category", category);
+  fd.append('title', title);
+  fd.append('description', description);
+  fd.append('file', file);
+  fd.append('category', category);
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/entries`, {
-    method: "POST",
+    method: 'POST',
     headers: { Authorization: `${token}` },
     body: fd,
   });
@@ -25,12 +25,12 @@ export const createEntryService = async ({
 
 export const createNewComment = async (entryId, content, file, token) => {
   const fd = new FormData();
-  fd.append("content", content);
-  fd.append("file", file);
+  fd.append('content', content);
+  fd.append('file', file);
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/comments/${entryId}`,
     {
-      method: "POST",
+      method: 'POST',
       headers: { Authorization: `${token}` },
       body: fd,
     }
@@ -47,7 +47,7 @@ export const deleteCommentService = async (commentId, token) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/comments/${commentId}`,
     {
-      method: "DELETE",
+      method: 'DELETE',
       headers: { Authorization: token },
     }
   );
@@ -63,7 +63,7 @@ export const deleteEntryService = async (entryId, token) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/entries/${entryId}`,
     {
-      method: "DELETE",
+      method: 'DELETE',
       headers: { Authorization: token },
     }
   );
@@ -140,8 +140,8 @@ export const getUserService = async (userId) => {
 
 export const loginUserService = async ({ email, password }) => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/users/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
   });
 
@@ -158,8 +158,8 @@ export const registerUserService = async ({ userName, email, password }) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/users/register`,
     {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userName, email, password }),
     }
   );
@@ -173,24 +173,27 @@ export const registerUserService = async ({ userName, email, password }) => {
   return data.data;
 };
 
-export const updateEntryService = async (category, resolved, token, entryId) => {
+export const updateEntryService = async (
+  category,
+  resolved,
+  token,
+  entryId
+) => {
   const fd = new FormData();
-  fd.append("category", category);
-  fd.append("resolved", resolved);
+  fd.append('category', category);
+  fd.append('resolved', resolved);
 
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/entries/${entryId}`,
     {
-    method: "PUT",
-    headers: {Authorization: token},
-    body: fd,
+      method: 'PUT',
+      headers: { Authorization: token },
+      body: fd,
     }
-    
-    );
+  );
 
-    const data = await res.json();
-    if(!res.ok) throw new Error(data.message);
-    
-    return data.data.updateEntry;
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message);
 
+  return data.data.updatedEntry;
 };

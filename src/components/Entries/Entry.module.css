@@ -1,5 +1,6 @@
 .card {
   width: 80vw;
+  padding: 0.5rem 1rem;
 }
 
 .cardHeader,
@@ -10,4 +11,14 @@
 .cardActions {
   display: flex;
   justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header div:last-of-type {
+  cursor: pointer;
 }

@@ -10,23 +10,20 @@ import {
   Radio,
   RadioGroup,
   Select,
-} from "@mui/material";
+} from '@mui/material';
 
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 
-import { updateEntry, btn } from "./UpdateEntry.module.css";
-import { updateEntryService } from "../../services";
-import { useUser } from "../../context/UserContext";
+import { updateEntry, btn } from './UpdateEntry.module.css';
+import { updateEntryService } from '../../services';
+import { useUser } from '../../context/UserContext';
 
-const UpdateEntry = ({ entryId, entryStatus }) => {
-  const [category, setCategory] = useState("");
-  const [resolved, setResolved] = useState(entryStatus);
-  const [error, setError] = useState("");
+const UpdateEntry = ({ entry, onEdit, setEntry }) => {
+  const [category, setCategory] = useState('');
+  const [resolved, setResolved] = useState(entry.resolved);
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { token } = useUser();
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,9 +31,16 @@ const UpdateEntry = ({ entryId, entryStatus }) => {
     try {
       setLoading(true);
 
-      const data = await updateEntryService(category, resolved, token, entryId);
-      navigate("/");
-      console.log(data);
+      const data = await updateEntryService(
+        category,
+        resolved,
+        token,
+        entry.id
+      );
+
+      setEntry(data);
+      onEdit();
+      // console.log(data);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -55,7 +59,8 @@ const UpdateEntry = ({ entryId, entryStatus }) => {
             setResolved(e.target.value);
           }}
           value={resolved}
-          label="resolved">
+          label="resolved"
+        >
           <FormControlLabel value={1} control={<Radio />} label="Yes" />
           <FormControlLabel value={0} control={<Radio />} label="No" />
         </RadioGroup>
@@ -69,7 +74,8 @@ const UpdateEntry = ({ entryId, entryStatus }) => {
             setCategory(e.target.value);
           }}
           value={category}
-          label="Category">
+          label="Category"
+        >
           <MenuItem value="other">Other</MenuItem>
           <MenuItem value="video-editing">Video-editing</MenuItem>
           <MenuItem value="image-editing">Image-editing</MenuItem>
@@ -82,7 +88,8 @@ const UpdateEntry = ({ entryId, entryStatus }) => {
         variant="contained"
         className={btn}
         type="submit"
-        color="secondary">
+        color="secondary"
+      >
         Add
       </Button>
 
