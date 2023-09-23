@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { getEntry } from "../services";
+import { getEntry } from '../services';
 
 const useEntry = (entryId) => {
   const [entry, setEntry] = useState();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const loadEntry = async () => {
@@ -21,7 +21,7 @@ const useEntry = (entryId) => {
     loadEntry();
   }, [entryId]);
 
-  return { entry, loading, error };
+  return { entry, loading, error, setEntry };
 };
 
 export default useEntry;
