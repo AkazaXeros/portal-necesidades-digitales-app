@@ -14,12 +14,8 @@
   cursor: pointer;
 }
 
-.authMenuItems {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.authMenuItems p {
-  text-align: left;
+@media screen and (min-width: 350px) {
+  .auth > ul {
+    gap: 30px;
+  }
 }

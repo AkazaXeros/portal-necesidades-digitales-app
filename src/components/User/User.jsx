@@ -1,18 +1,27 @@
 import { biograph, card } from "./User.module.css";
+import { useUser } from "../../context/UserContext";
+
+import { useNavigate } from "react-router-dom";
 
 import {
   Avatar,
+  Button,
   Card,
   CardContent,
   CardHeader,
   Divider,
   Typography,
 } from "@mui/material";
-
-import { useUser } from "../../context/UserContext";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 const User = ({ appUser }) => {
   const { user } = useUser();
+  const navigate = useNavigate();
+
+  const editUserHandler = () => {
+    navigate("/");
+  };
+
   return (
     <Card className={card}>
       <div>
@@ -29,6 +38,9 @@ const User = ({ appUser }) => {
           // subheader={appUser.role === "normal" ? "user" : "admin"}
           subheader="Joined on:"
         />
+        <Button onClick={editUserHandler} color="secondary">
+          <EditOutlinedIcon />
+        </Button>
         <Divider variant="middle" />
 
         <div>

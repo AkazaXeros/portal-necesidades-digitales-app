@@ -4,7 +4,6 @@ import { mainHeader, mainHeaderToolBar } from "./Header.module.css";
 import { Link } from "react-router-dom";
 
 import { AppBar, Box } from "@mui/material";
-// import MenuUser from "../MenuUser/MenuUser";
 
 const Header = () => {
   return (
@@ -14,7 +13,6 @@ const Header = () => {
           <Link to="/">WRENCH</Link>
         </h1>
         <Auth />
-        {/* <MenuUser /> */}
       </AppBar>
     </Box>
   );
