@@ -1,60 +1,67 @@
-import { Alert, Button, CircularProgress, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  Alert,
+  Button,
+  CircularProgress,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+} from "@mui/material";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { updateEntry, btn } from './UpdateEntry.module.css';
+import { updateEntry, btn } from "./UpdateEntry.module.css";
 import { updateEntryService } from "../../services";
 import { useUser } from "../../context/UserContext";
 
+const UpdateEntry = ({ entryId, entryStatus }) => {
+  const [category, setCategory] = useState("");
+  const [resolved, setResolved] = useState(entryStatus);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { token } = useUser();
 
-const UpdateEntry = ({entryId, entryStatus}) => {
-    const [category, setCategory] = useState('');
-    const [resolved, setResolved] = useState(entryStatus);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    const {token} = useUser();
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    try {
+      setLoading(true);
 
-        try {
-            setLoading(true)
-
-            const data = await updateEntryService(category, resolved, token, entryId);
-            navigate('/');
-            console.log(data);
-
-        } catch (err) {
-            setError(err.message)
-
-        } finally { setLoading(false)}
+      const data = await updateEntryService(category, resolved, token, entryId);
+      navigate("/");
+      console.log(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-    if (loading) return <CircularProgress/>
+  };
+  if (loading) return <CircularProgress />;
 
-
-    return(
-
-
-
-        <form onSubmit={handleSubmit} className={updateEntry}>
-        <FormControl>
-        <InputLabel id="resolved">Done</InputLabel>
-        <Select
+  return (
+    <form onSubmit={handleSubmit} className={updateEntry}>
+      <FormControl>
+        <FormLabel id="resolved">Done</FormLabel>
+        <RadioGroup
           id="resolved"
           onChange={(e) => {
             setResolved(e.target.value);
           }}
           value={resolved}
           label="resolved">
-          <MenuItem value={1}>Yes</MenuItem>
-          <MenuItem value={0}>No</MenuItem>
-          </Select>
-          </FormControl>
-        
-        <FormControl>
+          <FormControlLabel value={1} control={<Radio />} label="Yes" />
+          <FormControlLabel value={0} control={<Radio />} label="No" />
+        </RadioGroup>
+      </FormControl>
+
+      <FormControl>
         <InputLabel id="category">Category</InputLabel>
         <Select
           id="category"
@@ -78,13 +85,10 @@ const UpdateEntry = ({entryId, entryStatus}) => {
         color="secondary">
         Add
       </Button>
-        
-        {error && <Alert severity="error">{error}</Alert>}
-        
-        </form>
-        
-        
-        )
-}
+
+      {error && <Alert severity="error">{error}</Alert>}
+    </form>
+  );
+};
 
 export default UpdateEntry;

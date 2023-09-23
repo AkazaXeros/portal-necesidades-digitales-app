@@ -1,6 +1,13 @@
 .mainFooter {
+  display: flex;
+  justify-content: space-around;
   text-align: center;
-  align-items: center;
-  /* margin-top: 50px; */
+  padding: 2%;
   width: 100%;
+}
+
+@media screen and (min-width: 350px) {
+  .mainFooter {
+    padding: 1%;
+  }
 }
