@@ -197,3 +197,29 @@ export const updateEntryService = async (
 
   return data.data.updatedEntry;
 };
+
+export const updateUserService = async ({
+  avatarFile,
+  biography,
+  userName,
+  token,
+}) => {
+  const fd = new FormData();
+  fd.append('avatar', avatarFile);
+  fd.append('biography', biography);
+  fd.append('userName', userName);
+
+  const res = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/users/update-profile`,
+    {
+      method: 'PUT',
+      headers: { Authorization: token },
+      body: fd,
+    }
+  );
+
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message);
+
+  return data.data.updatedUser;
+};

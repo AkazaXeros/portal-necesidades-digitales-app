@@ -26,7 +26,7 @@ import {
 
 import { useUser } from '../../context/UserContext';
 
-const Entry = ({ entry, onEntryPage, onEdit }) => {
+const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
 
   const { user } = useUser();
@@ -49,15 +49,17 @@ const Entry = ({ entry, onEntryPage, onEdit }) => {
           className={cardHeader}
           onClick={avatarClickHandler}
           avatar={
-            <Avatar
-              sx={{ width: 55, height: 55 }}
-              src={
-                entry.avatar &&
-                `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
-              }
-            ></Avatar>
+            !onProfile && (
+              <Avatar
+                sx={{ width: 55, height: 55 }}
+                src={
+                  entry.avatar &&
+                  `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
+                }
+              ></Avatar>
+            )
           }
-          title={`by ${entry.userName}`}
+          title={!onProfile && `by ${entry.userName}`}
           subheader={entry.title}
         />
         {user?.id === entry.userId && onEntryPage && (
