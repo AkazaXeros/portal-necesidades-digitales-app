@@ -1,5 +1,7 @@
-import { biograph, card } from './User.module.css';
+import { biograph, card, header } from './User.module.css';
 import { useUser } from '../../context/UserContext';
+
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
 import {
   Avatar,
@@ -10,27 +12,33 @@ import {
   Typography,
 } from '@mui/material';
 
-const User = ({ appUser }) => {
+const User = ({ appUser, onEdit }) => {
   const { user } = useUser();
 
   return (
     <Card className={card}>
       <div>
-        <CardHeader
-          avatar={
-            <Avatar
-              sx={{ width: 80, height: 80 }}
-              src={
-                appUser.avatar &&
-                `${import.meta.env.VITE_BACKEND_URL}/${appUser.avatar}`
-              }
-            ></Avatar>
-          }
-          title={appUser.userName}
-          // subheader={appUser.role === "normal" ? "user" : "admin"}
-          subheader="Joined on:"
-        />
-
+        <div className={header}>
+          <CardHeader
+            avatar={
+              <Avatar
+                sx={{ width: 80, height: 80 }}
+                src={
+                  appUser.avatar &&
+                  `${import.meta.env.VITE_BACKEND_URL}/${appUser.avatar}`
+                }
+              ></Avatar>
+            }
+            title={appUser.userName}
+            // subheader={appUser.role === "normal" ? "user" : "admin"}
+            subheader="Joined on:"
+          />
+          {appUser.id === user?.id && (
+            <div>
+              <EditOutlinedIcon color="secondary" onClick={onEdit} />
+            </div>
+          )}
+        </div>
         <Divider variant="middle" />
 
         <div>
@@ -41,7 +49,7 @@ const User = ({ appUser }) => {
           </CardContent>
 
           <Divider variant="inset" />
-          {user && appUser.id === user.id && (
+          {appUser.id === user?.id && (
             <CardContent>
               <Typography variant="caption">Email:{appUser.email}</Typography>
             </CardContent>

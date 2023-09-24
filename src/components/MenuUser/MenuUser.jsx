@@ -49,6 +49,7 @@ const MenuUser = ({ auth }) => {
                   user.avatar &&
                   `${import.meta.env.VITE_BACKEND_URL}/${user.avatar}`
                 }
+                sx={{ width: 55, height: 55 }}
               />
             </IconButton>
           </Tooltip>

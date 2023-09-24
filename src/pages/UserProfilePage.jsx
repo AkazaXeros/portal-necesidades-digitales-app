@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { Alert, CircularProgress } from "@mui/material";
+import { Alert, CircularProgress } from '@mui/material';
 
-import { getUserService } from "../services";
-import UserProfile from "../components/UserProfile/UserProfile";
+import { getUserService } from '../services';
+import UserProfile from '../components/UserProfile/UserProfile';
 
 const UserProfilePage = () => {
   const [error, setError] = useState();
@@ -30,7 +30,9 @@ const UserProfilePage = () => {
   if (error) return <Alert severity="error">{error}</Alert>;
   if (loading) return <CircularProgress />;
 
-  return publicUser ? <UserProfile appUser={publicUser} /> : null;
+  return publicUser ? (
+    <UserProfile appUser={publicUser} onUpdateProfile={setPublicUser} />
+  ) : null;
 };
 
 export default UserProfilePage;
