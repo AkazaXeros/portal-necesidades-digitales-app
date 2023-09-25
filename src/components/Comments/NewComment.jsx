@@ -1,25 +1,27 @@
-import { buttons, newComment } from "./NewComment.module.css";
-import { Button, TextField } from "@mui/material";
-import { useState } from "react";
-import { useUser } from "../../context/UserContext";
-import { useParams, useNavigate } from "react-router";
-import UploadBtn from "../Upload/UploadBtn";
-import { createNewComment } from "../../services";
+import { buttons, newComment } from './NewComment.module.css';
+import { Button, TextField } from '@mui/material';
+import { useState } from 'react';
+import { useUser } from '../../context/UserContext';
+import { useParams, useNavigate } from 'react-router';
+import UploadBtn from '../Upload/UploadBtn';
+import { createNewComment } from '../../services';
+
+// Importing React component
+import { Helmet } from 'react-helmet';
 
 const NewComment = () => {
   const { entryId } = useParams();
   const { token } = useUser();
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [file, setFile] = useState();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     // console.log(entryId);
     try {
-      const comment = await createNewComment(entryId, content, file, token);
-      // console.log(comment);
+      await createNewComment(entryId, content, file, token);
       navigate(`/entries/${entryId}`);
     } catch (error) {
       setError(error.message);
@@ -27,6 +29,9 @@ const NewComment = () => {
   };
   return (
     <form onSubmit={submitHandler} className={newComment}>
+      <Helmet>
+        <title>New Comment</title>
+      </Helmet>
       <TextField
         id="comment"
         label="Comment"

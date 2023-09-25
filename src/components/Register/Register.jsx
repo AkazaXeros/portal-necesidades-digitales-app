@@ -1,6 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
+// Importing React component
+import { Helmet } from 'react-helmet';
+
 import { Alert, Box, Button, TextField } from '@mui/material';
 
 import { registerForm, btn, link } from './Register.module.css';
@@ -18,7 +21,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const data = await registerUserService({ userName, email, password });
+      await registerUserService({ userName, email, password });
       // console.log(data);
       navigate('/users/login');
     } catch (err) {
@@ -28,6 +31,9 @@ const Register = () => {
 
   return (
     <Box component="form" onSubmit={handleSubmit} className={registerForm}>
+      <Helmet>
+        <title>Signup</title>
+      </Helmet>
       <TextField
         autoFocus
         id="username"

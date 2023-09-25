@@ -1,10 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-import { createEntryService } from "../services";
-import { newEntry, btn, upload } from "./NewEntryPage.module.css";
-import { useUser } from "../context/UserContext";
-import UploadBtn from "../components/Upload/UploadBtn";
+import { createEntryService } from '../services';
+import { newEntry, btn, upload } from './NewEntryPage.module.css';
+import { useUser } from '../context/UserContext';
+import UploadBtn from '../components/Upload/UploadBtn';
+
+// Importing React component
+import { Helmet } from 'react-helmet';
 
 import {
   Alert,
@@ -15,15 +18,15 @@ import {
   MenuItem,
   Select,
   TextField,
-} from "@mui/material";
+} from '@mui/material';
 
 const NewEntry = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [file, setFile] = useState();
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const { token } = useUser();
   const navigate = useNavigate();
 
@@ -33,15 +36,14 @@ const NewEntry = () => {
     try {
       setLoading(true);
 
-      const entry = await createEntryService({
+      await createEntryService({
         title,
         description,
         file,
         category,
         token,
       });
-      // console.log(entry);
-      navigate("/");
+      navigate('/');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -53,6 +55,9 @@ const NewEntry = () => {
 
   return (
     <form onSubmit={handleSubmit} className={newEntry}>
+      <Helmet>
+        <title>New Service</title>
+      </Helmet>
       <TextField
         id="title"
         label="Title"
@@ -92,7 +97,8 @@ const NewEntry = () => {
             setCategory(e.target.value);
           }}
           value={category}
-          label="Category">
+          label="Category"
+        >
           <MenuItem value="other">Other</MenuItem>
           <MenuItem value="video-editing">Video-editing</MenuItem>
           <MenuItem value="image-editing">Image-editing</MenuItem>
@@ -105,7 +111,8 @@ const NewEntry = () => {
         variant="contained"
         className={btn}
         type="submit"
-        color="secondary">
+        color="secondary"
+      >
         Add
       </Button>
 

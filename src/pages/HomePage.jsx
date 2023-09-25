@@ -1,7 +1,10 @@
-import { Alert, CircularProgress } from "@mui/material";
+import { Alert, CircularProgress } from '@mui/material';
 
-import AllEntries from "../components/Entries/AllEntries";
-import useEntries from "../hooks/useEntries";
+// Importing React component
+import { Helmet } from 'react-helmet';
+
+import AllEntries from '../components/Entries/AllEntries';
+import useEntries from '../hooks/useEntries';
 
 const HomePage = () => {
   const { entries, loading, error } = useEntries();
@@ -11,6 +14,9 @@ const HomePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Wrench</title>
+      </Helmet>
       <AllEntries entries={entries} />
     </>
   );
