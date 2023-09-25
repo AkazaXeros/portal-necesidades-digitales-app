@@ -1,9 +1,16 @@
-import { Alert, CircularProgress } from '@mui/material';
+// Importing hook from react
+import useComments from "../../hooks/useComments";
 
-import Comment from './Comment';
-import useComments from '../../hooks/useComments';
-import { allComments } from './AllEntryComments.module.css';
+// Importing component Comment
+import Comment from "./Comment";
 
+// Importing CSS
+import { allComments } from "./AllEntryComments.module.css";
+
+// Importing components from Material UI
+import { Alert, CircularProgress } from "@mui/material";
+
+// Creating AllEntryComments component
 const AllEntryComments = ({ entryId, token }) => {
   const { comments, loading, error, deleteComment } = useComments(
     entryId,

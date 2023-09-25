@@ -1,3 +1,4 @@
+// Importing component from Meterial UI
 import { createTheme } from "@mui/material/styles";
 
 const Theme = createTheme({

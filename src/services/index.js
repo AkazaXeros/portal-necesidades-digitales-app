@@ -1,3 +1,4 @@
+// Create a new service entry
 export const createEntryService = async ({
   title,
   description,
@@ -6,12 +7,12 @@ export const createEntryService = async ({
   token,
 }) => {
   const fd = new FormData();
-  fd.append('title', title);
-  fd.append('description', description);
-  fd.append('file', file);
-  fd.append('category', category);
+  fd.append("title", title);
+  fd.append("description", description);
+  fd.append("file", file);
+  fd.append("category", category);
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/entries`, {
-    method: 'POST',
+    method: "POST",
     headers: { Authorization: `${token}` },
     body: fd,
   });
@@ -23,14 +24,15 @@ export const createEntryService = async ({
   return data.data.entry;
 };
 
+// Create a new comment
 export const createNewComment = async (entryId, content, file, token) => {
   const fd = new FormData();
-  fd.append('content', content);
-  fd.append('file', file);
+  fd.append("content", content);
+  fd.append("file", file);
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/comments/${entryId}`,
     {
-      method: 'POST',
+      method: "POST",
       headers: { Authorization: `${token}` },
       body: fd,
     }
@@ -43,11 +45,12 @@ export const createNewComment = async (entryId, content, file, token) => {
   return data.data.comment;
 };
 
+// Delete the comment of a service
 export const deleteCommentService = async (commentId, token) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/comments/${commentId}`,
     {
-      method: 'DELETE',
+      method: "DELETE",
       headers: { Authorization: token },
     }
   );
@@ -59,11 +62,12 @@ export const deleteCommentService = async (commentId, token) => {
   return data.message;
 };
 
+// Delete a service entry
 export const deleteEntryService = async (entryId, token) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/entries/${entryId}`,
     {
-      method: 'DELETE',
+      method: "DELETE",
       headers: { Authorization: token },
     }
   );
@@ -75,6 +79,7 @@ export const deleteEntryService = async (entryId, token) => {
   return data.message;
 };
 
+// Get the data of an entry
 export const getEntry = async (entryId) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/entries/${entryId}`
@@ -87,6 +92,7 @@ export const getEntry = async (entryId) => {
   return data.data.entry;
 };
 
+// Have all comments
 export const getAllComments = async (entryId, token) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/comments/${entryId}`,
@@ -102,6 +108,7 @@ export const getAllComments = async (entryId, token) => {
   return data.data.comments;
 };
 
+// Have all entries
 export const getAllEntries = async () => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/entries`);
 
@@ -112,6 +119,7 @@ export const getAllEntries = async () => {
   return data.data.entries;
 };
 
+// Get user data
 export const getUserDataService = async (token) => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/users/`, {
     headers: { Authorization: token },
@@ -126,6 +134,7 @@ export const getUserDataService = async (token) => {
   return data.data.user;
 };
 
+// Get user
 export const getUserService = async (userId) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/users/${userId}`
@@ -138,10 +147,11 @@ export const getUserService = async (userId) => {
   return data.data.user;
 };
 
+// Login a user
 export const loginUserService = async ({ email, password }) => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/users/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
 
@@ -154,12 +164,13 @@ export const loginUserService = async ({ email, password }) => {
   return data.data.token;
 };
 
+// Register a user
 export const registerUserService = async ({ userName, email, password }) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/users/register`,
     {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userName, email, password }),
     }
   );
@@ -173,6 +184,7 @@ export const registerUserService = async ({ userName, email, password }) => {
   return data.data;
 };
 
+// Change entry
 export const updateEntryService = async (
   category,
   resolved,
@@ -180,13 +192,13 @@ export const updateEntryService = async (
   entryId
 ) => {
   const fd = new FormData();
-  fd.append('category', category);
-  fd.append('resolved', resolved);
+  fd.append("category", category);
+  fd.append("resolved", resolved);
 
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/entries/${entryId}`,
     {
-      method: 'PUT',
+      method: "PUT",
       headers: { Authorization: token },
       body: fd,
     }
@@ -198,6 +210,7 @@ export const updateEntryService = async (
   return data.data.updatedEntry;
 };
 
+// Change user profile data
 export const updateUserService = async ({
   avatarFile,
   biography,
@@ -205,14 +218,14 @@ export const updateUserService = async ({
   token,
 }) => {
   const fd = new FormData();
-  fd.append('avatar', avatarFile);
-  fd.append('biography', biography);
-  fd.append('userName', userName);
+  fd.append("avatar", avatarFile);
+  fd.append("biography", biography);
+  fd.append("userName", userName);
 
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/users/update-profile`,
     {
-      method: 'PUT',
+      method: "PUT",
       headers: { Authorization: token },
       body: fd,
     }
@@ -222,4 +235,25 @@ export const updateUserService = async ({
   if (!res.ok) throw new Error(data.message);
 
   return data.data.updatedUser;
+};
+
+// Change password
+export const updatePassword = async (currentPass, newPass, token) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/users/password`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ currentPass, newPass }),
+    }
+  );
+
+  const data = await res.json();
+
+  if (!res.ok) throw new Error(data.message);
+
+  return data.message;
 };

@@ -1,5 +1,5 @@
-import { FormattedRelativeTime } from 'react-intl';
-import { useNavigate } from 'react-router-dom';
+import { FormattedRelativeTime } from "react-intl";
+import { useNavigate } from "react-router-dom";
 
 import {
   card,
@@ -7,11 +7,11 @@ import {
   cardHeader,
   cardContent,
   header,
-} from './Entry.module.css';
-import relativeTimeCalc from '../../utils/relativeTimeCalc';
+} from "./Entry.module.css";
+import relativeTimeCalc from "../../utils/relativeTimeCalc";
 
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 import {
   Avatar,
@@ -22,9 +22,9 @@ import {
   CardHeader,
   Divider,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
-import { useUser } from '../../context/UserContext';
+import { useUser } from "../../context/UserContext";
 
 const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
@@ -55,8 +55,7 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
                 src={
                   entry.avatar &&
                   `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
-                }
-              ></Avatar>
+                }></Avatar>
             )
           }
           title={!onProfile && `by ${entry.userName}`}
@@ -82,12 +81,11 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
           {
             <section
               style={{
-                marginTop: '10px',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <p>Published:</p>{' '}
+                marginTop: "10px",
+                display: "flex",
+                justifyContent: "space-between",
+              }}>
+              <p>Published:</p>{" "}
               <Typography component="p" color="text.secondary">
                 <FormattedRelativeTime
                   value={-relativeTimeValue}
@@ -106,8 +104,7 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
             <Badge
               badgeContent={entry.numberOfComments}
               color="primary"
-              showZero
-            >
+              showZero>
               <ModeCommentOutlinedIcon color="primary" />
             </Badge>
           </CardActions>
