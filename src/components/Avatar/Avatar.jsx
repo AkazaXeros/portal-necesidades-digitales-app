@@ -1,3 +1,4 @@
+// Importing component from Mterial UI
 import { Avatar } from "@mui/material";
 
 const Icon = ({ avatar }) => {

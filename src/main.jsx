@@ -1,3 +1,4 @@
+// Importing CSS
 import "./index.css";
 
 import App from "./App.jsx";
@@ -7,6 +8,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext.jsx";
 
+// Importing componentes from Material UI
 import Theme from "./Colors/Colors";
 import { ThemeProvider } from "@mui/material";
 
