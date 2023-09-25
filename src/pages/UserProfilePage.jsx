@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+// Importing React component
+import { Helmet } from 'react-helmet';
+
 import { Alert, CircularProgress } from '@mui/material';
 
 import { getUserService } from '../services';
@@ -31,7 +34,12 @@ const UserProfilePage = () => {
   if (loading) return <CircularProgress />;
 
   return publicUser ? (
-    <UserProfile appUser={publicUser} onUpdateProfile={setPublicUser} />
+    <>
+      <Helmet>
+        <title>{publicUser.userName}</title>
+      </Helmet>
+      <UserProfile appUser={publicUser} onUpdateProfile={setPublicUser} />
+    </>
   ) : null;
 };
 

@@ -1,28 +1,31 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-import { Alert, Box, Button, TextField } from "@mui/material";
+import { Alert, Box, Button, TextField } from '@mui/material';
 
-import { loginForm, btn, link } from "./Login.module.css";
-import { loginUserService } from "../../services";
-import { useUser } from "../../context/UserContext";
+// Importing React component
+import { Helmet } from 'react-helmet';
+
+import { loginForm, btn, link } from './Login.module.css';
+import { loginUserService } from '../../services';
+import { useUser } from '../../context/UserContext';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { login } = useUser();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError('');
 
     try {
       const data = await loginUserService({ email, password });
       // console.log(data);
       login(data);
-      navigate("/");
+      navigate('/');
     } catch (err) {
       setError(err.message);
     }
@@ -30,6 +33,9 @@ const Login = () => {
 
   return (
     <Box onSubmit={handleSubmit} component="form" className={loginForm}>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <TextField
         autoFocus
         id="email"
@@ -55,7 +61,8 @@ const Login = () => {
         variant="contained"
         className={btn}
         type="submit"
-        color="secondary">
+        color="secondary"
+      >
         Login
       </Button>
 

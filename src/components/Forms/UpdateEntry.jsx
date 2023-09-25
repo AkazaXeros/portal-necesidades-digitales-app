@@ -14,6 +14,9 @@ import {
 
 import { useState } from 'react';
 
+// Importing React component
+import { Helmet } from 'react-helmet';
+
 import { updateEntry, btn } from './UpdateEntry.module.css';
 import { updateEntryService } from '../../services';
 import { useUser } from '../../context/UserContext';
@@ -51,6 +54,9 @@ const UpdateEntry = ({ entry, onEdit, setEntry }) => {
 
   return (
     <form onSubmit={handleSubmit} className={updateEntry}>
+      <Helmet>
+        <title>Update Entry</title>
+      </Helmet>
       <FormControl>
         <FormLabel id="resolved">Done</FormLabel>
         <RadioGroup
