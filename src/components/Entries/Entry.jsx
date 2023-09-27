@@ -1,17 +1,11 @@
-import { FormattedRelativeTime } from 'react-intl';
-import { useNavigate } from 'react-router-dom';
+import { FormattedRelativeTime } from "react-intl";
+import { useNavigate } from "react-router-dom";
 
-import {
-  card,
-  cardActions,
-  cardHeader,
-  cardContent,
-  header,
-} from './Entry.module.css';
-import relativeTimeCalc from '../../utils/relativeTimeCalc';
+import { card, cardHeader, cardContent, header } from "./Entry.module.css";
+import relativeTimeCalc from "../../utils/relativeTimeCalc";
 
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 import {
   Avatar,
@@ -22,9 +16,9 @@ import {
   CardHeader,
   Divider,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
-import { useUser } from '../../context/UserContext';
+import { useUser } from "../../context/UserContext";
 
 const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
@@ -40,7 +34,7 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
 
   const contentClickHandler = () => {
     navigate(
-      `/entries/${entry.id}/${entry.title.toLowerCase().replaceAll(' ', '-')}`
+      `/entries/${entry.id}/${entry.title.toLowerCase().replaceAll(" ", "-")}`
     );
   };
 
@@ -57,13 +51,12 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
                 src={
                   entry.avatar &&
                   `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
-                }
-              ></Avatar>
+                }></Avatar>
             )
           }
-          title={!onProfile && `by ${entry.userName}`}
-          subheader={entry.title}
+          title={!onProfile && `${entry.userName}`}
         />
+
         {user?.id === entry.userId && onEntryPage && (
           <div>
             <EditOutlinedIcon color="secondary" onClick={onEdit} />
@@ -72,49 +65,41 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
       </div>
 
       <CardContent onClick={contentClickHandler} className={cardContent}>
-        <Typography component="p" variant="body2"></Typography>
-        <Typography component="p" color="text.secondary">
+        <Typography variant="h5">{entry.title}</Typography>
+
+        <Divider />
+
+        <Typography component="p" color="text.secondary" mt={1.5}>
           {entry.description}
         </Typography>
       </CardContent>
-      <CardContent>
-        <Typography variant="caption">
-          {`Category: ${entry.category}`}
-          <Divider />
-          {
-            <section
-              style={{
-                marginTop: '10px',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <p>Published:</p>{' '}
-              <Typography component="p" color="text.secondary">
-                <FormattedRelativeTime
-                  value={-relativeTimeValue}
-                  numeric="auto"
-                  updateIntervalInSeconds={1000}
-                />
-              </Typography>
-            </section>
-          }
-        </Typography>
-      </CardContent>
 
-      <div className={cardActions}>
+      <CardContent align="right">
+        <Typography variant="caption" color="text.secondary">
+          {`Category: ${entry.category}`}
+        </Typography>
+
+        <Divider variant="inset" />
+
+        <Typography color="text.secondary" mt={1.5} mb={2}>
+          <FormattedRelativeTime
+            value={-relativeTimeValue}
+            numeric="auto"
+            updateIntervalInSeconds={1000}
+          />
+        </Typography>
+
         {!onEntryPage && (
           <CardActions>
             <Badge
               badgeContent={entry.numberOfComments}
               color="primary"
-              showZero
-            >
+              showZero>
               <ModeCommentOutlinedIcon color="primary" />
             </Badge>
           </CardActions>
         )}
-      </div>
+      </CardContent>
     </Card>
   );
 };

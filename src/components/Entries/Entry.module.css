@@ -8,11 +8,6 @@
   cursor: pointer;
 }
 
-.cardActions {
-  display: flex;
-  justify-content: space-between;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -21,4 +16,12 @@
 
 .header div:last-of-type {
   cursor: pointer;
+}
+
+/* Pantalla grande */
+@media screen and (min-width: 415px) {
+  .card {
+    width: 30vw;
+    /* margin: auto; */
+  }
 }

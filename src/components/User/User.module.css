@@ -1,18 +1,28 @@
-.card {
-  /* width: 80vw; */
-  margin-bottom: 50px;
-}
-
-.card .biograph {
-  margin-bottom: 10px;
+.main {
+  padding: 0.5rem 1rem;
+  margin-bottom: 20%;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 20px;
 }
 
 .header div:last-of-type {
   cursor: pointer;
+}
+
+/* Pantalla grande */
+@media screen and (min-width: 415px) {
+  .main {
+    margin: auto;
+    margin-bottom: 50px;
+    width: 50%;
+  }
+
+  .header {
+    margin-right: 20px;
+  }
 }
