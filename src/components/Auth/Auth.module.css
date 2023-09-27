@@ -1,12 +1,12 @@
 .auth {
   top: 10;
-  right: 7%;
+  right: 3%;
   position: fixed;
 }
 
-.auth > ul {
+/* .auth > ul {
   display: flex;
-}
+} */
 
 .auth > ul > li {
   text-decoration: none;
@@ -14,8 +14,11 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 350px) {
+@media screen and (min-width: 415px) {
   .auth > ul {
     gap: 30px;
+  }
+  .auth > ul {
+    display: flex;
   }
 }

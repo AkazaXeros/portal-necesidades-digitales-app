@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import { card, cardHeader, cardContent, header } from "./Entry.module.css";
 import relativeTimeCalc from "../../utils/relativeTimeCalc";
+import { useUser } from "../../context/UserContext";
 
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-
 import {
   Avatar,
   Badge,
@@ -17,8 +17,6 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-
-import { useUser } from "../../context/UserContext";
 
 const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
