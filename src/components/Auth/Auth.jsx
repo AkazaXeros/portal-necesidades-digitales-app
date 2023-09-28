@@ -1,14 +1,14 @@
 // Importing component from React
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
-import { useUser } from "../../context/UserContext";
-import MenuUser from "../MenuUser/MenuUser";
+import { useUser } from '../../context/UserContext';
+import MenuUser from '../MenuUser/MenuUser';
 
 // Importing CSS
-import { auth } from "./Auth.module.css";
+import { auth } from './Auth.module.css';
 
 // Importing component from Meterial UI
-import { Button } from "@mui/material";
+import { Button } from '@mui/material';
 
 // Creating auth component
 const Auth = () => {
@@ -20,17 +20,17 @@ const Auth = () => {
     <div className={auth}>
       <ul>
         <li>
-          <Button size="small" color={"secondary"}>
-            <NavLink to="/entries/allEntries">Services</NavLink>
+          <Button size="small" color={'secondary'}>
+            <NavLink to="/allEntries">Services</NavLink>
           </Button>
         </li>
         <li>
-          <Button size="small" color={"secondary"}>
+          <Button size="small" color={'secondary'}>
             <NavLink to="/users/login">Login</NavLink>
           </Button>
         </li>
         <li>
-          <Button variant="contained" size="small" color={"secondary"}>
+          <Button variant="contained" size="small" color={'secondary'}>
             <NavLink to="/users/register">Signup</NavLink>
           </Button>
         </li>
