@@ -1,5 +1,5 @@
 // Importing component from React
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { useUser } from "../../context/UserContext";
 import MenuUser from "../MenuUser/MenuUser";
@@ -21,12 +21,17 @@ const Auth = () => {
       <ul>
         <li>
           <Button size="small" color={"secondary"}>
-            <Link to="/users/login">Login</Link>
+            <NavLink to="/entries/allEntries">Services</NavLink>
+          </Button>
+        </li>
+        <li>
+          <Button size="small" color={"secondary"}>
+            <NavLink to="/users/login">Login</NavLink>
           </Button>
         </li>
         <li>
           <Button variant="contained" size="small" color={"secondary"}>
-            <Link to="/users/register">Signup</Link>
+            <NavLink to="/users/register">Signup</NavLink>
           </Button>
         </li>
       </ul>

@@ -1,8 +1,9 @@
+// Importing CSS
 import { header, main } from "./User.module.css";
+
 import { useUser } from "../../context/UserContext";
 
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-
+// Importing Material UI components
 import {
   Avatar,
   Card,
@@ -11,7 +12,9 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
+// Component for displaying user data
 const User = ({ appUser, onEdit }) => {
   const { user } = useUser();
 
@@ -27,9 +30,8 @@ const User = ({ appUser, onEdit }) => {
                 `${import.meta.env.VITE_BACKEND_URL}/${appUser.avatar}`
               }></Avatar>
           }
-          title={user.userName}
+          title={appUser.userName}
           subheader={appUser.role === "normal" ? "user" : "admin"}
-          // subheader="Joined on:"
         />
         {appUser.id === user?.id && (
           <div>
@@ -41,7 +43,7 @@ const User = ({ appUser, onEdit }) => {
       <Divider variant="middle" />
 
       <CardContent>
-        <Typography>{user.biograph || "No biography yet..."}</Typography>
+        <Typography>{appUser.biograph || "No biography yet..."}</Typography>
       </CardContent>
       <Divider variant="inset" />
 

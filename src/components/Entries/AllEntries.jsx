@@ -1,10 +1,19 @@
-import { Alert } from '@mui/material';
+// Importing CSS
+import useEntries from "../../hooks/useEntries";
+import { allEntries } from "./AllEntries.module.css";
 
-import { allEntries } from './AllEntries.module.css';
+import Entry from "./Entry";
 
-import Entry from './Entry';
+// Importing Material UI components
+import { Alert, CircularProgress } from "@mui/material";
 
-const AllEntries = ({ entries, onProfile }) => {
+// Component that displays all service entries
+const AllEntries = ({ onProfile }) => {
+  const { entries, loading, error } = useEntries();
+
+  if (loading) return <CircularProgress />;
+  if (error) return <Alert severity="error">An error has occurred...</Alert>;
+
   return entries.length ? (
     <ul className={allEntries}>
       {entries.map((entry) => (
