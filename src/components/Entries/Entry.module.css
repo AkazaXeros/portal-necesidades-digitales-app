@@ -1,11 +1,18 @@
 .card {
-  width: 80vw;
+  width: 100%;
   padding: 0.5rem 1rem;
 }
 
 .cardHeader,
 .cardContent {
   cursor: pointer;
+}
+
+.cardDescription {
+  width: 25ch; /* This sets the width to 60 characters */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header {
@@ -19,9 +26,9 @@
 }
 
 /* Pantalla grande */
-@media screen and (min-width: 415px) {
+@media screen and (min-width: 750px) {
   .card {
-    width: 30vw;
-    /* margin: auto; */
+    /* width: 80%; */
+    margin: auto;
   }
 }

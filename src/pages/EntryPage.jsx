@@ -16,7 +16,7 @@ import { useUser } from "../context/UserContext";
 
 // Importing ui material components
 import { Alert, CircularProgress, Fab } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import AddCommentOutlinedIcon from "@mui/icons-material/AddCommentOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 
@@ -106,7 +106,7 @@ const EntryPage = () => {
             size="small"
             color="secondary"
             onClick={addCommentHandler}>
-            <AddIcon />
+            <AddCommentOutlinedIcon />
           </Fab>
           {user?.id === entry.userId && entry.numberOfComments === 0 && (
             <>

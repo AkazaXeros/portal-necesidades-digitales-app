@@ -1,7 +1,13 @@
 import { FormattedRelativeTime } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
-import { card, cardHeader, cardContent, header } from "./Entry.module.css";
+import {
+  card,
+  cardDescription,
+  cardHeader,
+  cardContent,
+  header,
+} from "./Entry.module.css";
 import relativeTimeCalc from "../../utils/relativeTimeCalc";
 import { useUser } from "../../context/UserContext";
 
@@ -67,7 +73,11 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
 
         <Divider />
 
-        <Typography component="p" color="text.secondary" mt={1.5}>
+        <Typography
+          component="p"
+          color="text.secondary"
+          mt={1.5}
+          className={!onEntryPage ? cardDescription : ""}>
           {entry.description}
         </Typography>
       </CardContent>

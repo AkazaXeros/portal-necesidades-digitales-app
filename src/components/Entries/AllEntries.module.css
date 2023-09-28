@@ -1,22 +1,16 @@
 .allEntries {
-  /* display: flex; */
-  display: grid;
-
+  display: flex;
   /* margin-top: 1rem; */
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   /* margin: 2rem auto; */
-  grid-template-columns: minmax(100px, max-content);
+  /* grid-template-columns: minmax(100px, max-content); */
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+
   justify-content: center;
   gap: 2rem;
   list-style: none;
 }
 
-@media screen and (min-width: 415px) {
-  .allEntries {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  /* .allEntries > li {
-    width: 33%;
-  } */
+.card {
+  height: auto;
 }

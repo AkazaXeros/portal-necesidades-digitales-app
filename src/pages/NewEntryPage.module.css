@@ -7,7 +7,7 @@
 }
 
 .newEntry > .btn {
-  width: 33%;
+  width: 60%;
   margin: auto;
   margin-top: 20px;
 }
@@ -15,4 +15,15 @@
 .newEntry > .upload {
   width: 60%;
   margin: auto;
+}
+
+/* Pantalla grande */
+@media screen and (min-width: 415px) {
+  .newEntry > .btn {
+    width: 33%;
+  }
+
+  .newEntry > .upload {
+    width: 33%;
+  }
 }
