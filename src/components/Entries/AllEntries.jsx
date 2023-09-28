@@ -1,11 +1,14 @@
 // Importing CSS
-import useEntries from "../../hooks/useEntries";
-import { allEntries } from "./AllEntries.module.css";
+import useEntries from '../../hooks/useEntries';
+import { allEntries } from './AllEntries.module.css';
 
-import Entry from "./Entry";
+// Importing React component
+import { Helmet } from 'react-helmet';
+
+import Entry from './Entry';
 
 // Importing Material UI components
-import { Alert, CircularProgress } from "@mui/material";
+import { Alert, CircularProgress } from '@mui/material';
 
 // Component that displays all service entries
 const AllEntries = ({ onProfile }) => {
@@ -15,13 +18,19 @@ const AllEntries = ({ onProfile }) => {
   if (error) return <Alert severity="error">An error has occurred...</Alert>;
 
   return entries.length ? (
-    <ul className={allEntries}>
-      {entries.map((entry) => (
-        <li key={entry.id}>
-          <Entry entry={entry} onProfile={onProfile} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <Helmet>
+        <title>Our services</title>
+      </Helmet>
+
+      <ul className={allEntries}>
+        {entries.map((entry) => (
+          <li key={entry.id}>
+            <Entry entry={entry} onProfile={onProfile} />
+          </li>
+        ))}
+      </ul>
+    </>
   ) : (
     <Alert severity="info">There are no entries yet...</Alert>
   );

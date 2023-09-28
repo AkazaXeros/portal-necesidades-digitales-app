@@ -1,8 +1,8 @@
-import { useUser } from "../../context/UserContext";
+import { useUser } from '../../context/UserContext';
 
 // Importing React components
-import { NavLink, useNavigate } from "react-router-dom";
-import { Fragment, useState } from "react";
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Fragment, useState } from 'react';
 
 // Importing Material UI components
 import {
@@ -14,9 +14,9 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-} from "@mui/material";
-import Logout from "@mui/icons-material/Logout";
-import PostAdd from "@mui/icons-material/PostAdd";
+} from '@mui/material';
+import Logout from '@mui/icons-material/Logout';
+import PostAdd from '@mui/icons-material/PostAdd';
 
 const MenuUser = ({ auth }) => {
   const { user, logout } = useUser();
@@ -43,9 +43,10 @@ const MenuUser = ({ auth }) => {
               onClick={handleClick}
               size="small"
               sx={{ ml: 2 }}
-              aria-controls={open ? "account-menu" : undefined}
+              aria-controls={open ? 'account-menu' : undefined}
               aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}>
+              aria-expanded={open ? 'true' : undefined}
+            >
               <Avatar
                 src={
                   user.avatar &&
@@ -65,36 +66,38 @@ const MenuUser = ({ auth }) => {
           PaperProps={{
             elevation: 0,
             sx: {
-              overflow: "visible",
-              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+              overflow: 'visible',
+              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
               mt: 1.5,
-              "& .MuiAvatar-root": {
+              '& .MuiAvatar-root': {
                 width: 32,
                 height: 32,
                 ml: -0.5,
                 mr: 1,
               },
-              "&:before": {
+              '&:before': {
                 content: '""',
-                display: "block",
-                position: "absolute",
+                display: 'block',
+                position: 'absolute',
                 top: 0,
                 right: 14,
                 width: 10,
                 height: 10,
-                bgcolor: "background.paper",
-                transform: "translateY(-50%) rotate(45deg)",
+                bgcolor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
                 zIndex: 0,
               },
             },
           }}
-          transformOrigin={{ horizontal: "right", vertical: "top" }}
-          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
+          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        >
           <MenuItem onClick={handleClose}>
             <p
               onClick={() =>
                 navigateHandler(`/users/${user.id}/${user.userName}`)
-              }>
+              }
+            >
               Profile
             </p>
           </MenuItem>
@@ -105,13 +108,17 @@ const MenuUser = ({ auth }) => {
             </p>
           </MenuItem>
 
+          <MenuItem onClick={handleClose}>
+            <NavLink to="/allEntries">Services</NavLink>
+          </MenuItem>
+
           <Divider />
 
           <MenuItem>
             <ListItemIcon>
               <PostAdd fontSize="small" />
             </ListItemIcon>
-            <NavLink to={"/entries"}>New Service</NavLink>
+            <NavLink to={'/entries'}>New Service</NavLink>
           </MenuItem>
 
           <MenuItem onClick={logoutHandler}>
