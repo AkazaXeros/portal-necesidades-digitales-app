@@ -1,38 +1,57 @@
-import "./Categories.module.css";
+// Importing CSS
+import {
+  container,
+  imagesCard,
+  imagesUl,
+  categoryImage,
+  categoryTitle,
+} from "./Categories.module.css";
+
+// Importing Card component.
+import Card from "../UI/Card";
+
+// Array images.
+const images = [
+  {
+    img: "../../../assets/translation.jpg",
+    title: "Document Translation",
+  },
+  {
+    img: "../../../assets/doc-correction.jpg",
+    title: "Document correction",
+  },
+  {
+    img: "../../../assets/code.jpg",
+    title: "Code Correction",
+  },
+  {
+    img: "../../../assets/pic-editing.jpg",
+    title: "Image Editing",
+  },
+  {
+    img: "../../../assets/video-editing.jpg",
+    title: "Video Editing",
+  },
+];
 
 const Categories = () => {
-
-    return(
-        <>
-        <div>
-            <h1>Categories</h1>  
-        </div>
-          
-        <div>
-            <section className="section">
-                <h2>Video Editing</h2>
-                <img src="../src/img/video-editing.jpg" alt="video" />
-            </section>
-            <section className="section">
-                <h2>Image Editing</h2>
-                <img src="../src/img/pic-editing.jpg" alt="image" />
-            </section>
-            <section className="section">
-                <h2>Document Translation</h2>
-                <img src="../src/img/translation.jpg" alt="translation" />
-            </section>
-            <section className="section">
-                <h2>Document Correction</h2>
-                <img src="../src/img/doc-correction.jpg" alt="correction" />
-            </section>
-            <section className="section">
-                <h2>Code Correction</h2>
-                <img src="../src/img/code.jpg" alt="code" />
-            </section>
-        </div>
-        </>
-    
-        );
+  return (
+    <div className={container}>
+      <h1>Our most popular categories</h1>
+      <ul className={imagesUl}>
+        {images.map((image) => (
+          <Card key={image.title} className={imagesCard}>
+            <img
+              src={image.img}
+              alt={`${image.title} Image`}
+              className={categoryImage}
+            />
+            <h2 className={categoryTitle}>{image.title}</h2>
+          </Card>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Categories;
