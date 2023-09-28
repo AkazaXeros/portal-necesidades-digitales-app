@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 415px) {
+@media screen and (min-width: 500px) {
   .auth > ul {
     gap: 30px;
   }

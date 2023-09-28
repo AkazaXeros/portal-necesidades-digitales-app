@@ -21,6 +21,11 @@ main {
   margin: 2rem auto;
 }
 
+img {
+  width: 100%;
+  font-family: inherit;
+}
+
 a {
   text-decoration: none; /* Remove underlines */
   color: inherit; /* Inherit color from parent element */
