@@ -1,14 +1,14 @@
 // Importing CSS
-import useEntries from "../../hooks/useEntries";
-import { allEntries, card } from "./AllEntries.module.css";
+import useEntries from '../../hooks/useEntries';
+import { allEntries, card } from './AllEntries.module.css';
 
 // Importing React component
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
-import Entry from "./Entry";
+import Entry from './Entry';
 
 // Importing Material UI components
-import { Alert, CircularProgress } from "@mui/material";
+import { Alert, CircularProgress } from '@mui/material';
 
 // Component that displays all service entries
 const AllEntries = ({ onProfile }) => {
@@ -19,9 +19,7 @@ const AllEntries = ({ onProfile }) => {
 
   return entries.length ? (
     <>
-      <Helmet>
-        <title>Our services</title>
-      </Helmet>
+      <Helmet title="Our services" />
 
       <ul className={allEntries}>
         {entries.map((entry) => (
