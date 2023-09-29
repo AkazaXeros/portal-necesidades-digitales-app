@@ -35,7 +35,7 @@ function App() {
           <Route path="/entries" element={<NewEntry />} />
           <Route path="/entries/:id/:title" element={<EntryPage />} />
           <Route path="/allEntries" element={<AllEntries />} />
-          <Route path="/comments/:entryId" element={<NewComment />} />
+          <Route path="/comments/:entryId/:title" element={<NewComment />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

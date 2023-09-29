@@ -13,24 +13,19 @@ import {
   Divider,
   Typography,
 } from '@mui/material';
+
 import { useState } from 'react';
 import { deleteCommentService } from '../../services';
-import { useNavigate } from 'react-router-dom';
 
 const Comment = ({ comment, onDelete }) => {
-  // console.log(comment);
-
-  const navigate = useNavigate();
   const { user, token } = useUser();
   const [error, setError] = useState();
 
   //-------------------------Handlers-----------------------------//
   const deleteHandler = async () => {
     try {
-      const data = await deleteCommentService(comment.commentId, token);
+      await deleteCommentService(comment.commentId, token);
       onDelete(comment.commentId);
-      // console.log(data);
-      // navigate(`/`);
     } catch (err) {
       setError(err);
     }

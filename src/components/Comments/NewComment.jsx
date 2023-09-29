@@ -10,7 +10,7 @@ import { createNewComment } from '../../services';
 import { Helmet } from 'react-helmet';
 
 const NewComment = () => {
-  const { entryId } = useParams();
+  const { entryId, title } = useParams();
   const { token } = useUser();
   const [content, setContent] = useState('');
   const [file, setFile] = useState();
@@ -19,10 +19,9 @@ const NewComment = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    // console.log(entryId);
     try {
       await createNewComment(entryId, content, file, token);
-      navigate(`/entries/${entryId}`);
+      navigate(`/entries/${entryId}/${title}`);
     } catch (error) {
       setError(error.message);
     }
