@@ -4,8 +4,11 @@ import { container, icon } from './About.module.css';
 // Importing Materia UI
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import useTitle from '../../hooks/useTitle';
 
 const About = () => {
+  useTitle('About Us');
+
   return (
     <article className={container}>
       <section>
