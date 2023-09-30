@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200&display=swap");
+
 .container {
   display: flex;
   flex-direction: column;
@@ -6,7 +8,8 @@
 }
 
 .container h1 {
-  font-size: 160%;
+  font-size: 180%;
+  font-family: "Roboto Flex", sans-serif;
 }
 
 .imagesUl {
@@ -22,6 +25,7 @@
   overflow: hidden; /* Ensure child elements do not protrude */
   width: 300px; /* Set your desired width */
   height: 200px; /* Set your desired height */
+  cursor: pointer;
 }
 
 /* Category image styles */
@@ -47,7 +51,7 @@
 .listContainer {
   margin-top: 100px;
   padding: 4rem;
-  background-color: #fff8e1;
+  background-color: #e9f1f7;
 }
 
 .list {
@@ -65,6 +69,7 @@
 .list div > h1 {
   margin-left: 40px;
   margin-bottom: 20px;
+  color: #0277bd;
 }
 
 .list div {
@@ -91,12 +96,12 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #9575cd;
+  /* background-color: #9575cd; */
 }
 
 .containerArticle > article > p {
   font-size: 2rem;
-  color: white;
+  color: black;
 }
 
 .containerArticle > article > .button {
@@ -105,7 +110,7 @@
 }
 
 .containerArticle > img {
-  width: 37rem;
+  width: 27rem;
   max-width: 100%;
 }
 

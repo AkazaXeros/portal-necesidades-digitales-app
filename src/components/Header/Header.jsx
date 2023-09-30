@@ -1,8 +1,11 @@
+// Importing custom components.
 import Auth from "../Auth/Auth";
 import { mainHeader, mainHeaderToolBar } from "./Header.module.css";
 
+// Importing React component
 import { Link } from "react-router-dom";
 
+// Import Materia UI components.
 import { AppBar, Box } from "@mui/material";
 
 const Header = () => {

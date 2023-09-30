@@ -11,6 +11,9 @@ const Theme = createTheme({
       main: "#F3AA60",
       contrastText: "#EEEEEE",
     },
+    backup: {
+      main: "#fff",
+    },
   },
 });
 

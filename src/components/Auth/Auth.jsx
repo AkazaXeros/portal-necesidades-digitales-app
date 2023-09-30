@@ -1,16 +1,19 @@
 // Importing component from React
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
-import { useUser } from '../../context/UserContext';
-import MenuUser from '../MenuUser/MenuUser';
+// Importing user context.
+import { useUser } from "../../context/UserContext";
+
+// Importing custom component.
+import MenuHeader from "../MenuUser/MenuHeader";
+import MenuUser from "../MenuUser/MenuUser";
 
 // Importing CSS
-import { auth } from './Auth.module.css';
+import { auth, burguer } from "./Auth.module.css";
 
-// Importing component from Meterial UI
-import { Button } from '@mui/material';
+// Importing component from Material UI
+import { Button } from "@mui/material";
 
-// Creating auth component
 const Auth = () => {
   const { user } = useUser();
 
@@ -20,21 +23,27 @@ const Auth = () => {
     <div className={auth}>
       <ul>
         <li>
-          <Button size="small" color={'secondary'}>
+          <Button size="small" color={"secondary"}>
             <NavLink to="/allEntries">Services</NavLink>
           </Button>
         </li>
         <li>
-          <Button size="small" color={'secondary'}>
+          <Button size="small" color={"secondary"}>
+            <NavLink to="/about">About us</NavLink>
+          </Button>
+        </li>
+        <li>
+          <Button size="small" color={"secondary"}>
             <NavLink to="/users/login">Login</NavLink>
           </Button>
         </li>
         <li>
-          <Button variant="contained" size="small" color={'secondary'}>
+          <Button variant="contained" size="small" color={"secondary"}>
             <NavLink to="/users/register">Signup</NavLink>
           </Button>
         </li>
       </ul>
+      <MenuHeader className={burguer} />
     </div>
   );
 };
