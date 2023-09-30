@@ -6,7 +6,6 @@ import { IntlProvider } from 'react-intl';
 import './App.css';
 
 // Importing components
-import AllEntries from './components/Entries/AllEntries';
 import EditPasswordPage from './pages/EditPasswordPage';
 import EntryPage from './pages/EntryPage';
 import Footer from './components/Footer/Footer';
@@ -19,6 +18,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import Register from './components/Register/Register';
 import UserProfilePage from './pages/UserProfilePage';
 import UpdateEntry from './components/Forms/UpdateEntry';
+import ServicesPage from './pages/ServicesPage';
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
           <Route path="/users/password" element={<EditPasswordPage />} />
           <Route path="/entries" element={<NewEntry />} />
           <Route path="/entries/:id/:title" element={<EntryPage />} />
-          <Route path="/allEntries" element={<AllEntries />} />
+          <Route path="/allEntries" element={<ServicesPage />} />
           <Route path="/comments/:entryId/:title" element={<NewComment />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

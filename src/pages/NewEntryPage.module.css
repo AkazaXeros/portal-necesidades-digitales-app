@@ -1,7 +1,6 @@
 .newEntry {
   display: flex;
   flex-direction: column;
-  padding: 10%;
   gap: 10px;
   width: 80vw;
 }
@@ -18,12 +17,12 @@
 }
 
 /* Pantalla grande */
-@media screen and (min-width: 415px) {
+@media screen and (max-width: 750px) {
   .newEntry > .btn {
-    width: 33%;
+    width: 100%;
   }
 
   .newEntry > .upload {
-    width: 33%;
+    width: 100%;
   }
 }

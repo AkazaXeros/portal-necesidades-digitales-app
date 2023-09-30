@@ -1,12 +1,11 @@
 .registerForm {
   display: flex;
   flex-direction: column;
-  padding: 10%;
   gap: 10px;
 }
 
 .registerForm .btn {
-  width: 10vw;
+  width: 30%;
   color: white;
   margin: auto;
   margin-bottom: 50px;

@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-// Importing React component
-import { Helmet } from 'react-helmet';
-
 import { Alert, CircularProgress } from '@mui/material';
 
 import { getUserService } from '../services';
 import UserProfile from '../components/UserProfile/UserProfile';
+import useTitle from '../hooks/useTitle';
 
 const UserProfilePage = () => {
   const [error, setError] = useState();
@@ -30,16 +28,12 @@ const UserProfilePage = () => {
     loadUser();
   }, [id]);
 
+  useTitle(publicUser ? publicUser.userName : 'Anonymous');
   if (error) return <Alert severity="error">{error}</Alert>;
   if (loading) return <CircularProgress />;
 
   return publicUser ? (
-    <>
-      <Helmet>
-        <title>{publicUser.userName}</title>
-      </Helmet>
-      <UserProfile appUser={publicUser} onUpdateProfile={setPublicUser} />
-    </>
+    <UserProfile appUser={publicUser} onUpdateProfile={setPublicUser} />
   ) : null;
 };
 

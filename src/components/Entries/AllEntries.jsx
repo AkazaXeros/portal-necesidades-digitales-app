@@ -1,9 +1,5 @@
 // Importing CSS
-import useEntries from '../../hooks/useEntries';
-import { allEntries, card } from './AllEntries.module.css';
-
-// Importing React component
-import { Helmet } from 'react-helmet';
+import { allEntries, notFound } from './AllEntries.module.css';
 
 import Entry from './Entry';
 
@@ -11,24 +7,25 @@ import Entry from './Entry';
 import { Alert, CircularProgress } from '@mui/material';
 
 // Component that displays all service entries
-const AllEntries = ({ onProfile }) => {
-  const { entries, loading, error } = useEntries();
-
+const AllEntries = ({ entries, onProfile, error, loading }) => {
   if (loading) return <CircularProgress />;
   if (error) return <Alert severity="error">An error has occurred...</Alert>;
 
-  return entries.length ? (
-    <>
-      <Helmet title="Our services" />
+  if (entries.length === 0)
+    return (
+      <Alert severity="info" className={notFound}>
+        No services found...
+      </Alert>
+    );
 
-      <ul className={allEntries}>
-        {entries.map((entry) => (
-          <li key={entry.id} className={card}>
-            <Entry entry={entry} onProfile={onProfile} />
-          </li>
-        ))}
-      </ul>
-    </>
+  return entries.length ? (
+    <ul className={allEntries}>
+      {entries.map((entry) => (
+        <li key={entry.id}>
+          <Entry entry={entry} onProfile={onProfile} />
+        </li>
+      ))}
+    </ul>
   ) : (
     <Alert severity="info">There are no entries yet...</Alert>
   );

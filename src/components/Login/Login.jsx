@@ -3,12 +3,10 @@ import { useState } from 'react';
 
 import { Alert, Box, Button, TextField } from '@mui/material';
 
-// Importing React component
-import { Helmet } from 'react-helmet';
-
 import { loginForm, btn, link } from './Login.module.css';
 import { loginUserService } from '../../services';
 import { useUser } from '../../context/UserContext';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,6 +14,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const { login } = useUser();
   const navigate = useNavigate();
+  useTitle('Login');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,9 +32,6 @@ const Login = () => {
 
   return (
     <Box onSubmit={handleSubmit} component="form" className={loginForm}>
-      <Helmet>
-        <title>Login</title>
-      </Helmet>
       <TextField
         autoFocus
         id="email"

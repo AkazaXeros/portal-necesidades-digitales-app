@@ -1,18 +1,20 @@
-import { FormattedRelativeTime } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { FormattedRelativeTime } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 
 import {
   card,
   cardDescription,
+  titleDescription,
   cardHeader,
   cardContent,
   header,
-} from "./Entry.module.css";
-import relativeTimeCalc from "../../utils/relativeTimeCalc";
-import { useUser } from "../../context/UserContext";
+} from './Entry.module.css';
 
-import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import relativeTimeCalc from '../../utils/relativeTimeCalc';
+import { useUser } from '../../context/UserContext';
+
+import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import {
   Avatar,
   Badge,
@@ -22,7 +24,7 @@ import {
   CardHeader,
   Divider,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
   const relativeTimeValue = relativeTimeCalc(entry.createdAt);
@@ -38,7 +40,7 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
 
   const contentClickHandler = () => {
     navigate(
-      `/entries/${entry.id}/${entry.title.toLowerCase().replaceAll(" ", "-")}`
+      `/entries/${entry.id}/${entry.title.toLowerCase().replaceAll(' ', '-')}`
     );
   };
 
@@ -55,7 +57,8 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
                 src={
                   entry.avatar &&
                   `${import.meta.env.VITE_BACKEND_URL}/${entry.avatar}`
-                }></Avatar>
+                }
+              ></Avatar>
             )
           }
           title={!onProfile && `${entry.userName}`}
@@ -69,7 +72,12 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
       </div>
 
       <CardContent onClick={contentClickHandler} className={cardContent}>
-        <Typography variant="h5">{entry.title}</Typography>
+        <Typography
+          variant="h5"
+          className={!onEntryPage ? titleDescription : ''}
+        >
+          {entry.title}
+        </Typography>
 
         <Divider />
 
@@ -77,7 +85,8 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
           component="p"
           color="text.secondary"
           mt={1.5}
-          className={!onEntryPage ? cardDescription : ""}>
+          className={!onEntryPage ? cardDescription : ''}
+        >
           {entry.description}
         </Typography>
       </CardContent>
@@ -102,7 +111,8 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
             <Badge
               badgeContent={entry.numberOfComments}
               color="primary"
-              showZero>
+              showZero
+            >
               <ModeCommentOutlinedIcon color="primary" />
             </Badge>
           </CardActions>

@@ -1,0 +1,9 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.page .input {
+  margin: 0 auto;
+  width: 90vw;
+}

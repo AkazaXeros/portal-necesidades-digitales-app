@@ -44,24 +44,42 @@
   font-size: 1rem; /* Adjust font size as needed */
 }
 
-.list {
+.listContainer {
   margin-top: 100px;
-  padding: 20px;
+  padding: 4rem;
   background-color: #fff8e1;
 }
 
-.list > h1 {
+.list {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.list > img {
+  width: 37rem;
+  max-width: 100%;
+}
+
+.list div > h1 {
   margin-left: 40px;
   margin-bottom: 20px;
 }
-.list > ul {
+
+.list div {
+  width: 40%;
+}
+
+.list div > ul {
+  width: 80%;
   display: flex;
   flex-direction: column;
   gap: 20px;
   list-style: none;
 }
 
-.list > ul > li {
+.list div > ul > li {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -69,16 +87,11 @@
 
 .containerArticle {
   margin-top: 50px;
-  padding: 30px;
-  width: 100%;
+  padding: 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   background-color: #9575cd;
-}
-
-.containerArticle > article {
-  flex: 1;
 }
 
 .containerArticle > article > p {
@@ -92,8 +105,33 @@
 }
 
 .containerArticle > img {
-  width: 600px;
-
+  width: 37rem;
   max-width: 100%;
-  height: auto;
+}
+
+@media screen and (max-width: 1250px) {
+  .listContainer {
+    padding: 1.5rem;
+  }
+  .containerArticle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .list div {
+    width: 100%;
+    margin: 2rem auto;
+  }
+
+  .list {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .list div > ul {
+    width: 100%;
+  }
 }

@@ -1,16 +1,13 @@
 .allEntries {
+  margin: 2rem auto;
+  width: 90%;
   display: flex;
-  /* margin-top: 1rem; */
   flex-wrap: wrap;
-  /* margin: 2rem auto; */
-  /* grid-template-columns: minmax(100px, max-content); */
-  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
-
   justify-content: center;
   gap: 2rem;
   list-style: none;
 }
 
-.card {
-  height: auto;
+.notFound {
+  margin-top: 10rem;
 }

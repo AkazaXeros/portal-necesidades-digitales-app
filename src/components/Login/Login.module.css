@@ -1,12 +1,11 @@
 .loginForm {
   display: flex;
   flex-direction: column;
-  padding: 10%;
   gap: 10px;
 }
 
 .loginForm .btn {
-  width: 10vw;
+  width: 30%;
   margin: auto;
   color: white;
   margin-bottom: 50px;

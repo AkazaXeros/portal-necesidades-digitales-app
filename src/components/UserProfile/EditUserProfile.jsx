@@ -3,17 +3,18 @@ import {
   editProfileForm,
   btnContainer,
   avatarInput,
-} from "./EditUserProfile.module.css";
+} from './EditUserProfile.module.css';
 
-import { useUser } from "../../context/UserContext";
-import { updateUserService } from "../../services";
+import { useUser } from '../../context/UserContext';
+import { updateUserService } from '../../services';
 
 // Importing Material UI components
-import { Alert, Avatar, Button, TextField, Tooltip } from "@mui/material";
+import { Alert, Avatar, Button, TextField, Tooltip } from '@mui/material';
 
 // Importing React component
-import { Helmet } from "react-helmet";
-import { useState } from "react";
+import { Helmet } from 'react-helmet';
+import { useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 
 // Component for editing the user's profile
 const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
@@ -26,7 +27,9 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
   const [avatarFile, setAvatarFile] = useState();
   const [userName, setUserName] = useState(user.userName);
   const [biography, setBiography] = useState(user.biograph);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
+
+  useTitle('Edit User');
 
   // --------- Handlers ---------
   const handleAvatarChange = (event) => {
@@ -44,14 +47,12 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
   };
 
   const changeHandler = (e, identifier) => {
-    if (identifier === "username") {
+    if (identifier === 'username') {
       setUserName(e.target.value);
-      console.log(e.target.value);
-    } else if (identifier === "biography") {
-      console.log(e.target.value);
+    } else if (identifier === 'biography') {
       setBiography(e.target.value);
     }
-    setError("");
+    setError('');
   };
 
   const handleSubmit = async (e) => {
@@ -84,10 +85,6 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
 
   return (
     <form className={editProfileForm} onSubmit={handleSubmit}>
-      <Helmet>
-        <title>Edit User</title>
-      </Helmet>
-
       <Tooltip title="Edit" placement="left-end">
         <label>
           <Avatar alt="Usuario" src={avatar} sx={{ width: 80, height: 80 }} />
@@ -105,7 +102,7 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
         type="text"
         value={userName}
         variant="outlined"
-        onChange={(e) => changeHandler(e, "username")}
+        onChange={(e) => changeHandler(e, 'username')}
       />
 
       <TextField
@@ -115,8 +112,8 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
         placeholder="Tell us a bit about you..."
         multiline
         rows={5}
-        value={biography || ""}
-        onChange={(e) => changeHandler(e, "biography")}
+        value={biography || ''}
+        onChange={(e) => changeHandler(e, 'biography')}
       />
 
       <div className={btnContainer}>
@@ -127,7 +124,8 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
           variant="contained"
           type="button"
           color="secondary"
-          onClick={onCancel}>
+          onClick={onCancel}
+        >
           Cancel
         </Button>
       </div>
