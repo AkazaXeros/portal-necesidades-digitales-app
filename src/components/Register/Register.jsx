@@ -1,13 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-// Importing React component
-import { Helmet } from 'react-helmet';
-
 import { Alert, Box, Button, TextField } from '@mui/material';
 
 import { registerForm, btn, link } from './Register.module.css';
 import { registerUserService } from '../../services';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
   const [userName, setUserName] = useState('');
@@ -16,6 +14,8 @@ const Register = () => {
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
+
+  useTitle('Signup');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,9 +31,6 @@ const Register = () => {
 
   return (
     <Box component="form" onSubmit={handleSubmit} className={registerForm}>
-      <Helmet>
-        <title>Signup</title>
-      </Helmet>
       <TextField
         autoFocus
         id="username"

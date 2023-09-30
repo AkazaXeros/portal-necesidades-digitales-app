@@ -6,3 +6,7 @@
   z-index: 5;
   position: relative;
 }
+
+.entryOnPage > div:first-of-type {
+  width: 80vw;
+}

@@ -1,16 +1,9 @@
 import EditPassword from '../components/UserProfile/EditPassword';
 
-// Importing React component
-import { Helmet } from 'react-helmet';
+import useTitle from '../hooks/useTitle';
 
 const EditPasswordPage = () => {
-  return (
-    <>
-      <Helmet>
-        <title>Privacy and Security</title>
-      </Helmet>
-      <EditPassword />
-    </>
-  );
+  useTitle('Privacy and Security');
+  return <EditPassword />;
 };
 export default EditPasswordPage;

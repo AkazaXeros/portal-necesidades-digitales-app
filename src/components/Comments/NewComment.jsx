@@ -6,8 +6,8 @@ import { useParams, useNavigate } from 'react-router';
 import UploadBtn from '../Upload/UploadBtn';
 import { createNewComment } from '../../services';
 
-// Importing React component
-import { Helmet } from 'react-helmet';
+// Importing Custom hooks
+import useTitle from '../../hooks/useTitle';
 
 const NewComment = () => {
   const { entryId, title } = useParams();
@@ -16,6 +16,8 @@ const NewComment = () => {
   const [file, setFile] = useState();
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  useTitle('New Comment');
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -28,9 +30,6 @@ const NewComment = () => {
   };
   return (
     <form onSubmit={submitHandler} className={newComment}>
-      <Helmet>
-        <title>New Comment</title>
-      </Helmet>
       <TextField
         id="comment"
         label="Comment"

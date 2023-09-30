@@ -1,7 +1,7 @@
 // Importing CSS
-import { header, main } from "./User.module.css";
+import { header, main } from './User.module.css';
 
-import { useUser } from "../../context/UserContext";
+import { useUser } from '../../context/UserContext';
 
 // Importing Material UI components
 import {
@@ -11,8 +11,9 @@ import {
   CardHeader,
   Divider,
   Typography,
-} from "@mui/material";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+} from '@mui/material';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import { FormattedDate } from 'react-intl';
 
 // Component for displaying user data
 const User = ({ appUser, onEdit }) => {
@@ -28,10 +29,11 @@ const User = ({ appUser, onEdit }) => {
               src={
                 appUser.avatar &&
                 `${import.meta.env.VITE_BACKEND_URL}/${appUser.avatar}`
-              }></Avatar>
+              }
+            ></Avatar>
           }
           title={appUser.userName}
-          subheader={appUser.role === "normal" ? "user" : "admin"}
+          subheader={appUser.role === 'normal' ? 'user' : 'admin'}
         />
         {appUser.id === user?.id && (
           <div>
@@ -43,13 +45,21 @@ const User = ({ appUser, onEdit }) => {
       <Divider variant="middle" />
 
       <CardContent>
-        <Typography>{appUser.biograph || "No biography yet..."}</Typography>
+        <Typography>{appUser.biograph || 'No biography yet...'}</Typography>
       </CardContent>
       <Divider variant="inset" />
 
       <CardContent align="right">
         <Typography variant="caption" color="text.secondary">
-          Joined On
+          <div>
+            Joined On:{' '}
+            <FormattedDate
+              value={appUser.createdAt}
+              year="numeric"
+              month="long"
+              day="2-digit"
+            />
+          </div>
         </Typography>
         <Typography variant="caption" color="text.secondary">
           {appUser.id === user?.id && <div>Email: {user.email}</div>}

@@ -8,6 +8,13 @@
   cursor: pointer;
 }
 
+.titleDescription {
+  width: 16ch; /* This sets the width to 60 characters */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .cardDescription {
   width: 25ch; /* This sets the width to 60 characters */
   white-space: nowrap;
@@ -25,10 +32,18 @@
   cursor: pointer;
 }
 
-/* Pantalla grande */
+/* Small screen */
+@media screen and (max-width: 682px) {
+  .card {
+    width: 350px;
+    /* margin: auto; */
+  }
+}
+
+/* Medium/Large Screens */
 @media screen and (min-width: 750px) {
   .card {
-    /* width: 80%; */
+    width: 25rem;
     margin: auto;
   }
 }

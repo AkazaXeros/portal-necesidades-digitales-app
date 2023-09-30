@@ -2,11 +2,10 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
-// Importing React component
-import { Helmet } from 'react-helmet';
+// Importing CSS
+import { buttons, entryOnPage } from './EntryPage.module.css';
 
 import AllEntryComments from '../components/Comments/AllEntryComments';
-import { buttons } from './EntryPage.module.css';
 import { deleteEntryService } from '../services';
 import Entry from '../components/Entries/Entry';
 import FormModal from '../components/UI/FormModal';
@@ -19,6 +18,7 @@ import { Alert, CircularProgress, Fab } from '@mui/material';
 import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import useTitle from '../hooks/useTitle';
 
 // Creating an entry page component
 const EntryPage = () => {
@@ -27,6 +27,7 @@ const EntryPage = () => {
   const { entry, loading, error, setEntry } = useEntry(id);
   const navigate = useNavigate();
 
+  useTitle(entry ? entry.title : 'Loading');
   const [modalIsOpened, setModalIsOpened] = useState(false);
 
   const [deleteError, setDeleteError] = useState();
@@ -79,9 +80,6 @@ const EntryPage = () => {
 
   return entry ? (
     <div>
-      <Helmet>
-        <title>{entry.title}</title>
-      </Helmet>
       {modalIsOpened && (
         <div>
           <FormModal onEdit={editHandler}>
@@ -93,7 +91,9 @@ const EntryPage = () => {
           </FormModal>
         </div>
       )}
-      <Entry entry={entry} onEntryPage={onEntryPage} onEdit={editHandler} />
+      <div className={entryOnPage}>
+        <Entry entry={entry} onEntryPage={onEntryPage} onEdit={editHandler} />
+      </div>
       {token && (
         <div className={buttons}>
           <Fab

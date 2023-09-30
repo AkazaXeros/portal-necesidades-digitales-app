@@ -1,4 +1,5 @@
 import { useUser } from '../../context/UserContext';
+import { useFilter } from '../../context/FilterContext';
 
 // Importing React components
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -20,6 +21,7 @@ import PostAdd from '@mui/icons-material/PostAdd';
 
 const MenuUser = ({ auth }) => {
   const { user, logout } = useUser();
+  const { setCategory } = useFilter();
   const logoutHandler = () => logout();
 
   const navigate = useNavigate();
@@ -109,7 +111,9 @@ const MenuUser = ({ auth }) => {
           </MenuItem>
 
           <MenuItem onClick={handleClose}>
-            <NavLink to="/allEntries">Services</NavLink>
+            <NavLink to="/allEntries" onClick={() => setCategory('')}>
+              Services
+            </NavLink>
           </MenuItem>
 
           <Divider />
