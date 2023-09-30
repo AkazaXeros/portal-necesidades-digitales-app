@@ -38,13 +38,24 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 800px) {
   .container {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .container > section {
+    width: 30%;
   }
 
   .container > section > div > p {
-    width: 60ch;
+    width: 20ch;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container > section > div > p {
+    width: 35ch;
   }
 }

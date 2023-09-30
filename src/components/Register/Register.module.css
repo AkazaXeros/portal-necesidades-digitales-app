@@ -14,3 +14,7 @@
 .registerForm .link {
   color: #f9a825;
 }
+
+.alertError {
+  width: 45ch;
+}

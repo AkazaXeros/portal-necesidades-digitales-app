@@ -9,39 +9,39 @@ import {
   list,
   containerArticle,
   button,
-} from "./Home.module.css";
+} from './Home.module.css';
 
 // Importing custom component.
-import Card from "../UI/Card";
+import Card from '../UI/Card';
 
 // Importing Material UI components.
-import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
-import { Button } from "@mui/material";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useFilter } from "../../context/FilterContext";
+import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
+import { Button } from '@mui/material';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useFilter } from '../../context/FilterContext';
 
 //-----------------------------------------------//
 
 const images = [
   {
-    img: "../../../assets/translation.jpg",
-    title: "Document Translation",
+    img: '../../../assets/translation.jpg',
+    title: 'Document Translation',
   },
   {
-    img: "../../../assets/doc-correction.jpg",
-    title: "Document correction",
+    img: '../../../assets/doc-correction.jpg',
+    title: 'Document correction',
   },
   {
-    img: "../../../assets/code.jpg",
-    title: "Code Correction",
+    img: '../../../assets/code.jpg',
+    title: 'Code Correction',
   },
   {
-    img: "../../../assets/pic-editing.jpg",
-    title: "Image Editing",
+    img: '../../../assets/pic-editing.jpg',
+    title: 'Image Editing',
   },
   {
-    img: "../../../assets/video-editing.jpg",
-    title: "Video Editing",
+    img: '../../../assets/video-editing.jpg',
+    title: 'Video Editing',
   },
 ];
 
@@ -52,8 +52,8 @@ const Home = () => {
 
   //-----------Handler-------------//
   const clickHandler = (e, title) => {
-    setCategory(title.toLocaleLowerCase().replaceAll(" ", "-"));
-    navigate("/allEntries");
+    setCategory(title.toLocaleLowerCase().replaceAll(' ', '-'));
+    navigate('/allEntries');
   };
 
   return (
@@ -65,7 +65,8 @@ const Home = () => {
             <Card
               key={image.title}
               className={imagesCard}
-              onClick={(e) => clickHandler(e, image.title)}>
+              onClick={(e) => clickHandler(e, image.title)}
+            >
               <img
                 src={image.img}
                 alt={`${image.title} Image`}
@@ -85,42 +86,38 @@ const Home = () => {
           />
 
           <div>
-            <h1>Title</h1>
+            <h1>The way we help</h1>
             <ul>
               <li>
                 <VerifiedOutlinedIcon color="primary" />
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Necessitatibus tenetur officiis aliquam ipsam voluptatem
-                  doloribus magni. Unde ex expedita aspernatur dolor, earum
-                  error iusto dignissimos iure fugiat quia maiores odio!
+                  Users can create detailed service requests, specifying the
+                  type of modification needed, file formats, and any specific
+                  requirements.
                 </p>
               </li>
               <li>
                 <VerifiedOutlinedIcon color="primary" />
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Necessitatibus tenetur officiis aliquam ipsam voluptatem
-                  doloribus magni. Unde ex expedita aspernatur dolor, earum
-                  error iusto dignissimos iure fugiat quia maiores odio!
+                  Other users can view and comment on the service requests,
+                  providing suggestions or offering their help to fulfill the
+                  request.
                 </p>
               </li>
               <li>
                 <VerifiedOutlinedIcon color="primary" />
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Necessitatibus tenetur officiis aliquam ipsam voluptatem
-                  doloribus magni. Unde ex expedita aspernatur dolor, earum
-                  error iusto dignissimos iure fugiat quia maiores odio!
+                  Wrench allows users to securely upload digital files required
+                  for the modification and download the completed files once the
+                  task is accomplished.
                 </p>
               </li>
               <li>
                 <VerifiedOutlinedIcon color="primary" />
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Necessitatibus tenetur officiis aliquam ipsam voluptatem
-                  doloribus magni. Unde ex expedita aspernatur dolor, earum
-                  error iusto dignissimos iure fugiat quia maiores odio!
+                  Anonymous users can browse the list of all current services
+                  and view public user information, fostering a sense of
+                  community while respecting user privacy.
                 </p>
               </li>
             </ul>

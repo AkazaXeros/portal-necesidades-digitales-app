@@ -9,5 +9,6 @@
 }
 
 .notFound {
-  margin-top: 10rem;
+  margin: 10rem auto;
+  width: 90%;
 }

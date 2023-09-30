@@ -1,6 +1,7 @@
 // Importing CSS
 import {
   editProfileForm,
+  editAvatar,
   btnContainer,
   avatarInput,
 } from './EditUserProfile.module.css';
@@ -9,10 +10,9 @@ import { useUser } from '../../context/UserContext';
 import { updateUserService } from '../../services';
 
 // Importing Material UI components
-import { Alert, Avatar, Button, TextField, Tooltip } from '@mui/material';
+import { Alert, Avatar, Button, TextField } from '@mui/material';
 
 // Importing React component
-import { Helmet } from 'react-helmet';
 import { useState } from 'react';
 import useTitle from '../../hooks/useTitle';
 
@@ -85,7 +85,8 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
 
   return (
     <form className={editProfileForm} onSubmit={handleSubmit}>
-      <Tooltip title="Edit" placement="left-end">
+      <div className={editAvatar}>
+        <p>Change Avatar:</p>
         <label>
           <Avatar alt="Usuario" src={avatar} sx={{ width: 80, height: 80 }} />
           <input
@@ -94,7 +95,7 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
             onChange={handleAvatarChange}
           />
         </label>
-      </Tooltip>
+      </div>
 
       <TextField
         id="username"

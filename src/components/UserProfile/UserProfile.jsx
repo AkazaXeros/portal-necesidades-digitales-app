@@ -1,16 +1,16 @@
-import { userProfile } from "./UserProfile.module.css";
-import AllEntries from "../Entries/AllEntries";
-import useEntries from "../../hooks/useEntries";
+import { userProfile } from './UserProfile.module.css';
+import AllEntries from '../Entries/AllEntries';
+import useEntries from '../../hooks/useEntries';
 
-import User from "../User/User";
-import FormModal from "../UI/FormModal";
+import User from '../User/User';
+import FormModal from '../UI/FormModal';
 
-import { CircularProgress } from "@mui/material";
-import { useState } from "react";
-import EditUserProfile from "./EditUserProfile";
+import { CircularProgress } from '@mui/material';
+import { useState } from 'react';
+import EditUserProfile from './EditUserProfile';
 
 const UserProfile = ({ appUser, onUpdateProfile }) => {
-  const { entries } = useEntries();
+  const { entries, loading } = useEntries();
 
   const [modalIsOpened, setModalIsOpened] = useState(false);
 
@@ -35,7 +35,7 @@ const UserProfile = ({ appUser, onUpdateProfile }) => {
       )}
       <User appUser={appUser} onEdit={editHandler} />
 
-      {!userEntries.length ? (
+      {loading ? (
         <CircularProgress />
       ) : (
         <AllEntries entries={userEntries} onProfile={true} />

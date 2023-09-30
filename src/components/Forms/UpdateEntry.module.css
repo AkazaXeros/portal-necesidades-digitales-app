@@ -1,11 +1,9 @@
 .updateEntry {
+  margin: 1rem auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
-
-  padding: 10%;
   gap: 10px;
-  width: 80%;
 }
 
 .updateEntry > .btn {
