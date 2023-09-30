@@ -9,50 +9,51 @@ import {
   list,
   containerArticle,
   button,
-} from './Categories.module.css';
+} from "./Home.module.css";
 
-// Importing Card component.
-import Card from '../UI/Card';
+// Importing custom component.
+import Card from "../UI/Card";
 
 // Importing Material UI components.
-import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
-import { Button } from '@mui/material';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useFilter } from '../../context/FilterContext';
+import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
+import { Button } from "@mui/material";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useFilter } from "../../context/FilterContext";
 
 //-----------------------------------------------//
-// Array images.
+
 const images = [
   {
-    img: '../../../assets/translation.jpg',
-    title: 'Document Translation',
+    img: "../../../assets/translation.jpg",
+    title: "Document Translation",
   },
   {
-    img: '../../../assets/doc-correction.jpg',
-    title: 'Document correction',
+    img: "../../../assets/doc-correction.jpg",
+    title: "Document correction",
   },
   {
-    img: '../../../assets/code.jpg',
-    title: 'Code Correction',
+    img: "../../../assets/code.jpg",
+    title: "Code Correction",
   },
   {
-    img: '../../../assets/pic-editing.jpg',
-    title: 'Image Editing',
+    img: "../../../assets/pic-editing.jpg",
+    title: "Image Editing",
   },
   {
-    img: '../../../assets/video-editing.jpg',
-    title: 'Video Editing',
+    img: "../../../assets/video-editing.jpg",
+    title: "Video Editing",
   },
 ];
 
-const Categories = () => {
+const Home = () => {
   const { setCategory } = useFilter();
 
   const navigate = useNavigate();
 
+  //-----------Handler-------------//
   const clickHandler = (e, title) => {
-    setCategory(title.toLocaleLowerCase().replaceAll(' ', '-'));
-    navigate('/allEntries');
+    setCategory(title.toLocaleLowerCase().replaceAll(" ", "-"));
+    navigate("/allEntries");
   };
 
   return (
@@ -64,8 +65,7 @@ const Categories = () => {
             <Card
               key={image.title}
               className={imagesCard}
-              onClick={(e) => clickHandler(e, image.title)}
-            >
+              onClick={(e) => clickHandler(e, image.title)}>
               <img
                 src={image.img}
                 alt={`${image.title} Image`}
@@ -136,7 +136,7 @@ const Categories = () => {
           </Button>
         </article>
         <img
-          src="../../../assets/homePage.jpg"
+          src="../../../assets/team.jpg"
           alt="Image of people working as a team"
         />
       </div>
@@ -144,4 +144,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default Home;

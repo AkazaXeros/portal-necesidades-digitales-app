@@ -10,11 +10,23 @@
   cursor: pointer;
 }
 
+.burguer {
+  display: none;
+}
+
 @media screen and (min-width: 500px) {
   .auth > ul {
+    display: flex;
     gap: 30px;
   }
+}
+@media screen and (max-width: 650px) {
   .auth > ul {
-    display: flex;
+    display: none;
+    gap: 30px;
+  }
+
+  .burguer {
+    display: block;
   }
 }

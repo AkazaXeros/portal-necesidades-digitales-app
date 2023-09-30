@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  width: 90vw;
+  gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container > section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+}
+
+.container > section > figure > img {
+  width: 10rem;
+  border-radius: 50%;
+}
+
+.container > section > div {
+  margin: auto;
+}
+
+.container > section > div > p {
+  width: 30ch;
+  margin-bottom: 20px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+  .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .container > section > div > p {
+    width: 60ch;
+  }
+}
