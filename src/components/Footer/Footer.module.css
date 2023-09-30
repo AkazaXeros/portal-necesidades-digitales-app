@@ -2,12 +2,12 @@
   display: flex;
   justify-content: space-around;
   text-align: center;
-  padding: 2%;
+  padding: 4%;
   width: 100%;
 }
 
-@media screen and (min-width: 350px) {
+@media screen and (min-width: 400px) {
   .mainFooter {
-    padding: 1%;
+    padding: 2%;
   }
 }

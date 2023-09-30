@@ -43,3 +43,57 @@
   border-radius: 5px; /* Rounded corners for the title background */
   font-size: 1rem; /* Adjust font size as needed */
 }
+
+.list {
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #fff8e1;
+}
+
+.list > h1 {
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+.list > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+}
+
+.list > ul > li {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.containerArticle {
+  margin-top: 50px;
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #9575cd;
+}
+
+.containerArticle > article {
+  flex: 1;
+}
+
+.containerArticle > article > p {
+  font-size: 2rem;
+  color: white;
+}
+
+.containerArticle > article > .button {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.containerArticle > img {
+  width: 600px;
+
+  max-width: 100%;
+  height: auto;
+}
