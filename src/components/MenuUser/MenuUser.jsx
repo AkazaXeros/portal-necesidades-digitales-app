@@ -116,6 +116,10 @@ const MenuUser = ({ auth }) => {
             </NavLink>
           </MenuItem>
 
+          <MenuItem onClick={handleClose}>
+            <NavLink to="/about">About us</NavLink>
+          </MenuItem>
+
           <Divider />
 
           <MenuItem>

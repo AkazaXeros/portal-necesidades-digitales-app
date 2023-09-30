@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { Alert, Box, Button, TextField } from '@mui/material';
 
-import { registerForm, btn, link } from './Register.module.css';
+import { registerForm, btn, link, alertError } from './Register.module.css';
 import { registerUserService } from '../../services';
 import useTitle from '../../hooks/useTitle';
 
@@ -16,6 +16,20 @@ const Register = () => {
   const navigate = useNavigate();
 
   useTitle('Signup');
+
+  const changeHandler = (e, identifier) => {
+    if (identifier === 'username') {
+      setUserName(e.target.value);
+    }
+    if (identifier === 'email') {
+      setEmail(e.target.value);
+    }
+    if (identifier === 'password') {
+      setPassword(e.target.value);
+    }
+
+    setError(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +54,7 @@ const Register = () => {
         value={userName}
         variant="outlined"
         required
-        onChange={(e) => setUserName(e.target.value)}
+        onChange={(e) => changeHandler(e, 'username')}
       />
 
       <TextField
@@ -52,7 +66,7 @@ const Register = () => {
         variant="outlined"
         helperText={error.message}
         error={error.error}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => changeHandler(e, 'email')}
         required
       />
 
@@ -62,7 +76,7 @@ const Register = () => {
         type="password"
         placeholder=""
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => changeHandler(e, 'password')}
         required
       />
 
@@ -75,7 +89,11 @@ const Register = () => {
         Signup
       </Button>
 
-      {error && <Alert severity="error">{error}</Alert>}
+      {error && (
+        <Alert severity="error" className={alertError}>
+          {error}
+        </Alert>
+      )}
 
       <Alert severity="success" color="info">
         If you already have an account
