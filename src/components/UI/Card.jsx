@@ -1,3 +1,4 @@
+// Importing CSS.
 import classes from './Card.module.css';
 
 const Card = ({ className, children, onClick }) => {

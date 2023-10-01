@@ -1,12 +1,12 @@
-// Importing CSS
-import { allEntries, notFound } from './AllEntries.module.css';
-
+// Importing custom component.
 import Entry from './Entry';
 
-// Importing Material UI components
+// Importing CSS.
+import { allEntries, notFound } from './AllEntries.module.css';
+
+// Importing Material UI components.
 import { Alert, CircularProgress } from '@mui/material';
 
-// Component that displays all service entries
 const AllEntries = ({ entries, onProfile, error, loading }) => {
   if (loading) return <CircularProgress />;
   if (error) return <Alert severity="error">An error has occurred...</Alert>;

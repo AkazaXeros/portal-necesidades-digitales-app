@@ -1,8 +1,11 @@
-import Home from "../components/Home/Home";
-import useTitle from "../hooks/useTitle";
+// Importing custom component.
+import Home from '../components/Home/Home';
+
+// Importing custom hooks component.
+import useTitle from '../hooks/useTitle';
 
 const HomePage = () => {
-  useTitle("Wrench");
+  useTitle('Wrench');
   return <Home />;
 };
 export default HomePage;

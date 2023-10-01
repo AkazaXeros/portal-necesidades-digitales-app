@@ -1,16 +1,15 @@
-// Importing hook from react
-import useComments from "../../hooks/useComments";
+// Importing custom hooks from React.
+import useComments from '../../hooks/useComments';
 
-// Importing component Comment
-import Comment from "./Comment";
+// Importing custom component.
+import Comment from './Comment';
 
-// Importing CSS
-import { allComments } from "./AllEntryComments.module.css";
+// Importing CSS.
+import { allComments } from './AllEntryComments.module.css';
 
-// Importing components from Material UI
-import { Alert, CircularProgress } from "@mui/material";
+// Importing components from Material UI.
+import { Alert, CircularProgress } from '@mui/material';
 
-// Creating AllEntryComments component
 const AllEntryComments = ({ entryId, token }) => {
   const { comments, loading, error, deleteComment } = useComments(
     entryId,
@@ -25,7 +24,6 @@ const AllEntryComments = ({ entryId, token }) => {
         {comments.map((comment) => {
           return (
             <li key={comment.commentId}>
-              {/* {Aqui dentro deberiamos poner un componente personalizado(comment) para cada comentario con su CSS. Creo que seria buena idea que por ahora usaramos un diseño como el de las tarjetas de los servicios} */}
               <Comment
                 comment={comment}
                 entryId={entryId}

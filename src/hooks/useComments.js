@@ -1,5 +1,7 @@
+// Importing hooks from React.
 import { useEffect, useState } from 'react';
 
+// Importing custom component.
 import { getAllComments } from '../services';
 
 const useComments = (entryId, token) => {

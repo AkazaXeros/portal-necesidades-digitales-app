@@ -1,11 +1,16 @@
+// Importing hooks from React.
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Alert, CircularProgress } from '@mui/material';
-
-import { getUserService } from '../services';
+// Importing custom hooks components.
 import UserProfile from '../components/UserProfile/UserProfile';
 import useTitle from '../hooks/useTitle';
+
+// Importing custom component.
+import { getUserService } from '../services';
+
+// Importing Material UI components.
+import { Alert, CircularProgress } from '@mui/material';
 
 const UserProfilePage = () => {
   const [error, setError] = useState();

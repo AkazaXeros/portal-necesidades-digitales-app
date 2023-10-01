@@ -5,5 +5,13 @@
 
 .page .input {
   margin: 0 auto;
-  width: 90vw;
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Extra large screen */
+@media screen and (min-width: 1200px) {
+  .newEntry {
+    width: 50vw;
+  }
 }

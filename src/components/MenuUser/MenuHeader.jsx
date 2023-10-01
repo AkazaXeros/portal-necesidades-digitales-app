@@ -1,14 +1,14 @@
 // Import hook and component from React.
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 // Importing Materia UI components.
-import { Button, Menu, MenuItem } from "@mui/material";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { Button, Menu, MenuItem } from '@mui/material';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 const MenuHeader = ({ className }) => {
-  // Creating states
   const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
 
   //--------------Handlers----------------//
@@ -24,10 +24,11 @@ const MenuHeader = ({ className }) => {
       <Button
         color="backup"
         id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
+        aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}>
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      >
         <MenuOutlinedIcon />
       </Button>
       <Menu
@@ -36,8 +37,9 @@ const MenuHeader = ({ className }) => {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}>
+          'aria-labelledby': 'basic-button',
+        }}
+      >
         <MenuItem onClick={handleClose}>
           <NavLink to="/allEntries">Services</NavLink>
         </MenuItem>

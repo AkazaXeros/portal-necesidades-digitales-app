@@ -1,10 +1,8 @@
-// Importing hook from React
+// Importing hooks from React.
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
-// Importing CSS
-import { buttons, entryOnPage } from './EntryPage.module.css';
-
+// Importing custom components.
 import AllEntryComments from '../components/Comments/AllEntryComments';
 import { deleteEntryService } from '../services';
 import Entry from '../components/Entries/Entry';
@@ -13,14 +11,16 @@ import UpdateEntry from '../components/Forms/UpdateEntry';
 import useEntry from '../hooks/useEntry';
 import { useUser } from '../context/UserContext';
 
-// Importing ui material components
+// Importing CSS.
+import { buttons, entryOnPage } from './EntryPage.module.css';
+
+// Importing ui material components.
 import { Alert, CircularProgress, Fab } from '@mui/material';
 import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import useTitle from '../hooks/useTitle';
 
-// Creating an entry page component
 const EntryPage = () => {
   const { id } = useParams();
   const { token, user } = useUser();
@@ -56,8 +56,7 @@ const EntryPage = () => {
     try {
       if (entry.numberOfComments === 0) {
         if (window.confirm('Are you sure you want to delete?')) {
-          const data = await deleteEntryService(entry.id, token);
-          console.log(data);
+          await deleteEntryService(entry.id, token);
           navigate('/');
         }
       }

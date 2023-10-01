@@ -1,6 +1,7 @@
-// Importing CSS
+// Importing CSS.
 import {
   container,
+  doable,
   imagesCard,
   imagesUl,
   categoryImage,
@@ -11,36 +12,45 @@ import {
   button,
 } from './Home.module.css';
 
+// Importing images
+import translation from '../../assets/translation.jpg';
+import docCorrection from '../../assets/doc-correction.jpg';
+import code from '../../assets/code.jpg';
+import picEditing from '../../assets/pic-editing.jpg';
+import videoEditing from '../../assets/video-editing.jpg';
+import homePage from '../../assets/homePage.jpg';
+import team from '../../assets/team.jpg';
+
 // Importing custom component.
 import Card from '../UI/Card';
 
 // Importing Material UI components.
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 import { Button } from '@mui/material';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useFilter } from '../../context/FilterContext';
 
 //-----------------------------------------------//
 
 const images = [
   {
-    img: '../../../assets/translation.jpg',
+    img: translation,
     title: 'Document Translation',
   },
   {
-    img: '../../../assets/doc-correction.jpg',
-    title: 'Document correction',
+    img: docCorrection,
+    title: 'Document Correction',
   },
   {
-    img: '../../../assets/code.jpg',
+    img: code,
     title: 'Code Correction',
   },
   {
-    img: '../../../assets/pic-editing.jpg',
+    img: picEditing,
     title: 'Image Editing',
   },
   {
-    img: '../../../assets/video-editing.jpg',
+    img: videoEditing,
     title: 'Video Editing',
   },
 ];
@@ -80,10 +90,7 @@ const Home = () => {
 
       <article className={listContainer}>
         <section className={list}>
-          <img
-            src="../../../assets/homePage.jpg"
-            alt="Image of people working as a team"
-          />
+          <img src={homePage} alt="Image of people working as a team" />
 
           <div>
             <h1>The way we help</h1>
@@ -120,6 +127,18 @@ const Home = () => {
                   community while respecting user privacy.
                 </p>
               </li>
+              <li>
+                <VerifiedOutlinedIcon color="primary" />
+                <p>
+                  If you want to be able to see all comments and more details do
+                  not forget to{' '}
+                  <Link to={'/users/register'}>
+                    <span style={{ color: '#F3AA60', fontWeight: 'bold' }}>
+                      Join Us!
+                    </span>
+                  </Link>
+                </p>
+              </li>
             </ul>
           </div>
         </section>
@@ -127,15 +146,14 @@ const Home = () => {
 
       <div className={containerArticle}>
         <article>
-          <p>Suddenly everything is so doable</p>
+          <p>
+            Suddenly everything is so <span className={doable}>doable</span>
+          </p>
           <Button color="primary" variant="contained" className={button}>
             <NavLink to="/users/register"> Join Wrench </NavLink>
           </Button>
         </article>
-        <img
-          src="../../../assets/team.jpg"
-          alt="Image of people working as a team"
-        />
+        <img src={team} alt="Image of people working as a team" />
       </div>
     </>
   );

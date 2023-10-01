@@ -1,19 +1,25 @@
-// Importing CSS
+// Importing CSS.
 import { container, icon } from './About.module.css';
 
-// Importing Materia UI
+// Importing images.
+import nuria from '../../assets/nuria.jpg';
+import pol from '../../assets/pol.jpg';
+import william from '../../assets/william.jpg';
+
+// Importing Material UI.
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import useTitle from '../../hooks/useTitle';
+import Card from '../UI/Card';
 
 const About = () => {
   useTitle('About Us');
 
   return (
     <article className={container}>
-      <section>
+      <Card>
         <figure>
-          <img src="../../../assets/william.jpg" alt="Image William" />
+          <img src={william} alt="Avatar William" />
         </figure>
 
         <div>
@@ -30,7 +36,7 @@ const About = () => {
               <GitHubIcon fontSize="large" color="primary" />
             </a>
             <a
-              href="https://www.linkedin.com/in/william-g%C3%B3mez-fern%C3%A1ndez-517442255/"
+              href="https://www.linkedin.com/in/williamgomezfernandez"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -38,11 +44,11 @@ const About = () => {
             </a>
           </div>
         </div>
-      </section>
+      </Card>
 
-      <section>
+      <Card>
         <figure>
-          <img src="../../../assets/sandra.jpg" alt="Image Sandra" />
+          <img src={pol} alt="Avatar Sandra" />
         </figure>
 
         <div>
@@ -67,17 +73,17 @@ const About = () => {
             </a>
           </div>
         </div>
-      </section>
+      </Card>
 
-      <section>
+      <Card>
         <figure>
-          <img src="../../../assets/william.jpg" alt="Image William" />
+          <img src={nuria} alt="Avatar Nuria" />
         </figure>
 
         <div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa,
-            isteasvdgshdgcfgfsdhgsdfg Lorem ipsum do
+            Creative and up to date Full Stack Web Developer. Open to learn new
+            technologies and be challenged.
           </p>
           <div className={icon}>
             <a
@@ -88,7 +94,7 @@ const About = () => {
               <GitHubIcon fontSize="large" color="primary" />
             </a>
             <a
-              href="https://github.com/Snnip"
+              href="https://www.linkedin.com/in/nuriafs/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -96,7 +102,7 @@ const About = () => {
             </a>
           </div>
         </div>
-      </section>
+      </Card>
     </article>
   );
 };

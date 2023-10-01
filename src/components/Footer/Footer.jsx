@@ -1,5 +1,8 @@
-import { AppBar } from "@mui/material";
-import { mainFooter } from "./Footer.module.css";
+// Imporitng CSS
+import { mainFooter } from './Footer.module.css';
+
+// Importing Material UI component.
+import { AppBar } from '@mui/material';
 
 const Footer = () => {
   return (

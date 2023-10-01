@@ -1,11 +1,19 @@
+// Importing hooks from React.
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import { createEntryService } from '../services';
-import { newEntry, btn, upload } from './NewEntryPage.module.css';
+// Importing custom hooks components.
 import { useUser } from '../context/UserContext';
+import useTitle from '../hooks/useTitle';
+
+// Importing custom components.
+import { createEntryService } from '../services';
 import UploadBtn from '../components/Upload/UploadBtn';
 
+// Importing CSS.
+import { newEntry, btn, upload } from './NewEntryPage.module.css';
+
+// Importing Material UI components.
 import {
   Alert,
   Button,
@@ -16,8 +24,6 @@ import {
   Select,
   TextField,
 } from '@mui/material';
-
-import useTitle from '../hooks/useTitle';
 
 const NewEntry = () => {
   const [title, setTitle] = useState('');

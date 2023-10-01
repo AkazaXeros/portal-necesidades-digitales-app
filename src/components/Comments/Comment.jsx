@@ -1,6 +1,14 @@
-import { useUser } from '../../context/UserContext';
-import { btns, card } from './Comment.module.css';
+// Importing hook from React.
+import { useState } from 'react';
 
+// Importing custom components.
+import { deleteCommentService } from '../../services';
+import { useUser } from '../../context/UserContext';
+
+// Importing CSS.
+import { btns, card, cardContent, commentDate } from './Comment.module.css';
+
+// Importing Material UI components.
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import {
@@ -13,13 +21,14 @@ import {
   Divider,
   Typography,
 } from '@mui/material';
-
-import { useState } from 'react';
-import { deleteCommentService } from '../../services';
+import relativeTimeCalc from '../../utils/relativeTimeCalc';
+import { FormattedRelativeTime } from 'react-intl';
 
 const Comment = ({ comment, onDelete }) => {
   const { user, token } = useUser();
   const [error, setError] = useState();
+
+  const relativeTimeValue = relativeTimeCalc(comment.commentCreatedAt);
 
   //-------------------------Handlers-----------------------------//
   const deleteHandler = async () => {
@@ -63,11 +72,21 @@ const Comment = ({ comment, onDelete }) => {
         />
         <Divider variant="middle" />
         <CardContent>
-          <Typography component="p" variant="body2">
+          <Typography component="p" variant="body2" className={cardContent}>
             {comment.content}
           </Typography>
-          <Typography component="p" color="text.secondary">
-            {comment.entryId}
+
+          <Divider />
+          <Typography
+            component="p"
+            color="text.secondary"
+            className={commentDate}
+          >
+            <FormattedRelativeTime
+              value={-relativeTimeValue}
+              numeric="auto"
+              updateIntervalInSeconds={1000}
+            />
           </Typography>
         </CardContent>
 
@@ -84,8 +103,8 @@ const Comment = ({ comment, onDelete }) => {
             </Button>
           )}
         </div>
-        {error && <Alert severity="error">{error}</Alert>}
       </Card>
+      {error && <Alert severity="error">{error}</Alert>}
     </div>
   );
 };
