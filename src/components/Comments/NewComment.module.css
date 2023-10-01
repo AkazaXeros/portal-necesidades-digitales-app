@@ -4,6 +4,7 @@
   padding: 10%;
   gap: 10px;
   width: 80vw;
+  max-width: 600px;
 }
 
 .buttons {

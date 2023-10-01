@@ -2,18 +2,23 @@
 import Entry from './Entry';
 
 // Importing CSS.
-import { allEntries, notFound } from './AllEntries.module.css';
+import { allEntries } from './AllEntries.module.css';
 
 // Importing Material UI components.
 import { Alert, CircularProgress } from '@mui/material';
 
 const AllEntries = ({ entries, onProfile, error, loading }) => {
-  if (loading) return <CircularProgress />;
-  if (error) return <Alert severity="error">An error has occurred...</Alert>;
+  if (loading) return <CircularProgress className="circularLoading" />;
+  if (error)
+    return (
+      <Alert severity="error" className="notFound">
+        An error has occurred...
+      </Alert>
+    );
 
   if (entries.length === 0)
     return (
-      <Alert severity="info" className={notFound}>
+      <Alert severity="info" className="notFound">
         No services found...
       </Alert>
     );

@@ -10,7 +10,7 @@ import { useUser } from '../../context/UserContext';
 import useTitle from '../../hooks/useTitle';
 
 // Importing CSS.
-import { loginForm, btn, link } from './Login.module.css';
+import { loginForm, btn, link, signupText } from './Login.module.css';
 
 // Importing Materia UI components.
 import { Alert, Box, Button, TextField } from '@mui/material';
@@ -81,7 +81,7 @@ const Login = () => {
       </Button>
 
       {error && <Alert severity="error">{error}</Alert>}
-      <Alert severity="success" color="info">
+      <Alert severity="success" color="info" className={signupText}>
         If you don`t have an account yet
         <Button variant="text" color="secondary">
           <Link to="/users/register" className={link}>

@@ -4,6 +4,10 @@
   gap: 10px;
 }
 
+.signupText {
+  align-items: center;
+}
+
 .loginForm .btn {
   width: 30%;
   margin: auto;

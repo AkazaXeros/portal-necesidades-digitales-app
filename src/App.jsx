@@ -17,31 +17,36 @@ import UserProfilePage from './pages/UserProfilePage';
 import UpdateEntry from './components/Forms/UpdateEntry';
 import ServicesPage from './pages/ServicesPage';
 import About from './components/About/About';
+import ErrorBoundary from './error/ErrorBoundary';
+import FriendlyRobotErrorFallback from './error/FriendlyError';
 
 // Importing CSS.
 import './App.css';
+
 function App() {
   return (
-    <IntlProvider locale="en">
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/users/login" element={<Login />} />
-          <Route path="/users/register" element={<Register />} />
-          <Route path="/users/:id/:userName" element={<UserProfilePage />} />
-          <Route path="/users/updateEntry" element={<UpdateEntry />} />
-          <Route path="/users/password" element={<EditPasswordPage />} />
-          <Route path="/entries" element={<NewEntry />} />
-          <Route path="/entries/:id/:title" element={<EntryPage />} />
-          <Route path="/allEntries" element={<ServicesPage />} />
-          <Route path="/comments/:entryId/:title" element={<NewComment />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </IntlProvider>
+    <ErrorBoundary FallbackComponent={FriendlyRobotErrorFallback}>
+      <IntlProvider locale="en">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/users/login" element={<Login />} />
+            <Route path="/users/register" element={<Register />} />
+            <Route path="/users/:id/:userName" element={<UserProfilePage />} />
+            <Route path="/users/updateEntry" element={<UpdateEntry />} />
+            <Route path="/users/password" element={<EditPasswordPage />} />
+            <Route path="/entries" element={<NewEntry />} />
+            <Route path="/entries/:id/:title" element={<EntryPage />} />
+            <Route path="/allEntries" element={<ServicesPage />} />
+            <Route path="/comments/:entryId/:title" element={<NewComment />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </IntlProvider>
+    </ErrorBoundary>
   );
 }
 

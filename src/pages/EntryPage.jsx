@@ -33,7 +33,7 @@ const EntryPage = () => {
   const [deleteError, setDeleteError] = useState();
   const onEntryPage = true;
 
-  if (loading) return <CircularProgress />;
+  if (loading) return <CircularProgress className="circularLoading" />;
   if (error) return <Alert severity="error">{error}</Alert>;
 
   /* ---------------------------Handlers-------------------------------- */

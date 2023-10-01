@@ -10,7 +10,7 @@ import { UserProvider } from './context/UserContext.jsx';
 // Importing CSS.
 import './index.css';
 
-// Importing componentes from Material UI.
+// Importing components from Material UI.
 import Theme from './Colors/Colors';
 import { ThemeProvider } from '@mui/material';
 import { FilterProvider } from './context/FilterContext';

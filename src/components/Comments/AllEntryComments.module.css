@@ -9,12 +9,3 @@
 .allComments > ul > li {
   list-style: none;
 }
-
-/* @media screen and (min-width: 800px) {
-  .allComments > ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: center;
-  }
-} */

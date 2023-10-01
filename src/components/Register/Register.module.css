@@ -4,6 +4,10 @@
   gap: 10px;
 }
 
+.loginText {
+  align-items: center;
+}
+
 .registerForm .btn {
   width: 30%;
   color: white;
