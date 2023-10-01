@@ -30,4 +30,8 @@
   .card {
     width: 600px;
   }
+
+  .cardContent {
+    width: 50ch;
+  }
 }
