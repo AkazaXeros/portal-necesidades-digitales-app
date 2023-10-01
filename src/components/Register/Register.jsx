@@ -9,7 +9,13 @@ import { registerUserService } from '../../services';
 import useTitle from '../../hooks/useTitle';
 
 // Importing CSS
-import { registerForm, btn, link, alertError } from './Register.module.css';
+import {
+  registerForm,
+  btn,
+  link,
+  alertError,
+  loginText,
+} from './Register.module.css';
 
 // Importing Material UI components.
 import { Alert, Box, Button, TextField } from '@mui/material';
@@ -102,7 +108,7 @@ const Register = () => {
         </Alert>
       )}
 
-      <Alert severity="success" color="info">
+      <Alert severity="success" color="info" className={loginText}>
         If you already have an account
         <Button variant="text">
           <Link to="/users/login" className={link}>

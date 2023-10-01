@@ -82,7 +82,6 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
       onCancel();
     }
   };
-  // --------------------------
 
   return (
     <form className={editProfileForm} onSubmit={handleSubmit}>

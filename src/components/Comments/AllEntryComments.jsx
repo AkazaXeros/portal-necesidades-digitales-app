@@ -16,8 +16,14 @@ const AllEntryComments = ({ entryId, token }) => {
     token
   );
 
-  if (error) return <Alert severity="error">{error}</Alert>;
-  if (loading) return <CircularProgress />;
+  if (error)
+    return (
+      <Alert severity="error" className="notFound">
+        {error}
+      </Alert>
+    );
+  if (loading) return <CircularProgress className="circularLoading" />;
+
   return comments.length > 0 ? (
     <div className={allComments}>
       <ul>

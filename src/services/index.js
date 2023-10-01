@@ -92,7 +92,7 @@ export const getEntry = async (entryId) => {
   return data.data.entry;
 };
 
-// Have all comments
+// Get all comments
 export const getAllComments = async (entryId, token) => {
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/comments/${entryId}`,
@@ -108,7 +108,7 @@ export const getAllComments = async (entryId, token) => {
   return data.data.comments;
 };
 
-// Have all entries
+// HGet all entries
 export const getAllEntries = async () => {
   const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/entries`);
 

@@ -12,3 +12,9 @@
   margin: 10rem auto;
   width: 90%;
 }
+
+.circularLoading {
+  position: relative;
+  top: 25vh;
+  left: 50%;
+}

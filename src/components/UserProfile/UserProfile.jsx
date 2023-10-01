@@ -44,7 +44,7 @@ const UserProfile = ({ appUser, onUpdateProfile }) => {
       <User appUser={appUser} onEdit={editHandler} />
 
       {loading ? (
-        <CircularProgress />
+        <CircularProgress className="circularLoading" />
       ) : (
         <AllEntries entries={userEntries} onProfile={true} />
       )}

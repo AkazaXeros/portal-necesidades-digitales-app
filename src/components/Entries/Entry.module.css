@@ -9,14 +9,14 @@
 }
 
 .titleDescription {
-  width: 16ch; /* This sets the width to 60 characters */
+  width: 16ch; /* This sets the width to 16 characters */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .cardDescription {
-  width: 25ch; /* This sets the width to 60 characters */
+  width: 25ch; /* This sets the width to 25 characters */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

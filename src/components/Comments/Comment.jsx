@@ -104,7 +104,11 @@ const Comment = ({ comment, onDelete }) => {
           )}
         </div>
       </Card>
-      {error && <Alert severity="error">{error}</Alert>}
+      {error && (
+        <Alert severity="error" className="notFound">
+          {error}
+        </Alert>
+      )}
     </div>
   );
 };

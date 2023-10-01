@@ -58,7 +58,7 @@ const UpdateEntry = ({ entry, onEdit, setEntry }) => {
       setLoading(false);
     }
   };
-  if (loading) return <CircularProgress />;
+  if (loading) return <CircularProgress className="circularLoading" />;
 
   return (
     <form onSubmit={handleSubmit} className={updateEntry}>

@@ -58,7 +58,7 @@ const NewEntry = () => {
     }
   };
 
-  if (loading) return <CircularProgress />;
+  if (loading) return <CircularProgress className="circularLoading" />;
 
   return (
     <form onSubmit={handleSubmit} className={newEntry}>

@@ -34,8 +34,9 @@ const UserProfilePage = () => {
   }, [id]);
 
   useTitle(publicUser ? publicUser.userName : 'Anonymous');
+
   if (error) return <Alert severity="error">{error}</Alert>;
-  if (loading) return <CircularProgress />;
+  if (loading) return <CircularProgress className="circularLoading" />;
 
   return publicUser ? (
     <UserProfile appUser={publicUser} onUpdateProfile={setPublicUser} />
