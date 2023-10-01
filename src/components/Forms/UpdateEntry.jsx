@@ -1,3 +1,17 @@
+// Imporitng hooks from React.
+import { useState } from 'react';
+
+// Importing custom hooks.
+import { useUser } from '../../context/UserContext';
+import useTitle from '../../hooks/useTitle';
+
+// Importing custom component.
+import { updateEntryService } from '../../services';
+
+// Imporitng CSS
+import { updateEntry, btn } from './UpdateEntry.module.css';
+
+// Importing Material UI components.
 import {
   Alert,
   Button,
@@ -12,21 +26,17 @@ import {
   Select,
 } from '@mui/material';
 
-import { useState } from 'react';
-
-import { updateEntry, btn } from './UpdateEntry.module.css';
-import { updateEntryService } from '../../services';
-import { useUser } from '../../context/UserContext';
-import useTitle from '../../hooks/useTitle';
-
 const UpdateEntry = ({ entry, onEdit, setEntry }) => {
   const [category, setCategory] = useState('');
-  const [resolved, setResolved] = useState(entry.resolved);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [resolved, setResolved] = useState(entry.resolved);
+
   const { token } = useUser();
+
   useTitle('Update Entry');
 
+  //-------------Handler-------------//
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -42,7 +52,6 @@ const UpdateEntry = ({ entry, onEdit, setEntry }) => {
 
       setEntry(data);
       onEdit();
-      // console.log(data);
     } catch (err) {
       setError(err.message);
     } finally {

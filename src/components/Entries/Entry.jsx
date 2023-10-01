@@ -1,6 +1,16 @@
+// Importing component from React.
 import { FormattedRelativeTime } from 'react-intl';
+
+// Importing hook from React.
 import { useNavigate } from 'react-router-dom';
 
+// Importing custom hooks.
+import { useUser } from '../../context/UserContext';
+
+// Importing custom component.
+import relativeTimeCalc from '../../utils/relativeTimeCalc';
+
+// Importing CSS.
 import {
   card,
   cardDescription,
@@ -10,9 +20,7 @@ import {
   header,
 } from './Entry.module.css';
 
-import relativeTimeCalc from '../../utils/relativeTimeCalc';
-import { useUser } from '../../context/UserContext';
-
+// Importing Material UI components.
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import {
@@ -33,6 +41,7 @@ const Entry = ({ entry, onEntryPage, onEdit, onProfile }) => {
 
   const navigate = useNavigate();
 
+  //-----------Handlers-------------//
   const avatarClickHandler = (e) => {
     e.preventDefault();
     navigate(`/users/${entry.userId}/${entry.userName}`);

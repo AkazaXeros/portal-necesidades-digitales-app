@@ -1,11 +1,12 @@
+// Importing custom hooks components.
 import { useUser } from '../../context/UserContext';
 import { useFilter } from '../../context/FilterContext';
 
-// Importing React components
+// Importing hooks from React.
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Fragment, useState } from 'react';
 
-// Importing Material UI components
+// Importing Material UI components.
 import {
   Avatar,
   Box,
@@ -20,16 +21,18 @@ import Logout from '@mui/icons-material/Logout';
 import PostAdd from '@mui/icons-material/PostAdd';
 
 const MenuUser = ({ auth }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
   const { user, logout } = useUser();
   const { setCategory } = useFilter();
+
   const logoutHandler = () => logout();
 
   const navigate = useNavigate();
-
   const navigateHandler = (endpoint) => navigate(endpoint);
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  //-------------Handlers--------------//
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -40,7 +43,7 @@ const MenuUser = ({ auth }) => {
     <div className={auth}>
       <Fragment>
         <Box>
-          <Tooltip title="Account settings">
+          <Tooltip title="User menu">
             <IconButton
               onClick={handleClick}
               size="small"

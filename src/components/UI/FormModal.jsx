@@ -1,4 +1,7 @@
+// Importing custom component.
 import Card from './Card';
+
+// Importing CSS.
 import classes from './FormModal.module.css';
 
 const FormModal = ({ children, onEdit }) => {

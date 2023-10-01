@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.container > section {
+.container > div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -14,19 +14,20 @@
   gap: 20px;
   padding: 20px;
   border-radius: 20px;
-  background-color: whitesmoke;
+  background-color: #f7f7f7;
 }
 
-.container > section > figure > img {
-  width: 10rem;
-  border-radius: 50%;
+.container > div > figure > img {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 100%;
 }
 
-.container > section > div {
+.container > div > div {
   margin: auto;
 }
 
-.container > section > div > p {
+.container > div > div > p {
   width: 30ch;
   margin-bottom: 20px;
 }
@@ -45,17 +46,17 @@
     justify-content: center;
   }
 
-  .container > section {
+  .container > div {
     width: 30%;
   }
 
-  .container > section > div > p {
+  .container > div > div > p {
     width: 20ch;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .container > section > div > p {
+  .container > div > div > p {
     width: 35ch;
   }
 }

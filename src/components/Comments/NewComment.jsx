@@ -1,24 +1,33 @@
-import { buttons, newComment } from './NewComment.module.css';
-import { Button, TextField } from '@mui/material';
+// Importing hooks from React.
 import { useState } from 'react';
-import { useUser } from '../../context/UserContext';
 import { useParams, useNavigate } from 'react-router';
+
+// Importing custom hooks.
+import { useUser } from '../../context/UserContext';
+import useTitle from '../../hooks/useTitle';
+
+// Importing custom components.
 import UploadBtn from '../Upload/UploadBtn';
 import { createNewComment } from '../../services';
 
-// Importing Custom hooks
-import useTitle from '../../hooks/useTitle';
+// Importing CSS.
+import { buttons, newComment } from './NewComment.module.css';
+
+// Importing Material UI components.
+import { Button, TextField } from '@mui/material';
 
 const NewComment = () => {
   const { entryId, title } = useParams();
   const { token } = useUser();
+  const navigate = useNavigate();
+
   const [content, setContent] = useState('');
   const [file, setFile] = useState();
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   useTitle('New Comment');
 
+  //----------Handler-------------//
   const submitHandler = async (e) => {
     e.preventDefault();
     try {

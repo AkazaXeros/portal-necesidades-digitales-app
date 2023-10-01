@@ -1,4 +1,14 @@
-// Importing CSS
+// Importing hooks from React.
+import { useState } from 'react';
+import useTitle from '../../hooks/useTitle';
+
+// Importing custom hooks component.
+import { useUser } from '../../context/UserContext';
+
+// Importing custom component.
+import { updateUserService } from '../../services';
+
+// Importing CSS.
 import {
   editProfileForm,
   editAvatar,
@@ -6,21 +16,12 @@ import {
   avatarInput,
 } from './EditUserProfile.module.css';
 
-import { useUser } from '../../context/UserContext';
-import { updateUserService } from '../../services';
-
-// Importing Material UI components
+// Importing Material UI components.
 import { Alert, Avatar, Button, TextField } from '@mui/material';
 
-// Importing React component
-import { useState } from 'react';
-import useTitle from '../../hooks/useTitle';
-
-// Component for editing the user's profile
 const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
   const { user, token, setUser } = useUser();
 
-  // --------- Events ---------
   const [avatar, setAvatar] = useState(
     user.avatar ? `${import.meta.env.VITE_BACKEND_URL}${user.avatar}` : null
   );
@@ -31,7 +32,7 @@ const EditUserProfile = ({ onCancel, onUpdateProfile }) => {
 
   useTitle('Edit User');
 
-  // --------- Handlers ---------
+  // --------- Handlers --------- //
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
 

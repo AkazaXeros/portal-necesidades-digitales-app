@@ -1,3 +1,4 @@
+// Importing component from React.
 import { Link } from 'react-router-dom';
 
 const NotFoundPage = () => {

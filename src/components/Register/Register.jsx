@@ -1,31 +1,39 @@
+// Importing hooks from React.
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import { Alert, Box, Button, TextField } from '@mui/material';
-
-import { registerForm, btn, link, alertError } from './Register.module.css';
+// Importing custom component.
 import { registerUserService } from '../../services';
+
+// Imporitng custom hooks component.
 import useTitle from '../../hooks/useTitle';
 
+// Importing CSS
+import { registerForm, btn, link, alertError } from './Register.module.css';
+
+// Importing Material UI components.
+import { Alert, Box, Button, TextField } from '@mui/material';
+
 const Register = () => {
-  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const [password, setPassword] = useState('');
+  const [userName, setUserName] = useState('');
 
   const navigate = useNavigate();
 
   useTitle('Signup');
 
-  const changeHandler = (e, identifier) => {
+  //------------------Handlers-----------------//
+  const changeHandler = (value, identifier) => {
     if (identifier === 'username') {
-      setUserName(e.target.value);
+      setUserName(value);
     }
     if (identifier === 'email') {
-      setEmail(e.target.value);
+      setEmail(value);
     }
     if (identifier === 'password') {
-      setPassword(e.target.value);
+      setPassword(value);
     }
 
     setError(false);
@@ -36,7 +44,6 @@ const Register = () => {
 
     try {
       await registerUserService({ userName, email, password });
-      // console.log(data);
       navigate('/users/login');
     } catch (err) {
       setError(err.message);
@@ -54,7 +61,7 @@ const Register = () => {
         value={userName}
         variant="outlined"
         required
-        onChange={(e) => changeHandler(e, 'username')}
+        onChange={(e) => changeHandler(e.target.value, 'username')}
       />
 
       <TextField
@@ -66,7 +73,7 @@ const Register = () => {
         variant="outlined"
         helperText={error.message}
         error={error.error}
-        onChange={(e) => changeHandler(e, 'email')}
+        onChange={(e) => changeHandler(e.target.value, 'email')}
         required
       />
 
@@ -76,7 +83,7 @@ const Register = () => {
         type="password"
         placeholder=""
         value={password}
-        onChange={(e) => changeHandler(e, 'password')}
+        onChange={(e) => changeHandler(e.target.value, 'password')}
         required
       />
 

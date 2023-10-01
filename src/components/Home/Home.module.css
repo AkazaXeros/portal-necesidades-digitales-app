@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 .container {
   display: flex;
@@ -9,7 +9,10 @@
 
 .container h1 {
   font-size: 180%;
-  font-family: "Roboto Flex", sans-serif;
+}
+
+.doable {
+  font-family: 'Courgette', cursive, sans-serif;
 }
 
 .imagesUl {
@@ -49,7 +52,8 @@
 }
 
 .listContainer {
-  margin-top: 100px;
+  margin-top: 6.25rem;
+  width: 100vw;
   padding: 4rem;
   background-color: #e9f1f7;
 }

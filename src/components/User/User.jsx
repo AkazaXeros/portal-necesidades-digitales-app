@@ -1,9 +1,10 @@
-// Importing CSS
-import { header, main } from './User.module.css';
-
+// Importing custom hooks component.
 import { useUser } from '../../context/UserContext';
 
-// Importing Material UI components
+// Importing CSS.
+import { header, main } from './User.module.css';
+
+// Importing Material UI components.
 import {
   Avatar,
   Card,
@@ -15,7 +16,6 @@ import {
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { FormattedDate } from 'react-intl';
 
-// Component for displaying user data
 const User = ({ appUser, onEdit }) => {
   const { user } = useUser();
 

@@ -1,5 +1,5 @@
-// Importing component from Mterial UI
-import { Avatar } from "@mui/material";
+// Importing component from Material UI.
+import { Avatar } from '@mui/material';
 
 const Icon = ({ avatar }) => {
   return (

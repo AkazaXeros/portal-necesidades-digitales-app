@@ -1,35 +1,36 @@
-// Importing hook from React
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+// Importing hooks from React.
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-// Importing user context
-import { useUser } from "../../context/UserContext";
+// Importing custom hooks component.
+import { useUser } from '../../context/UserContext';
 
-// Importing the CSS
-import { btnContainer, editForm } from "./EditPassword.module.css";
+// Importing CSS.
+import { btnContainer, editForm } from './EditPassword.module.css';
 
-// Importing ui material components
-import { Alert, Button, TextField } from "@mui/material";
-import { updatePassword } from "../../services";
+// Importing Material UI components.
+import { Alert, Button, TextField } from '@mui/material';
+import { updatePassword } from '../../services';
 
 const EditPassword = () => {
   const { token, logout } = useUser();
   const navigate = useNavigate();
 
-  const [currentPass, setCurrentPass] = useState("");
-  const [newPass, setNewPass] = useState("");
-  const [repeatedNewPass, setRepeatedNewPass] = useState("");
-  const [error, setError] = useState("");
+  const [currentPass, setCurrentPass] = useState('');
+  const [newPass, setNewPass] = useState('');
+  const [repeatedNewPass, setRepeatedNewPass] = useState('');
+  const [error, setError] = useState('');
 
+  //---------------Handlers--------------//
   const changeHandler = (e, identifier) => {
-    if (identifier === "currentPass") {
+    if (identifier === 'currentPass') {
       setCurrentPass(e.target.value);
-    } else if (identifier === "newPass") {
+    } else if (identifier === 'newPass') {
       setNewPass(e.target.value);
-    } else if (identifier === "repeatedNewPass") {
+    } else if (identifier === 'repeatedNewPass') {
       setRepeatedNewPass(e.target.value);
     }
-    setError("");
+    setError('');
   };
 
   const handleSubmit = async (e) => {
@@ -37,10 +38,9 @@ const EditPassword = () => {
 
     if (newPass === repeatedNewPass) {
       try {
-        const data = await updatePassword(currentPass, newPass, token);
-        console.log(data);
+        await updatePassword(currentPass, newPass, token);
         logout();
-        navigate("/users/login");
+        navigate('/users/login');
       } catch (err) {
         setError(err.message);
       }
@@ -55,21 +55,21 @@ const EditPassword = () => {
         label="Current password"
         type="password"
         value={currentPass}
-        onChange={(e) => changeHandler(e, "currentPass")}
+        onChange={(e) => changeHandler(e, 'currentPass')}
         required
       />
       <TextField
         label="New password"
         type="password"
         value={newPass}
-        onChange={(e) => changeHandler(e, "newPass")}
+        onChange={(e) => changeHandler(e, 'newPass')}
         required
       />
       <TextField
         label="Repeat password"
         type="password"
         value={repeatedNewPass}
-        onChange={(e) => changeHandler(e, "repeatedNewPass")}
+        onChange={(e) => changeHandler(e, 'repeatedNewPass')}
         required
       />
 
@@ -81,7 +81,8 @@ const EditPassword = () => {
           color="secondary"
           type="button"
           variant="contained"
-          onClick={() => navigate("/")}>
+          onClick={() => navigate('/')}
+        >
           Cancel
         </Button>
       </div>

@@ -1,3 +1,4 @@
+// Importing hooks from React.
 import { createContext, useContext, useState } from 'react';
 
 export const FilterContext = createContext();

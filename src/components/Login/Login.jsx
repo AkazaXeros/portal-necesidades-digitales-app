@@ -1,12 +1,19 @@
+// Imporitng hooks from React.
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import { Alert, Box, Button, TextField } from '@mui/material';
-
-import { loginForm, btn, link } from './Login.module.css';
+// Importing custom component.
 import { loginUserService } from '../../services';
+
+// Importing custom hooks components.
 import { useUser } from '../../context/UserContext';
 import useTitle from '../../hooks/useTitle';
+
+// Importing CSS.
+import { loginForm, btn, link } from './Login.module.css';
+
+// Importing Materia UI components.
+import { Alert, Box, Button, TextField } from '@mui/material';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,13 +23,24 @@ const Login = () => {
   const navigate = useNavigate();
   useTitle('Login');
 
+  //---------------Handlers-----------------//
+  const changeHandler = (value, identifier) => {
+    if (identifier === 'email') {
+      setEmail(value);
+    }
+    if (identifier === 'password') {
+      setPassword(value);
+    }
+
+    setError('');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
       const data = await loginUserService({ email, password });
-      // console.log(data);
       login(data);
       navigate('/');
     } catch (err) {
@@ -40,7 +58,7 @@ const Login = () => {
         placeholder="name@email.com"
         value={email}
         required
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => changeHandler(e.target.value, 'email')}
       />
 
       <TextField
@@ -50,7 +68,7 @@ const Login = () => {
         placeholder=""
         value={password}
         required
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => changeHandler(e.target.value, 'password')}
       />
 
       <Button

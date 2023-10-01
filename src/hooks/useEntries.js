@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+// Importing hooks from React.
+import { useEffect, useState } from 'react';
 
-import { getAllEntries } from "../services";
+// Importing custom component.
+import { getAllEntries } from '../services';
 
 const useEntries = () => {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const loadEntries = async () => {

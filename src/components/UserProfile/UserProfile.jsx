@@ -1,13 +1,20 @@
-import { userProfile } from './UserProfile.module.css';
-import AllEntries from '../Entries/AllEntries';
+// Importing hook from React.
+import { useState } from 'react';
+
+// Importing custom hooks component.
 import useEntries from '../../hooks/useEntries';
 
-import User from '../User/User';
-import FormModal from '../UI/FormModal';
-
-import { CircularProgress } from '@mui/material';
-import { useState } from 'react';
+// Importing custom components.
+import AllEntries from '../Entries/AllEntries';
 import EditUserProfile from './EditUserProfile';
+import FormModal from '../UI/FormModal';
+import User from '../User/User';
+
+// Importing CSS.
+import { userProfile } from './UserProfile.module.css';
+
+// Importing Material UI component.
+import { CircularProgress } from '@mui/material';
 
 const UserProfile = ({ appUser, onUpdateProfile }) => {
   const { entries, loading } = useEntries();
@@ -17,6 +24,7 @@ const UserProfile = ({ appUser, onUpdateProfile }) => {
   const userEntries =
     entries.filter((entry) => entry.userId === parseInt(appUser.id)) || [];
 
+  // -------------Handler------------- //
   const editHandler = () => {
     setModalIsOpened((prevState) => !prevState);
   };
