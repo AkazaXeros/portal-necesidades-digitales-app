@@ -27,7 +27,7 @@ import Card from '../UI/Card';
 // Importing Material UI components.
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 import { Button } from '@mui/material';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFilter } from '../../context/FilterContext';
 
 //-----------------------------------------------//
@@ -64,6 +64,10 @@ const Home = () => {
   const clickHandler = (e, title) => {
     setCategory(title.toLocaleLowerCase().replaceAll(' ', '-'));
     navigate('/allEntries');
+  };
+
+  const joinHandler = () => {
+    navigate('/users/register');
   };
 
   return (
@@ -149,8 +153,13 @@ const Home = () => {
           <p>
             Suddenly everything is so <span className={doable}>doable</span>
           </p>
-          <Button color="primary" variant="contained" className={button}>
-            <NavLink to="/users/register"> Join Wrench </NavLink>
+          <Button
+            color="secondary"
+            variant="contained"
+            className={button}
+            onClick={joinHandler}
+          >
+            Join Wrench
           </Button>
         </article>
         <img src={team} alt="Image of people working as a team" />
