@@ -6,7 +6,9 @@ const NotFoundPage = () => {
     <div>
       <h1>NotFoundPage</h1>
       <p>
-        <Link to="/">Back to Home</Link>
+        <Link to="/" style={{ color: '#F3AA60' }}>
+          Back to Home
+        </Link>
       </p>
     </div>
   );
